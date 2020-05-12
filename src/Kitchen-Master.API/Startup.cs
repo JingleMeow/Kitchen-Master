@@ -5,13 +5,13 @@ using System.Threading.Tasks;
 using Kitchen_Master.DataModel;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
+using Autofac;
+using Kitchen_Master.API.IoC;
 
 namespace Kitchen_Master.API
 {
@@ -55,6 +55,12 @@ namespace Kitchen_Master.API
             {
                 endpoints.MapControllers();
             });
+        }
+
+        // Add any Autofac modules or registrations.
+        public void ConfigureContainer(ContainerBuilder builder)
+        {
+            builder.RegisterModule(new KitchenMasterApiIoCModule());
         }
     }
 }
