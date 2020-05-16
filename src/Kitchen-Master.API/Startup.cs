@@ -12,6 +12,10 @@ using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
 using Autofac;
 using Kitchen_Master.API.IoC;
+using Kitchen_Master.API.ConfigModels;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 namespace Kitchen_Master.API
 {
@@ -32,9 +36,16 @@ namespace Kitchen_Master.API
                     Configuration.GetConnectionString("DefaultConnection")
                     ));
             services.AddIdentity<KmUser, KmRole>(options =>
-                options.User.RequireUniqueEmail = true)
+            {
+                options.User.RequireUniqueEmail = true;
+                //options.SignIn.RequireConfirmedEmail = true;
+            })
                 .AddEntityFrameworkStores<KitchenMasterDbContext>();
             services.AddControllers();
+
+            var jwtOptions = this.Configuration.GetSection("Jwt");
+            services.Configure<JwtOptions>(jwtOptions);
+            services.AddJwt(jwtOptions.Get<JwtOptions>());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -49,6 +60,7 @@ namespace Kitchen_Master.API
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
