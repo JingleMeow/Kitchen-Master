@@ -17,7 +17,11 @@ module.exports = {
                 use: ["style-loader", "css-loader"]
             },
             {
-                test: /\.(png|jpe?g|gif)$/,
+                test: /\.scss$/,
+                use: ['style-loader', "css-loader", 'sass-loader']
+            },
+            {
+                test: /\.(eot|ttf|woff2?|otf|svg|png|jpe?g|gif)$/,
                 loader: 'file-loader',
                 options: {
                     name(resourcePath, resourceQuery) {
@@ -33,7 +37,7 @@ module.exports = {
             }
         ]
     },
-    resolve: { extensions: ["*", ".js", ".jsx"] },
+    resolve: { extensions: [".js", ".jsx"] },
     output: {
         path: path.resolve(__dirname, "dist/"),
         publicPath: "/dist/",
