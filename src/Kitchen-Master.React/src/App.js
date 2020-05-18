@@ -1,14 +1,15 @@
 import React, {Component} from 'react';
 import {hot} from 'react-hot-loader';
-import {BrowserRouter, Switch} from 'react-router-dom';
+import {BrowserRouter, Switch, Route} from 'react-router-dom';
+import Login from './components/account/Login';
 
 class App extends Component {
   render() {
     return (
-      <div>
+      <div style={{height: '100%'}}>
         <BrowserRouter>
-          <h1> Hello, World!</h1>
           <Switch>
+            <Route path="/login" exact component={Login} />
           </Switch>
         </BrowserRouter>
       </div>

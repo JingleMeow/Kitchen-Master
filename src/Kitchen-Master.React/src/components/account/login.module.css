@@ -1,0 +1,17 @@
+div.loginForm {
+    height: 100vh;
+    margin: 0!important;
+}
+
+div.gridColumn {
+    max-width: 450px;
+}
+
+img.logo {
+    margin-top: 0!important;
+}
+span.headerText {
+    margin-left: 1vw;
+    margin-right: 1vw;
+    vertical-align: middle;
+}
