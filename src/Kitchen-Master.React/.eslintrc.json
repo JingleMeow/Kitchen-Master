@@ -26,6 +26,7 @@
             "error",
             "windows"
         ],
-        "require-jsdoc": "off"
+        "require-jsdoc": "off",
+        "max-len": ["error", 150]
     }
 }
