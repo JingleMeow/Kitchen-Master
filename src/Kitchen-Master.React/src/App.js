@@ -11,7 +11,6 @@ class App extends Component {
                 <BrowserRouter>
                     <h1> Hello, World!</h1>
                     <Switch>
-                        <Route path="/test" exact component={Test} />
                     </Switch>
                 </BrowserRouter>
             </div>
