@@ -14,7 +14,22 @@ module.exports = {
       },
       {
         test: /\.css$/,
+        include: path.resolve(__dirname, 'node_modules'),
         use: ['style-loader', 'css-loader'],
+      },
+      {
+        test: /\.css$/,
+        exclude: path.resolve(__dirname, 'node_modules'),
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 1, // if specifying more loaders
+              modules: {localIdentName: '[local]_[hash:base64:5]'},
+              sourceMap: false,
+            },
+          }],
       },
       {
         test: /\.scss$/,
