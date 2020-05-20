@@ -8,6 +8,7 @@
         "webpackHotModuleReloading": true,
         "autoResolveMultipleImports": true
       }
-    ]
+    ],
+    "@babel/plugin-proposal-class-properties"
   ]
 }

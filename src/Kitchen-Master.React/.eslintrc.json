@@ -11,6 +11,7 @@
         "Atomics": "readonly",
         "SharedArrayBuffer": "readonly"
     },
+    "parser": "babel-eslint",
     "parserOptions": {
         "ecmaFeatures": {
             "jsx": true
@@ -21,12 +22,13 @@
     "plugins": [
         "react"
     ],
-    "rules": {        
+    "rules": {
         "linebreak-style":  [
             "error",
             "windows"
         ],
-        "require-jsdoc": "off",
-        "max-len": ["error", 150]
+        "max-len": ["error", 150],
+        "no-invalid-this": "off",
+        "require-jsdoc": "off"
     }
 }
