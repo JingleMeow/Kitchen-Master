@@ -12,10 +12,8 @@
   "devDependencies": {
     "@babel/cli": "^7.8.4",
     "@babel/core": "^7.9.6",
-    "@babel/plugin-proposal-decorators": "^7.8.3",
     "@babel/preset-env": "^7.9.6",
     "@babel/preset-react": "^7.9.4",
-    "babel-eslint": "^10.1.0",
     "babel-loader": "^8.1.0",
     "css-loader": "^3.5.3",
     "eslint": "^7.0.0",
@@ -29,7 +27,6 @@
     "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {
-    "autobind-decorator": "^2.4.0",
     "babel-plugin-react-css-modules": "^5.2.6",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",

@@ -5,7 +5,5 @@
     ["react-css-modules", {
       "webpackHotModuleReloading": true,
       "autoResolveMultipleImports": true
-    }],
-    ["@babel/plugin-proposal-decorators", { "legacy": true }]
-  ]
+    }]]
 }
