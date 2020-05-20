@@ -1,5 +1,5 @@
+import {hot} from 'react-hot-loader/root';
 import React, {Component} from 'react';
-import {hot} from 'react-hot-loader';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import Login from './components/account/Login';
 
@@ -17,4 +17,4 @@ class App extends Component {
   }
 }
 
-export default hot(module)(App);
+export default hot(App);
