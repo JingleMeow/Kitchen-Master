@@ -2,8 +2,12 @@
   "presets": ["@babel/env", "@babel/preset-react"],
   "plugins": [
     "react-hot-loader/babel", 
-    ["react-css-modules", {
-      "webpackHotModuleReloading": true,
-      "autoResolveMultipleImports": true
-    }]]
+    [
+      "react-css-modules",
+      {
+        "webpackHotModuleReloading": true,
+        "autoResolveMultipleImports": true
+      }
+    ]
+  ]
 }
