@@ -41,11 +41,22 @@ namespace Kitchen_Master.API
                 //options.SignIn.RequireConfirmedEmail = true;
             })
                 .AddEntityFrameworkStores<KitchenMasterDbContext>();
-            services.AddControllers();
+
+            services.AddCors(options =>
+            {
+                options.AddDefaultPolicy(builder =>
+                {
+                    builder.WithOrigins(this.Configuration.GetSection("ClienUrl").Value)
+                        .AllowAnyHeader()
+                        .AllowAnyMethod();
+                });
+            });
 
             var jwtOptions = this.Configuration.GetSection("Jwt");
             services.Configure<JwtOptions>(jwtOptions);
             services.AddJwt(jwtOptions.Get<JwtOptions>());
+
+            services.AddControllers();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -57,7 +68,7 @@ namespace Kitchen_Master.API
             }
 
             app.UseHttpsRedirection();
-
+            app.UseCors();
             app.UseRouting();
 
             app.UseAuthentication();
