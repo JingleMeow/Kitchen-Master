@@ -1,8 +1,38 @@
 import React, {Component} from 'react';
 import {Grid, Header, Image, Form, Segment, Button, Message} from 'semantic-ui-react';
 import styles from './login.module.css';
+import {login} from '../../services/webapi/account';
+import {setAccessToken} from '../../utils/currentUser';
 
 class Login extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      email: '',
+      password: '',
+    };
+  }
+
+  handleEmailChange = (event, data) => {
+    this.setState({
+      email: data.value,
+    });
+  }
+
+  handlePasswordChange = (event, data) => {
+    this.setState({
+      password: data.value,
+    });
+  }
+
+  handleSubmit = () => {
+    const {email, password} = this.state;
+    login(email, password)
+      .then(response => {
+        setAccessToken(response.data);
+      });
+  }
+
   render() {
     return (
       <Grid textAlign='center' verticalAlign='middle' className={styles.loginForm}>
@@ -11,10 +41,12 @@ class Login extends Component {
             <Image src='/logo.png' className={styles.logo} />
             <span className={styles.headerText}>Kitchen Master</span>
           </Header>
-          <Form size='large'>
+          <Form size='large' onSubmit={this.handleSubmit}>
             <Segment stacked>
-              <Form.Input fluid icon='user' iconPosition='left' placeholder='E-mail address' />
-              <Form.Input fluid icon='lock' iconPosition='left' placeholder='Password' type='password' />
+              <Form.Input fluid icon='user' iconPosition='left' placeholder='E-mail address'
+                value = {this.state.email} onChange={this.handleEmailChange} />
+              <Form.Input fluid icon='lock' iconPosition='left' placeholder='Password' type='password'
+                value = {this.state.password} onChange={this.handlePasswordChange} />
 
               <Button color='teal' fluid size='large'>
                 Login
