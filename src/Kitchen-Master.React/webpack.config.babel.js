@@ -1,7 +1,7 @@
-const path = require('path');
-const webpack = require('webpack');
+import path from 'path';
+import {HotModuleReplacementPlugin} from 'webpack';
 
-module.exports = {
+export default {
   entry: './src/index.js',
   mode: 'development',
   module: {
@@ -65,5 +65,5 @@ module.exports = {
     hotOnly: true,
     historyApiFallback: true,
   },
-  plugins: [new webpack.HotModuleReplacementPlugin()],
+  plugins: [new HotModuleReplacementPlugin()],
 };
