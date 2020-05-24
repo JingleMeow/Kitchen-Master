@@ -6,7 +6,7 @@ import Login from './components/account/Login';
 class App extends Component {
   render() {
     return (
-      <div style={{height: '100%'}}>
+      <div>
         <BrowserRouter>
           <Switch>
             <Route path="/login" exact component={Login} />
