@@ -1,5 +1,5 @@
 import path from 'path';
-import {HotModuleReplacementPlugin} from 'webpack';
+import {EnvironmentPlugin, HotModuleReplacementPlugin} from 'webpack';
 
 export default {
   entry: './src/index.js',
@@ -65,5 +65,10 @@ export default {
     hotOnly: true,
     historyApiFallback: true,
   },
-  plugins: [new HotModuleReplacementPlugin()],
+  plugins: [
+    new EnvironmentPlugin(
+      {
+        API_BASE_URL: 'http://localhost:5100/api/',
+      }),
+    new HotModuleReplacementPlugin()],
 };
