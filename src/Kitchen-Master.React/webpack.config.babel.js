@@ -1,5 +1,5 @@
 import path from 'path';
-import {EnvironmentPlugin, HotModuleReplacementPlugin} from 'webpack';
+import { EnvironmentPlugin, HotModuleReplacementPlugin } from 'webpack';
 
 export default {
   entry: './src/index.js',
@@ -10,7 +10,7 @@ export default {
         test: /\.(js|jsx)$/,
         exclude: /(node_modules|bower_components)/,
         loader: 'babel-loader',
-        options: {presets: ['@babel/env']},
+        options: { presets: ['@babel/env'] },
       },
       {
         test: /\.css$/,
@@ -26,7 +26,7 @@ export default {
             loader: 'css-loader',
             options: {
               importLoaders: 1, // if specifying more loaders
-              modules: {localIdentName: '[local]_[hash:base64:5]'},
+              modules: { localIdentName: '[local]_[hash:base64:5]' },
               sourceMap: false,
             },
           }],
@@ -52,7 +52,12 @@ export default {
       },
     ],
   },
-  resolve: {extensions: ['.js', '.jsx']},
+  resolve: {
+    extensions: ['.js', '.jsx'],
+    alias: {
+      'react-dom': '@hot-loader/react-dom',
+    }
+  },
   output: {
     path: path.resolve(__dirname, 'dist/'),
     publicPath: '/dist/',
