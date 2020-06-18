@@ -50,8 +50,10 @@ class Login extends Component {
           <Form size='large' onSubmit={this.handleSubmit}>
             <Segment stacked>
               <Form.Input fluid icon='user' iconPosition='left' placeholder='E-mail address'
+                autoComplete='email'
                 value={this.state.email} onChange={this.handleEmailChange} />
               <Form.Input fluid icon='lock' iconPosition='left' placeholder='Password' type='password'
+                autoComplete='current-password'
                 value={this.state.password} onChange={this.handlePasswordChange} />
 
               <Button color='teal' fluid size='large'>
