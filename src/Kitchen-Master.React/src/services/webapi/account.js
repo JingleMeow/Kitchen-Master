@@ -1,11 +1,11 @@
-import axios from 'axios';
+import kmApi from '../kmApiRequest';
 
 function login(email, password) {
-    return axios.post('https://localhost:5001/api/account/login',
+    return kmApi.post('account/login',
         {
             email,
             password
         });
 }
 
-export {login};
+export { login };

@@ -73,7 +73,7 @@ export default {
   plugins: [
     new EnvironmentPlugin(
       {
-        API_BASE_URL: 'http://localhost:5100/api/',
+        API_BASE_URL: 'https://localhost:5001/api/',
       }),
     new HotModuleReplacementPlugin()],
   devtool: 'inline-source-map'
