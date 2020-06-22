@@ -29,10 +29,12 @@
     "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {
+    "@hapi/joi": "^17.1.1",
     "@hot-loader/react-dom": "^16.13.0",
     "axios": "^0.19.2",
     "babel-plugin-react-css-modules": "^5.2.6",
     "jwt-decode": "^2.2.0",
+    "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-hot-loader": "^4.12.21",

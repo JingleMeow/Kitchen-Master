@@ -1,6 +1,14 @@
 import kmApi from '../kmApiRequest';
 
-function login(email, password) {
+export function register(email, password) {
+    return kmApi.post('account/register',
+        {
+            email,
+            password
+        });
+}
+
+export function login(email, password) {
     return kmApi.post('account/login',
         {
             email,
@@ -8,4 +16,3 @@ function login(email, password) {
         });
 }
 
-export { login };

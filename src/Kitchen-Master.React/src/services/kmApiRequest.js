@@ -1,6 +1,24 @@
 import axios from 'axios';
 import { getAccessToken } from '../utils/auth';
 
+axios.interceptors.response.use(
+    response => response,
+    error => {
+        const info = {
+            message: error.message
+        }
+        if (error.response) {
+            const { status, data } = error.response;
+            info.status = status;
+
+            if (status >= 400 && status < 500 && data) {
+                info.data = data;
+            }
+        }
+        return Promise.reject(info);
+    }
+)
+
 export function get(resourcePath, data) {
 
 }

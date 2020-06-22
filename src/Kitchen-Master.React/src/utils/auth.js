@@ -26,3 +26,6 @@ export function getAccessToken() {
 function removeAccessToken() {
     localStorage.removeItem('access_token');
 }
+
+export const passwordRegex = /^(?=.*[a-z]+)(?=.*[A-Z]+)(?=.*[0-9]+)(?=.*[.!@#\$%^&*(){}\[\]:;<>,\?\/~_\+\-=|]+).{8,32}$/;
+export const passwordError = '{#label} should contain at least a lowercase letter, an uppercase letter, a digit and a 1 special character.';
