@@ -25,7 +25,6 @@ class RegisterPage extends BaseForm {
 
     render() {
         const { backendError } = this.state;
-        console.log(this.state);
         return (
             <CenterFormGrid>
                 <Form size='large' className={styles.registerForm} onSubmit={this.handleSubmit}>
