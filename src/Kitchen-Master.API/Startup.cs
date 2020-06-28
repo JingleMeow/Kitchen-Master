@@ -31,6 +31,7 @@ namespace Kitchen_Master.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddConfigurationOptions(this.Configuration);
             services.AddDbContext<KitchenMasterDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")
@@ -52,9 +53,7 @@ namespace Kitchen_Master.API
                 });
             });
 
-            var jwtOptions = this.Configuration.GetSection("Jwt");
-            services.Configure<JwtOptions>(jwtOptions);
-            services.AddJwt(jwtOptions.Get<JwtOptions>());
+            services.AddJwt(this.Configuration);
 
             services.AddControllers();
         }

@@ -1,5 +1,7 @@
 ﻿using Kitchen_Master.API.ConfigModels;
+using Kitchen_Master.API.ConfigOptions;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using System;
@@ -12,8 +14,15 @@ namespace Kitchen_Master.API
 {
     public static class ServicesExtension
     {
-        public static void AddJwt(this IServiceCollection services, JwtOptions options)
+        public static void AddConfigurationOptions(this IServiceCollection services, IConfiguration configuration)
         {
+            services.Configure<JwtOptions>(configuration.GetSection("Jwt"));
+            services.Configure<EmailOptions>(configuration.GetSection("Email"));
+        }
+
+        public static void AddJwt(this IServiceCollection services, IConfiguration configuration)
+        {
+            var options = configuration.GetSection("Jwt").Get<JwtOptions>();
             services.AddAuthentication(options =>
             {
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
