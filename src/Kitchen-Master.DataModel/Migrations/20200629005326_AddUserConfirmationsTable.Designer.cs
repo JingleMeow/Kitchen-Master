@@ -4,14 +4,16 @@ using Kitchen_Master.DataModel;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Kitchen_Master.DataModel.Migrations
 {
     [DbContext(typeof(KitchenMasterDbContext))]
-    partial class KitchenMasterDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200629005326_AddUserConfirmationsTable")]
+    partial class AddUserConfirmationsTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

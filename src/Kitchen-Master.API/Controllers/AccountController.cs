@@ -23,17 +23,17 @@ namespace Kitchen_Master.API.Controllers
         private readonly UserManager<KmUser> userManager;
         private readonly SignInManager<KmUser> signinManager;
         private readonly UserTokenService tokenService;
-        private readonly EmailService emailService;
+        private readonly UserConfirmationService userConfirmationService;
 
         public AccountController(UserManager<KmUser> userManager,
             SignInManager<KmUser> signinManager,
             UserTokenService tokenService,
-            EmailService emailService)
+            UserConfirmationService userConfirmationService)
         {
             this.userManager = userManager;
             this.signinManager = signinManager;
             this.tokenService = tokenService;
-            this.emailService = emailService;
+            this.userConfirmationService = userConfirmationService;
         }
 
         [AllowAnonymous]
@@ -54,28 +54,13 @@ namespace Kitchen_Master.API.Controllers
                 {
                     return BadRequest(result.Errors.First().Code);
                 }
+                this.userConfirmationService.RequestConfirmation(user.Email);
                 return Ok();
             }
             else
             {
                 return BadRequest("The email has been registered.");
             }
-        }
-
-        [AllowAnonymous]
-        [HttpGet("sendEmail")]
-        public async Task<IActionResult> SendEmail()
-        {
-            var message = new MimeMessage();
-            message.From.Add(MailboxAddress.Parse("whoever@me.com"));
-            message.To.Add(MailboxAddress.Parse("fjie@fe.com"));
-            message.Subject = "CurrentTime";
-            message.Body = new TextPart("plain")
-            {
-                Text = DateTime.Now.ToString()
-            };
-            await this.emailService.SendEmailAsync(message);
-            return Ok("Email Sent");
         }
 
         [AllowAnonymous]
