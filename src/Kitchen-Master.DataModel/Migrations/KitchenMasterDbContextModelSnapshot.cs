@@ -121,21 +121,6 @@ namespace Kitchen_Master.DataModel.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
-            modelBuilder.Entity("Kitchen_Master.DataModel.KmUserConfirmation", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("UserConfirmations");
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
                 {
                     b.Property<int>("Id")

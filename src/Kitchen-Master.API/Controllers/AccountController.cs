@@ -54,7 +54,7 @@ namespace Kitchen_Master.API.Controllers
                 {
                     return BadRequest(result.Errors.First().Code);
                 }
-                this.userConfirmationService.RequestConfirmation(user.Email);
+                await this.userConfirmationService.RequestConfirmation(user);
                 return Ok();
             }
             else

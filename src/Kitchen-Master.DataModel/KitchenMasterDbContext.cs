@@ -12,7 +12,5 @@ namespace Kitchen_Master.DataModel
         {
 
         }
-
-        public DbSet<KmUserConfirmation> UserConfirmations { get; set; }
     }
 }
