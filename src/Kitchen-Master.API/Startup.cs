@@ -47,7 +47,7 @@ namespace Kitchen_Master.API
             {
                 options.AddDefaultPolicy(builder =>
                 {
-                    builder.WithOrigins(this.Configuration.GetSection("ClienUrl").Value)
+                    builder.WithOrigins(this.Configuration.GetSection("ClientUrl").Value)
                         .AllowAnyHeader()
                         .AllowAnyMethod();
                 });
