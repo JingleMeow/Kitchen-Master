@@ -16,6 +16,7 @@ using Kitchen_Master.API.ConfigModels;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using Microsoft.AspNetCore.Identity;
 
 namespace Kitchen_Master.API
 {
@@ -41,7 +42,8 @@ namespace Kitchen_Master.API
                 options.User.RequireUniqueEmail = true;
                 //options.SignIn.RequireConfirmedEmail = true;
             })
-                .AddEntityFrameworkStores<KitchenMasterDbContext>();
+                .AddEntityFrameworkStores<KitchenMasterDbContext>()
+                .AddDefaultTokenProviders();
 
             services.AddCors(options =>
             {

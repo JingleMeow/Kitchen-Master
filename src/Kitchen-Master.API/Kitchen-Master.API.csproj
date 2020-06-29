@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <RootNamespace>Kitchen_Master.API</RootNamespace>
+    <UserSecretsId>99c5d0ef-7fed-4f15-a82b-b7aa34194045</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
