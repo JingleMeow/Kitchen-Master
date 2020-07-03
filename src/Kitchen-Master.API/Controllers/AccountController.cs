@@ -1,16 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Kitchen_Master.API.ApiModels.Account;
-using Kitchen_Master.API.Services;
 using Kitchen_Master.API.Services.Account;
 using Kitchen_Master.DataModel;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using MimeKit;
 using SignInResult = Microsoft.AspNetCore.Identity.SignInResult;
 
 namespace Kitchen_Master.API.Controllers
@@ -23,17 +21,17 @@ namespace Kitchen_Master.API.Controllers
         private readonly UserManager<KmUser> userManager;
         private readonly SignInManager<KmUser> signinManager;
         private readonly UserTokenService tokenService;
-        private readonly UserConfirmationService userConfirmationService;
+        private readonly AccountConfirmationService accountConfirmationService;
 
         public AccountController(UserManager<KmUser> userManager,
             SignInManager<KmUser> signinManager,
             UserTokenService tokenService,
-            UserConfirmationService userConfirmationService)
+            AccountConfirmationService accountConfirmationService )
         {
             this.userManager = userManager;
             this.signinManager = signinManager;
             this.tokenService = tokenService;
-            this.userConfirmationService = userConfirmationService;
+            this.accountConfirmationService = accountConfirmationService;
         }
 
         [AllowAnonymous]
@@ -54,7 +52,7 @@ namespace Kitchen_Master.API.Controllers
                 {
                     return BadRequest(result.Errors.First().Code);
                 }
-                await this.userConfirmationService.RequestConfirmation(user);
+                await this.accountConfirmationService.SendAccountConfirmationEmail(user);
                 return Ok();
             }
             else
