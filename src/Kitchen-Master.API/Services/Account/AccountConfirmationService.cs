@@ -1,6 +1,7 @@
 ﻿using Kitchen_Master.API.ConfigOptions;
 using Kitchen_Master.API.Email;
-using Kitchen_Master.DataModel;
+using Kitchen_Master.Data;
+using Kitchen_Master.Data.Model;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;

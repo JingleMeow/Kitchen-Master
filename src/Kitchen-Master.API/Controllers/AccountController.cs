@@ -5,7 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Kitchen_Master.API.ApiModels.Account;
 using Kitchen_Master.API.Services.Account;
-using Kitchen_Master.DataModel;
+using Kitchen_Master.Data.Model;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;

@@ -27,7 +27,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Kitchen-Master.DataModel\Kitchen-Master.DataModel.csproj" />
+    <ProjectReference Include="..\Kitchen-Master.Data\Kitchen-Master.Data.csproj" />
   </ItemGroup>
 
   <ItemGroup>

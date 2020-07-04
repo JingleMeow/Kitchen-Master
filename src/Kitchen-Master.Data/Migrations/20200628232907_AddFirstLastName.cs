@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace Kitchen_Master.DataModel.Migrations
+namespace Kitchen_Master.Data.Migrations
 {
     public partial class AddFirstLastName : Migration
     {
