@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Kitchen_Master.API.ApiModels.Account;
+using Kitchen_Master.API.Services;
 using Kitchen_Master.API.Services.Account;
 using Kitchen_Master.Data.Model;
 using Microsoft.AspNetCore.Authorization;
@@ -91,6 +92,21 @@ namespace Kitchen_Master.API.Controllers
             var user = await this.userManager.GetUserAsync(this.User);
             var token = await this.tokenService.GenerateAccessToken(user);
             return Ok(token);
+        }
+
+        [AllowAnonymous]
+        [HttpPost("confirmEmail")]
+        public async Task<IActionResult> ConfirmEmail(AccountConfirmationModel model)
+        {
+            try
+            {
+                await this.accountConfirmationService.ConfirmEmail(model);
+                return Ok();
+            }
+            catch (FeatureServiceException ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
     }
 }
