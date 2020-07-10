@@ -1,10 +1,12 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { Form, Segment, Button, Message } from 'semantic-ui-react';
 import styles from './registerPage.module.css';
 import { CenterFormGrid, BaseForm, TextFormInput } from '../common';
 import InputValidator from '../../utils/inputValidator';
 import { passwordRegex, passwordError } from '../../utils/auth';
 import { register } from '../../services/webapi/account';
+import { setLoader } from '../../redux/actions/setLoaderAction'
 
 class RegisterPage extends BaseForm {
     state = {
@@ -53,7 +55,7 @@ class RegisterPage extends BaseForm {
 
     handleSubmit = () => {
         const { email, password } = this.state.data;
-        register(email, password)
+        register(email, password, this.props.setLoader)
             .then(response =>
                 this.props.history.push('/registerSucceeded', { email })
             )
@@ -65,4 +67,9 @@ class RegisterPage extends BaseForm {
     }
 }
 
-export default RegisterPage;
+const mapStateToProps = null;
+const mapDispatchToProps = {
+    setLoader
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(RegisterPage);

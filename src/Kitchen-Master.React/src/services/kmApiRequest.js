@@ -1,35 +1,56 @@
 import axios from 'axios';
 import { getAccessToken } from '../utils/auth';
 
-axios.interceptors.response.use(
-    response => response,
-    error => {
-        const info = {
-            message: error.message
-        }
-        if (error.response) {
-            const { status, data } = error.response;
-            info.status = status;
+function createInstance(interceptor) {
+    const config = {
+        baseURL: process.env.API_BASE_URL
+    };
+    const instance = axios.create(config);
+    const { onRequest, onFullfilled, onError } = interceptor;
+    instance.interceptors.request.use(
+        request => {
+            if (onRequest)
+                onRequest();
+            return request;
+        });
+    instance.interceptors.response.use(
+        response => {
+            if (onFullfilled)
+                onFullfilled();
+            return response;
+        },
+        error => {
+            if (onError)
+                onError();
 
-            if (status >= 400 && status < 500 && data) {
-                info.data = data;
+            const info = {
+                message: error.message
             }
-        }
-        return Promise.reject(info);
-    }
-)
+            if (error.response) {
+                const { status, data } = error.response;
+                info.status = status;
+
+                if (status >= 400 && status < 500 && data) {
+                    info.data = data;
+                }
+            }
+            return Promise.reject(info);
+        })
+    return instance;
+}
 
 export function get(resourcePath, data) {
 
 }
 
-export function post(resourcePath, data) {
-    return axios.post(`${process.env.API_BASE_URL}${resourcePath}`, data, getConfig);
+export function post(resourcePath, data, interceptor) {
+    const instance = createInstance(interceptor);
+    return instance.post(resourcePath, data);
 }
 
 function getConfig() {
     const config = {
-        baseURL: env.API_BASE_URL
+        baseURL: process.env.API_BASE_URL
     };
 
     const token = getAccessToken();

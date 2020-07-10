@@ -8,7 +8,7 @@ import { CenterFormGrid, BaseForm, TextFormInput } from '../common';
 import InputValidator from '../../utils/inputValidator';
 import { login } from '../../services/webapi/account';
 import { setAccessToken } from '../../utils/auth';
-import setLoader from '../../redux/actions/setLoaderAction';
+import { setLoader } from '../../redux/actions/setLoaderAction';
 
 class LoginPage extends BaseForm {
   state = {
@@ -57,8 +57,7 @@ class LoginPage extends BaseForm {
 
   handleSubmit = () => {
     const { email, password } = this.state.data;
-    this.props.setLoader(true);
-    login(email, password)
+    login(email, password, this.props.setLoader)
       .then(response => {
         setAccessToken(response.data);
         window.location.href = '/';
@@ -67,17 +66,15 @@ class LoginPage extends BaseForm {
         this.setState({
           backendError: error.data ? error.data : error.message
         });
-      })
-      .finally(() => {
-        this.props.setLoader(false);
       });
   }
 }
 
 LoginPage.contextType = UserContext;
 
+const mapStateToProps = null;
 const mapDispatchToProps = {
   setLoader
 }
 
-export default connect(null, mapDispatchToProps)(LoginPage);
+export default connect(mapStateToProps, mapDispatchToProps)(LoginPage);

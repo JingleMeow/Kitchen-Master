@@ -1,9 +1,10 @@
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import rootReducer from './reducers/rootReducer';
 
 export default function () {
-    const store = createStore(rootReducer, composeWithDevTools());
+    const store = createStore(rootReducer,
+        composeWithDevTools());
 
     if (module.hot) {
         // Enable Webpack hot module replacement for reducers

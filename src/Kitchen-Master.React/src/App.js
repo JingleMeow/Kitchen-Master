@@ -15,7 +15,7 @@ class App extends Component {
     return (
       <Provider store={store}>
         <Dimmer active={isLoading}>
-          <Loader />
+          <Loader size="huge">Loading...</Loader>
         </Dimmer>
         <UserContext.Provider value={getCurrentUser()}>
           <BrowserRouter>
