@@ -11,6 +11,7 @@ using MimeKit;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 
 namespace Kitchen_Master.API.Services.Account
@@ -43,15 +44,16 @@ namespace Kitchen_Master.API.Services.Account
         {
             var token = await userManager.GenerateEmailConfirmationTokenAsync(user);
             this.emailSender.To = user.Email;
-            this.emailSender.ConfirmationToken = token;
+            this.emailSender.ConfirmationToken = WebUtility.UrlEncode(token);
             this.emailSender.SendEmail();
         }
 
         public async Task ConfirmEmail(AccountConfirmationModel model)
         {
             var user = this.userRepository.GetUserByEmail(model.Email);
-            if (user == null)
-                throw new FeatureServiceException("Invalid email.");
+            var isValidUser = user == null ? false : await this.userManager.CheckPasswordAsync(user, model.Password);
+            if (!isValidUser)
+                throw new FeatureServiceException("Invalid email or password.");
 
             var result = await userManager.ConfirmEmailAsync(user, model.Token);
             if (!result.Succeeded)

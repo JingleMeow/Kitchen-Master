@@ -95,8 +95,8 @@ namespace Kitchen_Master.API.Controllers
         }
 
         [AllowAnonymous]
-        [HttpPost("confirmEmail")]
-        public async Task<IActionResult> ConfirmEmail(AccountConfirmationModel model)
+        [HttpPost("confirmAccount")]
+        public async Task<IActionResult> ConfirmAccount(AccountConfirmationModel model)
         {
             try
             {
