@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Redirect, Link } from 'react-router-dom';
 import { Form, Segment, Button, Message } from 'semantic-ui-react';
-import styles from './login.module.css';
 import UserContext from '../../contexts/userContext';
 import { CenterFormGrid, BaseForm, TextFormInput } from '../common';
 import InputValidator from '../../utils/inputValidator';
 import { login } from '../../services/webapi/account';
 import { setAccessToken } from '../../utils/auth';
 import { setLoader } from '../../redux/actions/setLoaderAction';
+import styles from './loginPage.module.css';
 
 class LoginPage extends BaseForm {
   state = {

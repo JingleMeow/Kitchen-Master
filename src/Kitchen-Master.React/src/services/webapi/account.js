@@ -18,3 +18,9 @@ export function login(email, password, setLoader) {
         },
         createShowLoaderInterceptor(setLoader));
 }
+
+export function confirmAccount(model, setLoader) {
+    return kmApi.post('account/confirmAccount',
+        model,
+        createShowLoaderInterceptor(setLoader));
+}
