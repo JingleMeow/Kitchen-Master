@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Message } from 'semantic-ui-react';
+import withNavbar from '../navbar/withNavbar';
 
 const AccountConfirmedPage = () => {
     return (
@@ -11,4 +12,4 @@ const AccountConfirmedPage = () => {
     );
 }
 
-export default AccountConfirmedPage;
+export default withNavbar(AccountConfirmedPage, false);

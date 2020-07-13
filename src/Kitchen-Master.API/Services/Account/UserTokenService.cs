@@ -37,6 +37,8 @@ namespace Kitchen_Master.API.Services.Account
 			var claims = await this.userManager.GetClaimsAsync(user);
 			claims.Add(new Claim(ClaimTypes.Email, user.Email));
 			claims.Add(new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()));
+			claims.Add(new Claim("firstname", user.FirstName));
+			claims.Add(new Claim("lastname", user.LastName));
 			var tokenDescriptor = new SecurityTokenDescriptor
 			{
 				Subject = new ClaimsIdentity(claims),

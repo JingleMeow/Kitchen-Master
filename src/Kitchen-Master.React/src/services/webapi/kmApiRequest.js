@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { getAccessToken } from '../utils/auth';
+import { getAccessToken } from '../../utils/auth';
 
 function createInstance(interceptor) {
     const config = {

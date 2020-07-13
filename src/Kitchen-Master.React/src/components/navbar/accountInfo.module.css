@@ -1,0 +1,15 @@
+div.greetings {
+    color:#ccc;
+    font-size: 12px;
+    padding-bottom: 5px;
+}
+
+span.userName {
+    font-style: italic;
+}
+
+a.link {
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+}

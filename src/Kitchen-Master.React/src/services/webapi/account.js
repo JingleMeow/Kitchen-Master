@@ -1,4 +1,4 @@
-import kmApi from '../kmApiRequest';
+import kmApi from './kmApiRequest';
 import { createShowLoaderInterceptor } from './interceptorHelper';
 
 export function register(email, password, setLoader) {
