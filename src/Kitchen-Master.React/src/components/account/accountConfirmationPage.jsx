@@ -7,7 +7,7 @@ import TextFormInput from '../common/textFormInput';
 import InputValidator from '../../utils/inputValidator';
 import { setLoader } from '../../redux/actions/setLoaderAction';
 import { confirmAccount } from '../../services/webapi/account'
-import styles from './accountConfirmationPage.module.css';
+import styles from './accountConfirmationPage.module.scss';
 
 class AccountConfirmationPage extends BaseForm {
     state = {

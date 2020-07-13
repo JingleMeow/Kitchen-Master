@@ -1,6 +1,6 @@
 import React, { Component, Children } from 'react';
 import { Grid, Header, Image } from 'semantic-ui-react';
-import styles from './centerFormGrid.module.css';
+import styles from './centerFormGrid.module.scss';
 
 const CenterFromGrid = ({ children }) => {
     return (

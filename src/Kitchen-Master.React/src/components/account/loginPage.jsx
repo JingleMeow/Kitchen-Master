@@ -8,7 +8,7 @@ import InputValidator from '../../utils/inputValidator';
 import { login } from '../../services/webapi/account';
 import { setAccessToken } from '../../utils/auth';
 import { setLoader } from '../../redux/actions/setLoaderAction';
-import styles from './loginPage.module.css';
+import styles from './loginPage.module.scss';
 
 class LoginPage extends BaseForm {
   state = {

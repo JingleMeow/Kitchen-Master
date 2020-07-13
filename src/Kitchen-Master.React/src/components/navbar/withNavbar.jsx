@@ -3,7 +3,7 @@ import { Menu, Image, Container, Input, Icon, Button } from 'semantic-ui-react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faUtensils, faSearch } from '@fortawesome/free-solid-svg-icons';
 import AccountInfo from './accountInfo';
-import styles from './withNavbar.module.css';
+import styles from './withNavbar.module.scss';
 
 function withNavbar(PageComponent, isInfoPage) {
     return class WithNavbar extends Component {
@@ -29,7 +29,7 @@ function withNavbar(PageComponent, isInfoPage) {
                                         </Button>
                                     } />
                             </Menu.Item>}
-                        <Menu.Item fitted className={styles.accoutInfo}>
+                        <Menu.Item className={styles.accoutInfo}>
                             <AccountInfo />
                         </Menu.Item>
                         {!isInfoPage &&

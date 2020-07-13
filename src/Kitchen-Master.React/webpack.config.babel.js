@@ -33,7 +33,15 @@ export default {
       },
       {
         test: /\.scss$/,
-        use: ['style-loader', 'css-loader', 'sass-loader'],
+        exclude: path.resolve(__dirname, 'node_modules'),
+        use: ['style-loader', {
+          loader: 'css-loader',
+          options: {
+            importLoaders: 1, // if specifying more loaders
+            modules: { localIdentName: '[local]_[hash:base64:5]' },
+            sourceMap: false,
+          },
+        }, 'sass-loader'],
       },
       {
         test: /\.(eot|ttf|woff2?|otf|svg|png|jpe?g|gif)$/,

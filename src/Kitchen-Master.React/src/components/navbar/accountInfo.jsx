@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Label } from 'semantic-ui-react';
 import UserContext from '../../contexts/userContext';
-import styles from './accountInfo.module.css'
+import styles from './accountInfo.module.scss'
 
 class AccountInfo extends Component {
 
