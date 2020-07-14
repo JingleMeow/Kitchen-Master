@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { Menu, Image, Container, Input, Button, Responsive } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faUtensils, faSearch } from '@fortawesome/free-solid-svg-icons';
 import NavbarMenu from './navbarMenu';
@@ -15,11 +16,9 @@ function withNavbar(PageComponent, isInfoPage) {
                         <Menu.Item>
                             <FontAwesomeIcon icon={faBars} size='2x' />
                         </Menu.Item>
-                        <Menu.Item fitted>
+                        <Menu.Item as={Link} to='/' fitted className={styles.logoAndTitleItem}>
                             <Image src='/logo.png' className={styles.logo} />
-                        </Menu.Item>
-                        <Menu.Item className={styles.title}>
-                            <h2>Kitchen-Master</h2>
+                            <h2 className={styles.title}>Kitchen-Master</h2>
                         </Menu.Item>
                         {!isInfoPage &&
                             <Responsive as={Menu.Item} fitted='horizontally' className={styles.searchItem}
