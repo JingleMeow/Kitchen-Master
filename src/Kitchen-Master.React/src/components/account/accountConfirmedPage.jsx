@@ -1,15 +1,15 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Message } from 'semantic-ui-react';
+import { Message, Container } from 'semantic-ui-react';
 import withNavbar from '../navbar/withNavbar';
 
 const AccountConfirmedPage = () => {
     return (
-        <Message info>
+        <Container as={Message} info>
             <Message.Header>Email confirmed</Message.Header>
             <p>Click <Link to='/login'>here</Link> to login</p>
-        </Message>
+        </Container>
     );
 }
 
-export default withNavbar(AccountConfirmedPage, false);
+export default withNavbar(AccountConfirmedPage, true);

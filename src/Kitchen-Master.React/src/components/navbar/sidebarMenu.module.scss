@@ -1,0 +1,40 @@
+div.sidebarMenu {
+    width: 100%!important;
+    height: 100%!important;
+}
+
+div.headerItem {
+    background-color: #232f3f!important;
+    color: white!important;
+
+    a {
+        color: inherit;
+    }
+
+    h3 {
+        display: inline;
+        margin-left: 1em;
+    }
+}
+
+a.menuItem {
+    color: #5b5b6b!important;
+    span {
+        font-size: 1.5em;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        margin-left: 1em;
+    }
+    svg {
+        float: right;
+        margin-right: 1em;
+    }
+}
+
+a.footerItem {
+    color: teal!important;
+    padding-left: 2em!important;
+    span {
+        font-size: 1.5em;
+        margin-left: 1.5em;
+    }
+}

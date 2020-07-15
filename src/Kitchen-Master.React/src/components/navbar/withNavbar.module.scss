@@ -1,23 +1,8 @@
-a.logoAndTitleItem:hover {
-    background-color: unset !important;
+div.navbarPage {
+    min-height: 100vh!important;
+    background-color:#e9edee!important;
 }
 
-img.logo {
-    height: 3em;
-}
-
-h2.title {
-    padding-left: 0.25em!important;
-    padding-right: 0.25em!important;
-    margin-block-start: 0em;
-    margin-block-end: 0em;
-}
-
-div.searchItem {
-    flex-grow: 1!important;    
-}
-
-button.searchButton {
-    padding-left: 1em!important;
-    padding-right: 1em!important;
+div.pageContainer {
+    width: 100%;
 }

@@ -15,7 +15,7 @@ class AccountInfo extends Component {
         } else {
             greetingText = 'Good day!';
             link = '/login';
-            linkText = 'Sign-In/Up';
+            linkText = 'Sign In';
         }
         return (
             <div>
