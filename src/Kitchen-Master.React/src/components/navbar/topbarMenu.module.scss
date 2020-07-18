@@ -1,0 +1,12 @@
+@import '../../styles/variables';
+
+div.topbarMenu {
+    position: absolute;
+    top: 0rem;
+    left: 0rem;
+    right: 0rem;
+    height: $km-topbarMenu-height-desktop;
+    @include mobile {
+        height: $km-topbarMenu-height-mobile;
+    }
+}

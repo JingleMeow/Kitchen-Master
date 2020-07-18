@@ -7,7 +7,7 @@ import { Dimmer, Loader } from 'semantic-ui-react';
 import UserContext from './contexts/userContext';
 import { getCurrentUser } from './utils/auth';
 import { LoginPage, RegisterPage, ConfirmationEmailSentPage, AccountConfirmationPage, AccountConfirmedPage } from './components/account';
-import Home from './components/home';
+import { HomePage, FofPage } from './components';
 import loaderSelector from './redux/selectors/loaderSelector';
 
 class App extends Component {
@@ -21,12 +21,13 @@ class App extends Component {
         <UserContext.Provider value={getCurrentUser()}>
           <BrowserRouter>
             <Switch>
-              <Route path="/" exact component={Home} />
+              <Route path="/" exact component={HomePage} />
               <Route path="/login" exact component={LoginPage} />
               <Route path="/register" exact component={RegisterPage} />
               <Route path="/registerSucceeded" exact component={ConfirmationEmailSentPage} />
               <Route path="/confirmAccount/:token" exact component={AccountConfirmationPage} />
               <Route path="/accountConfirmed" exact component={AccountConfirmedPage} />
+              <Route path='/' component={FofPage} />
             </Switch>
           </BrowserRouter>
         </UserContext.Provider>

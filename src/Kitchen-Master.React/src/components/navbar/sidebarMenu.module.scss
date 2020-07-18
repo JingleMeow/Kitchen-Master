@@ -13,28 +13,34 @@ div.headerItem {
 
     h3 {
         display: inline;
-        margin-left: 1em;
+        margin-left: 1.5rem;
     }
 }
 
 a.menuItem {
     color: #5b5b6b!important;
     span {
-        font-size: 1.5em;
+        font-size: 1.5rem;
         font-family: Georgia, 'Times New Roman', Times, serif;
-        margin-left: 1em;
+        margin-left: 1.5rem;
     }
     svg {
         float: right;
-        margin-right: 1em;
+        margin-right: 2rem;
     }
 }
 
 a.footerItem {
     color: teal!important;
-    padding-left: 2em!important;
+    padding-left: 2rem!important;
+    svg {
+        vertical-align: middle;
+    }
     span {
-        font-size: 1.5em;
-        margin-left: 1.5em;
+        font-size: 1.5rem;
+        font-weight: bold;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        margin-left: 1.5rem;
+        vertical-align: middle;
     }
 }

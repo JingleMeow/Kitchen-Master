@@ -1,8 +1,33 @@
-div.navbarPage {
-    min-height: 100vh!important;
-    background-color:#e9edee!important;
+@import '../../styles/variables';
+
+%pageContainerShared {
+    padding-top: $km-topbarMenu-height-desktop;
+    padding-bottom: $km-bottombar-height;
+    min-height: 100vh;
+    background-color: #e9edee;
 }
 
-div.pageContainer {
-    width: 100%;
+.normalPageContainer {
+    @extend %pageContainerShared;
+
+    @include mobile {
+        padding-top: $km-topbarMenu-height-mobile + $km-searchbar-height;
+    }
+}
+
+.infoPageContainer {
+    @extend %pageContainerShared;
+
+    @include mobile {
+        padding-top: $km-topbarMenu-height-mobile;
+    }
+}
+
+div.footer {
+    background-color: #232f3f;
+    position: absolute;
+    left: 0rem;
+    bottom: 0rem;
+    right: 0rem;
+    height: $km-bottombar-height;
 }

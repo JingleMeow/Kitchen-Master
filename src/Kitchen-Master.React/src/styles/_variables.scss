@@ -1,1 +1,10 @@
-$km-navbar-height: 60px;
+$km-topbarMenu-height-desktop: 4rem;
+$km-topbarMenu-height-mobile: 3.5rem;
+$km-searchbar-height: 3.5rem;
+$km-bottombar-height: 3rem;
+
+@mixin mobile {
+    @media screen and (max-width: 767px ) {
+        @content
+    }
+}

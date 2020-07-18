@@ -1,13 +1,19 @@
 import React from 'react';
-import { Message } from 'semantic-ui-react';
+import MessagePage, { getPositiveType } from '../common/messagePage';
+import Nlbr from '../common/nlbr';
+import withNavbar from '../navbar/withNavbar';
+
 
 const ConfirmationEmailSentPage = ({ location }) => {
     return (
-        <Message info>
-            <Message.Header>Register Succeeded</Message.Header>
-            <p>A mail has been sent to {`'${location.state.email}'`}. Please click the link in the mail to activate the account.</p>
-        </Message>
+        <MessagePage title='Register Succeeded' messageType={getPositiveType()}>
+            <p style={{ whiteSpace: 'pre-line' }}>
+                A mail has been sent to {`'${location.state.email}'`}.
+                <Nlbr />
+                Please click the link in the mail to activate the account.
+            </p>
+        </MessagePage>
     );
 }
 
-export default ConfirmationEmailSentPage;
+export default withNavbar(ConfirmationEmailSentPage, true);

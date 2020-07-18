@@ -30,10 +30,10 @@ function withNavbar(PageComponent, isInfoPage) {
                     <Sidebar.Pusher dimmed={isSidebarVisible} className={styles.navbarPage}>
                         <Topbar isInfoPage={isInfoPage} onHamburgerClick={this.handleHamburgerClick} />
                         {!isInfoPage && <Responsive as={MobileSearchBar} maxWidth={Responsive.onlyMobile.maxWidth} />}
-                        <br />
-                        <div className={styles.pageContainer}>
+                        <div className={isInfoPage ? styles.infoPageContainer : styles.normalPageContainer}>
                             <PageComponent />
                         </div>
+                        <div className={styles.footer}></div>
                     </Sidebar.Pusher>
                 </Sidebar.Pushable >
             );

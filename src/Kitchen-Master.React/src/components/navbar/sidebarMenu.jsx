@@ -16,14 +16,15 @@ class SidebarMenu extends Component {
                     <FontAwesomeIcon icon={faHome} size='2x' />
                 </Menu.Item>
                 <Menu.Item as='a' disabled={!this.context} className={styles.menuItem}>
-                    <FontAwesomeIcon icon={faHeart} size='2x' />
                     <span>Favorite</span>
+                    <FontAwesomeIcon icon={faHeart} size='2x' />
                 </Menu.Item>
                 <Menu.Item as='a' disabled={!this.context} className={styles.menuItem}>
-                    <FontAwesomeIcon icon={faHistory} size='2x' />
                     <span>History</span>
+                    <FontAwesomeIcon icon={faHistory} size='2x' />
                 </Menu.Item>
                 {this.renderFooter()}
+                <Menu.Item />
             </Menu>
         );
     }

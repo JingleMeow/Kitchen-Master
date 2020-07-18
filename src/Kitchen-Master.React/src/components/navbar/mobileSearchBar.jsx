@@ -7,7 +7,7 @@ import styles from './mobileSearchBar.module.scss';
 
 const MobileSearchBar = () => {
     return (
-        <Menu inverted borderless attached size='large' className={styles.menu}>
+        <Menu inverted borderless attached size='large' className={styles.searchBarMenu}>
             <Menu.Item className={styles.searchItem}>
                 <Input
                     action={

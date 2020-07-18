@@ -1,3 +1,13 @@
+@import '../../styles/variables';
+
+div.searchBarMenu {
+    position: absolute;
+    top: $km-topbarMenu-height-mobile!important;
+    left: 0rem;
+    right: 0rem;
+    height: $km-searchbar-height;
+}
+
 div.searchItem {
     flex-grow: 1!important;    
 }
