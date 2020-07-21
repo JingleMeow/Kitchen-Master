@@ -1,0 +1,31 @@
+div.card {
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+}
+
+i.iconGroup {
+    background-color: teal;
+    width: 180px;
+    height: 180px;
+
+    svg {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+}
+
+div.title {
+    text-align: center;
+    width: 100%;
+}
+
+div.description {
+    font-size: 1.5rem!important;
+    margin-top: 1rem!important;
+    margin-bottom: 3rem!important;
+    padding-left: 1em!important;
+    padding-right: 1em!important;
+}

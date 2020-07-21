@@ -1,0 +1,35 @@
+@import '../../styles/variables';
+
+div.homePageCover {
+    position: relative;
+    width: 100%;
+    margin-bottom: 3rem;
+    @include mobile {
+        height: calc(100vh - #{$km-topbarMenu-height-mobile} - #{$km-searchbar-height})!important;
+    }
+}
+
+
+img.foodPic {
+    width: 100%;
+    @include mobile {
+        height: 100%!important;
+        width: auto;
+        object-fit: cover;
+    }
+}
+
+span.slogan {
+    text-align: center;
+    position: absolute;
+    top: 65%;
+    left: 0;
+    right: 0;
+    margin: auto;
+    color: #ebedee;
+    font-size: 6vw;
+
+    @include mobile {
+        font-size: 8.5vw;
+    }
+}

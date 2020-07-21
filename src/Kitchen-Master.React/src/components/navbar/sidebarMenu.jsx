@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import { Menu } from 'semantic-ui-react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserCircle, faHome, faHeart, faHistory, faSignInAlt, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
@@ -33,10 +32,8 @@ class SidebarMenu extends Component {
         var text;
         if (this.context) {
             text = `Hello, ${this.context.firstname}`;
-            //return <h3>{`Hello, ${this.context.firstname}`}</h3>
         } else {
             text = 'Dood day!';
-            //return <Link to='/login'><h3>Sign In</h3></Link>
         }
         return (
             <Menu.Item className={styles.headerItem}>
