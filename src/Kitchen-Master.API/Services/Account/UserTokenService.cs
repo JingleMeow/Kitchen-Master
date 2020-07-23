@@ -1,5 +1,5 @@
 ﻿using Kitchen_Master.API.ConfigModels;
-using Kitchen_Master.Data.Model;
+using Kitchen_Master.Data.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;

@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <RootNamespace>Kitchen_Master.DataModel</RootNamespace>
+    <RootNamespace>Kitchen_Master.Data</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

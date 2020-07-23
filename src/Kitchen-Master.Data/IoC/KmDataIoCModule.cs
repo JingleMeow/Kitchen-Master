@@ -1,10 +1,10 @@
 ﻿using Autofac;
-using Kitchen_Master.DataModel.Repository;
+using Kitchen_Master.Data.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Kitchen_Master.DataModel.IoC
+namespace Kitchen_Master.Data.IoC
 {
     public class KmDataIoCModule : Module
     {

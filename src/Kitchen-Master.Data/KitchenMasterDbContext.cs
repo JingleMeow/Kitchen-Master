@@ -1,4 +1,4 @@
-﻿using Kitchen_Master.Data.Model;
+﻿using Kitchen_Master.Data.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;

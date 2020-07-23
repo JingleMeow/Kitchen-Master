@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Kitchen_Master.Data.Model
+namespace Kitchen_Master.Data.Models
 {
     public class KmUser : IdentityUser<int>
     {

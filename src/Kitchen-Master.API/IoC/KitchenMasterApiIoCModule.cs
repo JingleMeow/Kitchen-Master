@@ -1,7 +1,7 @@
 ﻿using Autofac;
 using Kitchen_Master.API.Email;
 using Kitchen_Master.API.Services;
-using Kitchen_Master.DataModel.IoC;
+using Kitchen_Master.Data.IoC;
 using System.Linq;
 
 namespace Kitchen_Master.API.IoC

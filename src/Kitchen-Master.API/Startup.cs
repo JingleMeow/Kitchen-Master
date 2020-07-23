@@ -16,8 +16,8 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.AspNetCore.Identity;
-using Kitchen_Master.Data.Model;
 using Kitchen_Master.Data;
+using Kitchen_Master.Data.Models;
 
 namespace Kitchen_Master.API
 {

@@ -1,11 +1,10 @@
-﻿using Kitchen_Master.Data;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Kitchen_Master.DataModel.Repository
+namespace Kitchen_Master.Data.Repositories
 {
     public abstract class BaseRepository<TEntity, TId> : IRepository<TEntity, TId>
         where TEntity : class
@@ -16,32 +15,32 @@ namespace Kitchen_Master.DataModel.Repository
 
         public BaseRepository(KitchenMasterDbContext context)
         {
-            this.dbcontext = context;
-            this.entitySet = context.Set<TEntity>();
+            dbcontext = context;
+            entitySet = context.Set<TEntity>();
         }
 
         public TEntity GetById(TId id)
         {
-            return this.entitySet.Find(id);
+            return entitySet.Find(id);
         }
 
         public IQueryable<TEntity> Query()
         {
-            return this.entitySet;
+            return entitySet;
         }
 
         public void Add(TEntity entity)
         {
-            this.entitySet.Add(entity);
+            entitySet.Add(entity);
         }
 
         public void Remove(TEntity entity)
         {
-            if (this.dbcontext.Entry(entity).State == EntityState.Detached)
+            if (dbcontext.Entry(entity).State == EntityState.Detached)
             {
-                this.entitySet.Attach(entity);
+                entitySet.Attach(entity);
             }
-            this.entitySet.Remove(entity);
+            entitySet.Remove(entity);
         }
     }
 }

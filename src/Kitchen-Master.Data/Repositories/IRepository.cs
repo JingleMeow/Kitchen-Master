@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Kitchen_Master.DataModel.Repository
+namespace Kitchen_Master.Data.Repositories
 {
     public interface IRepository
     {
