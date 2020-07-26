@@ -11,7 +11,12 @@ namespace Kitchen_Master.Data
     {
         public KitchenMasterDbContext(DbContextOptions options) : base(options)
         {
-
         }
+
+        public DbSet<Ingredient> Ingredients { get; set; }
+        public DbSet<Recipe> Recipes { get; set; }
+        public DbSet<RecipeDirection> RecipeDirections { get; set; }
+        public DbSet<RecipeIngredient> RecipeIngredients { get; set; }
+        public DbSet<Unit> Units { get; set; }
     }
 }
