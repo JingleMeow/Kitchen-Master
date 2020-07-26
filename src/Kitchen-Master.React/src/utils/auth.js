@@ -23,7 +23,7 @@ export function getAccessToken() {
     return localStorage.getItem('access_token');
 }
 
-function removeAccessToken() {
+export function removeAccessToken() {
     localStorage.removeItem('access_token');
 }
 

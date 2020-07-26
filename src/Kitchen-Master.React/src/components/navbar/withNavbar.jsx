@@ -1,5 +1,5 @@
-import React, { Component, Fragment } from 'react';
-import { Sidebar, Divider, Responsive } from 'semantic-ui-react';
+import React, { Components } from 'react';
+import { Sidebar, Responsive } from 'semantic-ui-react';
 import SidebarMenu from './sidebarMenu';
 import Topbar from './topBar';
 import MobileSearchBar from './mobileSearchBar';
@@ -31,7 +31,7 @@ function withNavbar(PageComponent, isInfoPage) {
                         <Topbar isInfoPage={isInfoPage} onHamburgerClick={this.handleHamburgerClick} />
                         {!isInfoPage && <Responsive as={MobileSearchBar} maxWidth={Responsive.onlyMobile.maxWidth} />}
                         <div className={isInfoPage ? styles.infoPageContainer : styles.normalPageContainer}>
-                            <PageComponent />
+                            <PageComponent {...this.props} />
                         </div>
                         <div className={styles.footer}></div>
                     </Sidebar.Pusher>

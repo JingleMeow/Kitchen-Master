@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import { Dimmer, Loader } from 'semantic-ui-react';
 import UserContext from './contexts/userContext';
 import { getCurrentUser } from './utils/auth';
-import { LoginPage, RegisterPage, ConfirmationEmailSentPage, AccountConfirmationPage, AccountConfirmedPage } from './components/account';
+import { LoginPage, LoggedOutPage, RegisterPage, ConfirmationEmailSentPage, AccountConfirmationPage, AccountConfirmedPage } from './components/account';
 import { HomePage, FofPage } from './components';
 import loaderSelector from './redux/selectors/loaderSelector';
 
@@ -23,6 +23,7 @@ class App extends Component {
             <Switch>
               <Route path="/" exact component={HomePage} />
               <Route path="/login" exact component={LoginPage} />
+              <Route path="/loggedOut" exact component={LoggedOutPage} />
               <Route path="/register" exact component={RegisterPage} />
               <Route path="/registerSucceeded" exact component={ConfirmationEmailSentPage} />
               <Route path="/confirmAccount/:token" exact component={AccountConfirmationPage} />
