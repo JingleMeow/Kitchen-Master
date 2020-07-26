@@ -76,11 +76,10 @@ namespace Kitchen_Master.API.Controllers
             if (result == SignInResult.Failed)
             {
                 return BadRequest("Incorrect password.");
+            } else if (result == SignInResult.NotAllowed)
+            {
+                return BadRequest("You can not log in until email is confirmed.");
             }
-            //if (result == SignInResult.NotAllowed)
-            //{
-            //    return BadRequest("You can not log in until email is confirmed.");
-            //}
 
             var token = await this.tokenService.GenerateAccessToken(user);
             return Ok(token);

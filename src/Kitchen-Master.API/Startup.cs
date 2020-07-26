@@ -41,7 +41,7 @@ namespace Kitchen_Master.API
             services.AddIdentity<KmUser, KmRole>(options =>
             {
                 options.User.RequireUniqueEmail = true;
-                //options.SignIn.RequireConfirmedEmail = true;
+                options.SignIn.RequireConfirmedEmail = true;
             })
                 .AddEntityFrameworkStores<KitchenMasterDbContext>()
                 .AddDefaultTokenProviders();
