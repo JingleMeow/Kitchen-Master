@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Redirect, Link } from 'react-router-dom';
 import { Form, Segment, Button, Message } from 'semantic-ui-react';
-import UserContext from '../../contexts/userContext';
 import { CenterFormGrid, BaseForm, TextFormInput } from '../common';
 import InputValidator from '../../utils/inputValidator';
 import { login } from '../../services/webapi/account';
 import { setAccessToken } from '../../utils/auth';
-import { setLoader } from '../../redux/actions/setLoaderAction';
+import { currentUserSelector } from '../../redux/selectors/shared';
+import { setLoader } from '../../redux/actions/shared';
 import styles from './loginPage.module.scss';
 
 class LoginPage extends BaseForm {
@@ -26,7 +26,7 @@ class LoginPage extends BaseForm {
   }
 
   render() {
-    if (this.context)
+    if (this.props.currentUser)
       return <Redirect to='/'></Redirect>
 
     const { backendError } = this.state;
@@ -70,11 +70,13 @@ class LoginPage extends BaseForm {
   }
 }
 
-LoginPage.contextType = UserContext;
-
-const mapStateToProps = null;
+const mapStateToProps = state => {
+  return {
+    currentUser: currentUserSelector(state)
+  };
+};
 const mapDispatchToProps = {
   setLoader
-}
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginPage);

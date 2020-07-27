@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import MessagePage, { getPositiveType } from '../common/messagePage';
 import Nlbr from '../common/nlbr';
 import withNavbar from '../navbar/withNavbar';
 import { removeAccessToken } from '../../utils/auth';
-import { Redirect } from 'react-router-dom';
+import { setCurrentUser } from '../../redux/actions/shared'
 
 class LoggedOutPage extends Component {
     constructor(props) {
@@ -19,6 +21,8 @@ class LoggedOutPage extends Component {
     componentDidMount() {
         if (this.isValidAccess) {
             removeAccessToken();
+            this.props.setCurrentUser(null);
+
             this.intervalId = setInterval(() => {
                 let { countDown } = this.state;
                 if (countDown > 0) {
@@ -49,4 +53,8 @@ class LoggedOutPage extends Component {
     }
 }
 
-export default withNavbar(LoggedOutPage, true);
+const mapDispatchToProps = {
+    setCurrentUser
+};
+
+export default withNavbar(connect(null, mapDispatchToProps)(LoggedOutPage), true);

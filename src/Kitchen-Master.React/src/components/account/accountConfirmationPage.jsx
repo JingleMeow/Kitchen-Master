@@ -5,7 +5,7 @@ import BaseForm from '../common/baseForm';
 import CenterFormGrid from '../common/centerFormGrid';
 import TextFormInput from '../common/textFormInput';
 import InputValidator from '../../utils/inputValidator';
-import { setLoader } from '../../redux/actions/setLoaderAction';
+import { setLoader } from '../../redux/actions/shared';
 import { confirmAccount } from '../../services/webapi/account'
 import styles from './accountConfirmationPage.module.scss';
 

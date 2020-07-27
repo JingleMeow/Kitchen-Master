@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Menu } from 'semantic-ui-react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserCircle, faHome, faHeart, faHistory, faSignInAlt, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
-import UserContext from '../../contexts/userContext';
+import { currentUserSelector } from '../../redux/selectors/shared';
 import styles from './sidebarMenu.module.scss';
 
 class SidebarMenu extends Component {
     render() {
+        const { currentUser } = this.props;
         return (
             <Menu vertical className={styles.sidebarMenu} >
                 {this.renderHeader()}
@@ -14,11 +16,11 @@ class SidebarMenu extends Component {
                     <span>Home</span>
                     <FontAwesomeIcon icon={faHome} size='2x' />
                 </Menu.Item>
-                <Menu.Item as='a' disabled={!this.context} className={styles.menuItem}>
+                <Menu.Item as='a' disabled={!currentUser} className={styles.menuItem}>
                     <span>Favorite</span>
                     <FontAwesomeIcon icon={faHeart} size='2x' />
                 </Menu.Item>
-                <Menu.Item as='a' disabled={!this.context} className={styles.menuItem}>
+                <Menu.Item as='a' disabled={!currentUser} className={styles.menuItem}>
                     <span>History</span>
                     <FontAwesomeIcon icon={faHistory} size='2x' />
                 </Menu.Item>
@@ -29,9 +31,11 @@ class SidebarMenu extends Component {
     }
 
     renderHeader() {
+        const { currentUser } = this.props;
+
         var text;
-        if (this.context) {
-            text = `Hello, ${this.context.firstname}`;
+        if (currentUser) {
+            text = `Hello, ${currentUser.firstname}`;
         } else {
             text = 'Dood day!';
         }
@@ -46,7 +50,7 @@ class SidebarMenu extends Component {
 
     renderFooter() {
         var icon, text;
-        if (this.context) {
+        if (this.props.currentUser) {
             icon = faSignOutAlt;
             text = 'Sign Out';
         } else {
@@ -62,6 +66,10 @@ class SidebarMenu extends Component {
     }
 }
 
-SidebarMenu.contextType = UserContext;
+const mapStateToProps = state => {
+    return {
+        currentUser: currentUserSelector(state)
+    };
+};
 
-export default SidebarMenu;
+export default connect(mapStateToProps)(SidebarMenu);

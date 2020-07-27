@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import MessagePage, { getPositiveType } from '../common/messagePage';
 import withNavbar from '../navbar/withNavbar';

@@ -5,7 +5,7 @@ import { CenterFormGrid, BaseForm, TextFormInput } from '../common';
 import InputValidator from '../../utils/inputValidator';
 import { passwordRegex, passwordError } from '../../utils/auth';
 import { register } from '../../services/webapi/account';
-import { setLoader } from '../../redux/actions/setLoaderAction'
+import { setLoader } from '../../redux/actions/shared'
 import styles from './registerPage.module.scss';
 
 class RegisterPage extends BaseForm {

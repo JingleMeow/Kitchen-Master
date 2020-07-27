@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { withRouter, Link } from 'react-router-dom';
-import UserContext from '../../contexts/userContext';
+import { currentUserSelector } from '../../redux/selectors/shared';
+import { setCurrentUser } from '../../redux/actions/shared';
+import { removeAccessToken } from '../../utils/auth';
 import styles from './accountInfo.module.scss'
 
 class AccountInfo extends Component {
 
     render() {
-        if (this.context)
+        if (this.props.currentUser)
             return this.renderSignedInAccount();
         else
             return this.renderAnonymousAccount();
@@ -15,7 +18,7 @@ class AccountInfo extends Component {
     renderSignedInAccount() {
         return (
             <div>
-                {this.renderGreeting(`Hello, ${this.context.firstname}`)}
+                {this.renderGreeting(`Hello, ${this.props.currentUser.firstname}`)}
                 <div className={styles.link} onClick={this.handleLogout}>Sign Out</div>
             </div>
         );
@@ -43,6 +46,14 @@ class AccountInfo extends Component {
     }
 }
 
-AccountInfo.contextType = UserContext;
+const mapStateToProps = state => {
+    return {
+        currentUser: currentUserSelector(state)
+    };
+};
 
-export default withRouter(AccountInfo);
+const mapDispatchToProps = {
+    setCurrentUser
+};
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(AccountInfo));
