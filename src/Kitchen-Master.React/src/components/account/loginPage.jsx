@@ -4,10 +4,8 @@ import { Redirect, Link } from 'react-router-dom';
 import { Form, Segment, Button, Message } from 'semantic-ui-react';
 import { CenterFormGrid, BaseForm, TextFormInput } from '../common';
 import InputValidator from '../../utils/inputValidator';
-import { login } from '../../services/webapi/account';
-import { setAccessToken } from '../../utils/auth';
 import { currentUserSelector } from '../../redux/selectors/shared';
-import { setLoader } from '../../redux/actions/shared';
+import { loginAction } from '../../redux/actions/account';
 import styles from './loginPage.module.scss';
 
 class LoginPage extends BaseForm {
@@ -56,12 +54,8 @@ class LoginPage extends BaseForm {
   }
 
   handleSubmit = () => {
-    const { email, password } = this.state.data;
-    login(email, password, this.props.setLoader)
-      .then(response => {
-        setAccessToken(response.data);
-        window.location.href = '/';
-      })
+    this.props.login(this.state.data)
+      .then(() => window.location.href = '/')
       .catch(error => {
         this.setState({
           backendError: error.data ? error.data : error.message
@@ -76,7 +70,7 @@ const mapStateToProps = state => {
   };
 };
 const mapDispatchToProps = {
-  setLoader
+  login: loginAction
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginPage);

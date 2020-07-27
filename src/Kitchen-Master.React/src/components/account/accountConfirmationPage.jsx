@@ -5,8 +5,7 @@ import BaseForm from '../common/baseForm';
 import CenterFormGrid from '../common/centerFormGrid';
 import TextFormInput from '../common/textFormInput';
 import InputValidator from '../../utils/inputValidator';
-import { setLoader } from '../../redux/actions/shared';
-import { confirmAccount } from '../../services/webapi/account'
+import { confirmAccountAction } from '../../redux/actions/account';
 import styles from './accountConfirmationPage.module.scss';
 
 class AccountConfirmationPage extends BaseForm {
@@ -55,11 +54,10 @@ class AccountConfirmationPage extends BaseForm {
     }
 
     handleSubmit = () => {
-        const { match, setLoader } = this.props;
+        const { match, confirmAccount } = this.props;
         const token = decodeURIComponent(match.params.token);
-        console.log(token);
         const model = Object.assign({}, this.state.data, { token });
-        confirmAccount(model, setLoader)
+        confirmAccount(model)
             .then(response => {
                 this.props.history.push('/accountConfirmed');
             })
@@ -73,7 +71,7 @@ class AccountConfirmationPage extends BaseForm {
 
 const mapStateToProps = null;
 const mapDispatchToProps = {
-    setLoader
+    confirmAccount: confirmAccountAction
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(AccountConfirmationPage);

@@ -6,7 +6,7 @@ function createInstance(interceptor) {
         baseURL: process.env.API_BASE_URL
     };
     const instance = axios.create(config);
-    const { onRequest, onFullfilled, onError } = interceptor;
+    const { onRequest, onFullfilled, onError } = interceptor ?? {};
     instance.interceptors.request.use(
         request => {
             if (onRequest)
@@ -23,6 +23,7 @@ function createInstance(interceptor) {
             if (onError)
                 onError();
 
+            console.log(error);
             const info = {
                 message: error.message
             }

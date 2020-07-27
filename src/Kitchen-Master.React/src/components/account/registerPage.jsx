@@ -4,8 +4,7 @@ import { Form, Segment, Button, Message } from 'semantic-ui-react';
 import { CenterFormGrid, BaseForm, TextFormInput } from '../common';
 import InputValidator from '../../utils/inputValidator';
 import { passwordRegex, passwordError } from '../../utils/auth';
-import { register } from '../../services/webapi/account';
-import { setLoader } from '../../redux/actions/shared'
+import { registerAction } from '../../redux/actions/account';
 import styles from './registerPage.module.scss';
 
 class RegisterPage extends BaseForm {
@@ -54,11 +53,11 @@ class RegisterPage extends BaseForm {
     }
 
     handleSubmit = () => {
-        const { email, password } = this.state.data;
-        register(email, password, this.props.setLoader)
-            .then(response =>
-                this.props.history.push('/registerSucceeded', { email })
-            )
+        const model = this.state.data;
+        this.props.register(model)
+            .then(response => {
+                this.props.history.push('/registerSucceeded', { email: model.email });
+            })
             .catch(error => {
                 this.setState({
                     backendError: error.data ? error.data : error.message
@@ -69,7 +68,7 @@ class RegisterPage extends BaseForm {
 
 const mapStateToProps = null;
 const mapDispatchToProps = {
-    setLoader
+    register: registerAction
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(RegisterPage);
