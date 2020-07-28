@@ -1,10 +1,18 @@
 import axios from 'axios';
 import { getAccessToken } from '../../utils/auth';
 
+function get(resourcePath, interceptor) {
+    const instance = createInstance(interceptor);
+    return instance.get(resourcePath);
+}
+
+function post(resourcePath, data, interceptor) {
+    const instance = createInstance(interceptor);
+    return instance.post(resourcePath, data);
+}
+
 function createInstance(interceptor) {
-    const config = {
-        baseURL: process.env.API_BASE_URL
-    };
+    const config = getConfig();
     const instance = axios.create(config);
     const { onRequest, onFullfilled, onError } = interceptor ?? {};
     instance.interceptors.request.use(
@@ -40,15 +48,6 @@ function createInstance(interceptor) {
     return instance;
 }
 
-export function get(resourcePath, data) {
-
-}
-
-export function post(resourcePath, data, interceptor) {
-    const instance = createInstance(interceptor);
-    return instance.post(resourcePath, data);
-}
-
 function getConfig() {
     const config = {
         baseURL: process.env.API_BASE_URL
@@ -57,7 +56,7 @@ function getConfig() {
     const token = getAccessToken();
     if (token) {
         config.headers = {
-            Authentication: `Bearer ${token}`
+            Authorization: `Bearer ${token}`
         };
     }
     return config;

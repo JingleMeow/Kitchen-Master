@@ -1,11 +1,5 @@
-import { kmApi, createShowLoaderInterceptor } from '../../../services/webapi';
-import { setLoader } from '../shared';
+import apiCallbackAction from '../apiCallbackAction';
 
 export default function confirmAccountAction(model) {
-    return dispatch => {
-        const showLoaderInterceptor = createShowLoaderInterceptor(
-            isLoading => dispatch(setLoader(isLoading))
-        );
-        return kmApi.post('account/confirmAccount', model, showLoaderInterceptor);
-    }
+    return dispatch => dispatch(apiCallbackAction.post('account/confirmAccount', model, true));
 }

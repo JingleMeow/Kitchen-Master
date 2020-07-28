@@ -1,14 +1,10 @@
-import { kmApi, createShowLoaderInterceptor } from '../../../services/webapi';
-import { setLoader } from '../shared';
+import apiCallbackAction from '../apiCallbackAction';
 import { setAccessToken } from '../../../utils/auth';
 
 export default function loginAction(model) {
     return dispatch => {
         return new Promise((resolve, reject) => {
-            const showLoaderInterceptor = createShowLoaderInterceptor(
-                isLoading => dispatch(setLoader(isLoading))
-            );
-            kmApi.post('account/login', model, showLoaderInterceptor)
+            dispatch(apiCallbackAction.post('account/login', model, true))
                 .then(
                     response => {
                         setAccessToken(response.data);

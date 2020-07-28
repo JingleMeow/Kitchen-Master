@@ -37,7 +37,8 @@ namespace Kitchen_Master.API
                         ValidateIssuer = true,
                         ValidIssuer = options.Issuer,
                         ValidateAudience = true,
-                        ValidAudience = options.Audience
+                        ValidAudience = options.Audience,
+                        ClockSkew = TimeSpan.Zero
                     };
                 }));
         }

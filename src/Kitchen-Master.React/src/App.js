@@ -8,7 +8,7 @@ import { getCurrentUser } from './utils/auth';
 import { LoginPage, LoggedOutPage, RegisterPage, ConfirmationEmailSentPage, AccountConfirmationPage, AccountConfirmedPage } from './components/account';
 import { HomePage, FofPage } from './components';
 import { loaderSelector, currentUserSelector } from './redux/selectors/shared';
-import { setCurrentUser } from './redux/actions/shared/setCurrentUserAction';
+import { setCurrentUserAction } from './redux/actions/shared/setCurrentUserAction';
 
 class App extends Component {
   componentDidMount() {
@@ -54,7 +54,7 @@ const mapStateToProps = state => {
 }
 
 const mapDispachToProps = {
-  setCurrentUser
+  setCurrentUser: setCurrentUserAction
 }
 
 export default hot(connect(mapStateToProps, mapDispachToProps)(App));

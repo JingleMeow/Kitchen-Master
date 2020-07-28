@@ -1,2 +1,2 @@
-export { setCurrentUser, SET_CURRENT_USER } from './setCurrentUserAction';
-export { setLoader, SET_LOADER } from './setLoaderAction';
+export { setCurrentUserAction, SET_CURRENT_USER } from './setCurrentUserAction';
+export { setLoaderAction, SET_LOADER } from './setLoaderAction';

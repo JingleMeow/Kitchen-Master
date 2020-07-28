@@ -5,7 +5,7 @@ import MessagePage, { getPositiveType } from '../common/messagePage';
 import Nlbr from '../common/nlbr';
 import withNavbar from '../navbar/withNavbar';
 import { removeAccessToken } from '../../utils/auth';
-import { setCurrentUser } from '../../redux/actions/shared'
+import { setCurrentUserAction } from '../../redux/actions/shared'
 
 class LoggedOutPage extends Component {
     constructor(props) {
@@ -54,7 +54,7 @@ class LoggedOutPage extends Component {
 }
 
 const mapDispatchToProps = {
-    setCurrentUser
+    setCurrentUser: setCurrentUserAction
 };
 
 export default withNavbar(connect(null, mapDispatchToProps)(LoggedOutPage), true);

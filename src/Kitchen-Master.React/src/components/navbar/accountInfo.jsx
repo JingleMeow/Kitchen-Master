@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter, Link } from 'react-router-dom';
 import { currentUserSelector } from '../../redux/selectors/shared';
-import { setCurrentUser } from '../../redux/actions/shared';
-import { removeAccessToken } from '../../utils/auth';
+import { setCurrentUserAction } from '../../redux/actions/shared';
 import styles from './accountInfo.module.scss'
 
 class AccountInfo extends Component {
@@ -53,7 +52,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = {
-    setCurrentUser
+    setCurrentUser: setCurrentUserAction
 };
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(AccountInfo));
