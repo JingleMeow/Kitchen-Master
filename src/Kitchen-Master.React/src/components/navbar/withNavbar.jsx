@@ -1,14 +1,20 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Sidebar, Responsive } from 'semantic-ui-react';
 import SidebarMenu from './sidebarMenu';
 import Topbar from './topBar';
 import MobileSearchBar from './mobileSearchBar';
+import { loadDefinitionsAction } from '../../redux/actions/shared';
 import styles from './withNavbar.module.scss';
 
 function withNavbar(PageComponent, isInfoPage) {
-    return class WithNavbar extends Component {
+    class WithNavbar extends Component {
         state = {
             isSidebarVisible: false
+        }
+
+        componentDidMount() {
+            this.props.loadDefinitions();
         }
 
         render() {
@@ -60,6 +66,11 @@ function withNavbar(PageComponent, isInfoPage) {
             this.setState({ isSidebarVisible });
         }
     };
+
+    const mapDispatchToProps = {
+        loadDefinitions: loadDefinitionsAction
+    }
+    return connect(null, mapDispatchToProps)(WithNavbar);
 }
 
 export default withNavbar;

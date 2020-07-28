@@ -1,5 +1,5 @@
 import { stateReducer } from 'truefit-react-utils';
-import { SET_LOADER, SET_CURRENT_USER } from '../actions/shared/';
+import { SET_LOADER, SET_CURRENT_USER, SET_DEFINITIONS } from '../actions/shared/';
 
 const initialState = {
     currentUser: null,
@@ -13,5 +13,9 @@ export default stateReducer(initialState, {
 
     [SET_CURRENT_USER]: (state, payload) => {
         return Object.assign({}, state, { currentUser: payload });
+    },
+
+    [SET_DEFINITIONS]: (state, payload) => {
+        return Object.assign({}, state, { definitions: payload });
     }
 })
