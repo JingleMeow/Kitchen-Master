@@ -1,17 +1,20 @@
 @import '../../styles/variables';
 
 %pageContainerShared {
-    padding-top: $km-topbarMenu-height-desktop;
-    padding-bottom: $km-bottombar-height;
-    min-height: 100vh;
+    position: relative;
+    margin-top: $km-topbarMenu-height-desktop;
+    margin-bottom: $km-bottombar-height;
+    min-height: calc(100vh - #{$km-topbarMenu-height-desktop} - #{$km-bottombar-height});
     background-color: #e9edee;
+    z-index: 0;
 }
 
 .normalPageContainer {
     @extend %pageContainerShared;
 
     @include mobile {
-        padding-top: $km-topbarMenu-height-mobile + $km-searchbar-height;
+        margin-top: $km-topbarMenu-height-mobile + $km-searchbar-height;
+        min-height: calc(100vh - #{$km-topbarMenu-height-mobile} - #{$km-searchbar-height} - #{$km-bottombar-height});
     }
 }
 
@@ -19,7 +22,8 @@
     @extend %pageContainerShared;
 
     @include mobile {
-        padding-top: $km-topbarMenu-height-mobile;
+        margin-top: $km-topbarMenu-height-mobile;
+        min-height: calc(100vh - #{$km-topbarMenu-height-mobile} - #{$km-bottombar-height});
     }
 }
 
@@ -30,4 +34,5 @@ div.footer {
     bottom: 0rem;
     right: 0rem;
     height: $km-bottombar-height;
+    z-index: 1;
 }

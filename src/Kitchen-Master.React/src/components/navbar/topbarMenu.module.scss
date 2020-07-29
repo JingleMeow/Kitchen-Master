@@ -6,6 +6,7 @@ div.topbarMenu {
     left: 0rem;
     right: 0rem;
     height: $km-topbarMenu-height-desktop;
+    z-index: 1;
     @include mobile {
         height: $km-topbarMenu-height-mobile;
     }

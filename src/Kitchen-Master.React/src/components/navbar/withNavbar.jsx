@@ -33,7 +33,7 @@ function withNavbar(PageComponent, isInfoPage) {
                         onHide={() => this.setSidebarVisible(false)}>
                         <SidebarMenu />
                     </Responsive>
-                    <Sidebar.Pusher dimmed={isSidebarVisible} className={styles.navbarPage}>
+                    <Sidebar.Pusher dimmed={isSidebarVisible}>
                         <Topbar isInfoPage={isInfoPage} onHamburgerClick={this.handleHamburgerClick} />
                         {!isInfoPage && <Responsive as={MobileSearchBar} maxWidth={Responsive.onlyMobile.maxWidth} />}
                         <div className={isInfoPage ? styles.infoPageContainer : styles.normalPageContainer}>
