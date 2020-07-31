@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import { Dimmer, Loader } from 'semantic-ui-react';
 import { getCurrentUser } from './utils/auth';
 import { LoginPage, LoggedOutPage, RegisterPage, ConfirmationEmailSentPage, AccountConfirmationPage, AccountConfirmedPage } from './components/account';
+import { RecipeEditPage } from './components/recipe'
 import { HomePage, FofPage } from './components';
 import { loaderSelector, currentUserSelector } from './redux/selectors/shared';
 import { setCurrentUserAction } from './redux/actions/shared/setCurrentUserAction';
@@ -34,6 +35,7 @@ class App extends Component {
             <Route path="/registerSucceeded" exact component={ConfirmationEmailSentPage} />
             <Route path="/confirmAccount/:token" exact component={AccountConfirmationPage} />
             <Route path="/accountConfirmed" exact component={AccountConfirmedPage} />
+            <Route path="/recipe/new" exact component={RecipeEditPage} />
             <Route path='/' component={FofPage} />
           </Switch>
         </BrowserRouter>
