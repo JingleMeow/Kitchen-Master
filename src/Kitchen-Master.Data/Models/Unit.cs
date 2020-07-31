@@ -11,7 +11,7 @@ namespace Kitchen_Master.Data.Models
         [Key]
         public int Id { get; set; }
         [Required]
-        [MaxLength(20)]
+        [MaxLength(10)]
         public string Label { get; set; }
         [Required]
         public UnitCategory UnitCategory { get; set; }

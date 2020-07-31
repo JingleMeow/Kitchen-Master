@@ -10,12 +10,12 @@ namespace Kitchen_Master.Data.Models
     {
         [Key]
         public int Id { get; set; }
+        [Required]
         [ForeignKey("Recipe")]
         public int RecipeId { get; set; }
+        [Required]
         [ForeignKey("Ingredient")]
         public int IngredientId { get; set; }
-        [Required]
-        public int Order { get; set; }
         [Required]
         public float Amount { get; set; }
         public Recipe Recipe { get; set; }

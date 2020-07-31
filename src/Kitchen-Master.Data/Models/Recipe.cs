@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace Kitchen_Master.Data.Models
@@ -11,7 +12,9 @@ namespace Kitchen_Master.Data.Models
         [Key]
         public int Id { get; set; }
         [Required]
+        [MaxLength(200)]
         public string Name { get; set; }
+        [Column(TypeName ="char(64)")]
         public string CoverImageId { get; set; }
         [Required]
         public DateTime CreatedTime { get; set; }
