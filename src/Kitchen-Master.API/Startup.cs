@@ -18,6 +18,8 @@ using System.Text;
 using Microsoft.AspNetCore.Identity;
 using Kitchen_Master.Data;
 using Kitchen_Master.Data.Models;
+using Microsoft.Extensions.FileProviders;
+using Microsoft.AspNetCore.Http;
 
 namespace Kitchen_Master.API
 {
@@ -71,6 +73,13 @@ namespace Kitchen_Master.API
 
             app.UseHttpsRedirection();
             app.UseCors();
+
+            app.UseStaticFiles(new StaticFileOptions()
+            {
+                FileProvider = new PhysicalFileProvider(this.Configuration.GetSection("ImagesFolder").Value),
+                RequestPath = new PathString("/images")
+            });
+
             app.UseRouting();
 
             app.UseAuthentication();
