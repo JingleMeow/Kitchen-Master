@@ -10,15 +10,17 @@ import styles from './withNavbar.module.scss';
 function withNavbar(PageComponent, isInfoPage) {
     class WithNavbar extends Component {
         state = {
-            isSidebarVisible: false
+            isSidebarVisible: false,
+            readyToLoadContent: false
         }
 
         componentDidMount() {
-            this.props.loadDefinitions();
+            this.props.loadDefinitions()
+                .then(() => this.setState({ readyToLoadContent: true }));
         }
 
         render() {
-            const { isSidebarVisible } = this.state;
+            const { isSidebarVisible, readyToLoadContent } = this.state;
             return (
                 <Sidebar.Pushable>
                     <Responsive minWidth={Responsive.onlyTablet.minWidth}
@@ -37,7 +39,8 @@ function withNavbar(PageComponent, isInfoPage) {
                         <Topbar isInfoPage={isInfoPage} onHamburgerClick={this.handleHamburgerClick} />
                         {!isInfoPage && <Responsive as={MobileSearchBar} maxWidth={Responsive.onlyMobile.maxWidth} />}
                         <div className={isInfoPage ? styles.infoPageContainer : styles.normalPageContainer}>
-                            <PageComponent {...this.props} />
+                            {readyToLoadContent &&
+                                <PageComponent {...this.props} />}
                         </div>
                         <div className={styles.footer}></div>
                     </Sidebar.Pusher>

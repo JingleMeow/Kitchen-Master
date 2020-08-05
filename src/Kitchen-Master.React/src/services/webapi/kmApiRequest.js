@@ -1,20 +1,27 @@
 import axios from 'axios';
+import _ from 'lodash';
 import { getAccessToken } from '../../utils/auth';
 
-function get(resourcePath, interceptor) {
-    const instance = createInstance(interceptor);
+function get(resourcePath, options) {
+    const instance = createInstance(options);
     return instance.get(resourcePath);
 }
 
-function post(resourcePath, data, interceptor) {
-    const instance = createInstance(interceptor);
+function post(resourcePath, data, options) {
+    const instance = createInstance(options);
     return instance.post(resourcePath, data);
 }
 
-function createInstance(interceptor) {
+function put(resourcePath, data, options) {
+    const instance = createInstance(options);
+    return instance.put(resourcePath, data);
+}
+
+function createInstance(options) {
     const config = getConfig();
+    _.merge(config, options?.config);
     const instance = axios.create(config);
-    const { onRequest, onFullfilled, onError } = interceptor ?? {};
+    const { onRequest, onFullfilled, onError } = { ...options?.interceptor };
     instance.interceptors.request.use(
         request => {
             if (onRequest)
@@ -44,7 +51,7 @@ function createInstance(interceptor) {
                 }
             }
             return Promise.reject(info);
-        })
+        });
     return instance;
 }
 
@@ -64,5 +71,6 @@ function getConfig() {
 
 export default {
     get,
-    post
+    post,
+    put
 }

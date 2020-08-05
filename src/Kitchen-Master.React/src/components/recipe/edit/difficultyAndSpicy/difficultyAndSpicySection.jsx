@@ -2,7 +2,6 @@ import React, { Fragment } from 'react';
 import { Header, Grid, Button } from 'semantic-ui-react';
 import Difficulty from './difficulty';
 import SpicyLevel from './spicyLevel';
-import styles from './difficultyAndSpicyLevelSection.module.scss';
 
 const DifficultyAndSpicyLevelSection = () => {
     return (

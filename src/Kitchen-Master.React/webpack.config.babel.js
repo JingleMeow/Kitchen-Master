@@ -82,6 +82,7 @@ export default {
     new EnvironmentPlugin(
       {
         API_BASE_URL: 'https://localhost:5001/api/',
+        API_IMAGE_URL: 'https://localhost:5001/images/'
       }),
     new HotModuleReplacementPlugin()],
   devtool: 'inline-source-map'

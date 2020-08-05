@@ -1,0 +1,76 @@
+%difficultyButton {
+    margin: 0rem!important;
+    width: 4.5rem;
+    padding-left: 0rem!important;
+    padding-right: 0rem!important;
+    color: white!important;
+}
+
+$easy-color: #5c9e46;
+$medium-color: #e99e2c;
+$hard-color: #eb6b2a;
+
+button.easy {
+    @extend %difficultyButton;
+    background-color: $easy-color!important;
+}
+
+button.easy:hover {
+    @extend %difficultyButton;
+    background-color: darken($color: $easy-color, $amount: 5%)!important;
+}
+
+button.easyLight {
+    @extend %difficultyButton;
+    background-color: lighten($color: $easy-color, $amount: 40%)!important;
+}
+
+button.easyLight:hover {
+    @extend %difficultyButton;
+    background-color: darken($color: $easy-color, $amount: 5%)!important;
+}
+
+button.medium {
+    @extend %difficultyButton;
+    background-color: $medium-color!important;
+}
+
+button.medium:hover {
+    @extend %difficultyButton;
+    background-color: darken($color: $medium-color, $amount: 5%)!important;
+}
+
+button.mediumLight {
+    @extend %difficultyButton;
+    background-color: lighten($color: $medium-color, $amount: 35%)!important;
+}
+
+button.mediumLight:hover {
+    @extend %difficultyButton;
+    background-color: darken($color: $medium-color, $amount: 5%)!important;
+}
+
+button.hard {
+    @extend %difficultyButton;
+    background-color: $hard-color!important;
+}
+
+button.hard:hover {
+    @extend %difficultyButton;
+    background-color: darken($color: $hard-color, $amount: 5%)!important;
+}
+
+button.hardLight {
+    @extend %difficultyButton;
+    background-color: lighten($color: $hard-color, $amount: 35%)!important;
+}
+
+button.hardLight:hover {
+    @extend %difficultyButton;
+    background-color: darken($color: $hard-color, $amount: 5%)!important;
+}
+
+button.disabled {
+    cursor: not-allowed;
+    pointer-events: none;
+}

@@ -1,9 +1,9 @@
-import React, { Component, Fragment } from 'react';
-import withNavbar from '../navbar/withNavbar';
-import { Container, Header, Segment, Icon, Button, Divider } from 'semantic-ui-react';
+import React, { Component } from 'react';
+import withNavbar from '../../navbar/withNavbar';
+import { Container, Divider } from 'semantic-ui-react';
 import NameSection from './nameSection';
 import CoverImageSection from './coverImageSection';
-import DifficultyAndSpicyLevelSection from './difficultyAndSpicyLevel/difficultyAndSpicyLevelSection';
+import DifficultyAndSpicySection from './difficultyAndSpicy/difficultyAndSpicySection';
 import IngredientsSection from './ingredientsSection';
 import DirectionsSection from './directionsSection';
 import styles from './recipeEditPage.module.scss';
@@ -15,7 +15,7 @@ class RecipeEditPage extends Component {
             <Container className={styles.container} >
                 <NameSection />
                 <CoverImageSection />
-                <DifficultyAndSpicyLevelSection />
+                <DifficultyAndSpicySection />
                 <Divider hidden></Divider>
                 <IngredientsSection />
                 <Divider section></Divider>

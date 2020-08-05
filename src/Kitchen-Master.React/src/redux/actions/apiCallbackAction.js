@@ -1,40 +1,45 @@
 import { kmApi } from '../../services/webapi';
 import { setLoaderAction } from './shared';
-import { refreshTokenAction } from '../actions/account'
 
 function get(resourcePath, showLoader) {
     return dispatch => {
-        const interceptor = buildInterceptor(showLoader, dispatch);
-        return kmApi.get(resourcePath, interceptor);
+        const options = {
+            interceptor: showLoader ? buildShowLoaderInterceptor(dispatch) : {}
+        }
+        return kmApi.get(resourcePath, options);
     };
 }
 
 function post(resourcePath, data, showLoader) {
     return dispatch => {
-        const interceptor = buildInterceptor(showLoader, dispatch);
-        return kmApi.post(resourcePath, data, interceptor);
+        const options = {
+            interceptor: showLoader ? buildShowLoaderInterceptor(dispatch) : {}
+        }
+        return kmApi.post(resourcePath, data, options);
     };
 }
 
-function buildInterceptor(showLoader, dispatch) {
-    const onRequest = () => {
-        if (showLoader) {
-            dispatch(setLoaderAction(true));
+function putImage(resourcePath, image) {
+    return dispatch => {
+        const options = {
+            config: {
+                headers: {
+                    "Content-type": "multipart/form-data"
+                }
+            }
         }
+        const formData = new FormData();
+        formData.append("image", image);
+        return kmApi.put(resourcePath, formData, options);
     }
-    const onFullfilled = () => {
-        dispatch(refreshTokenAction());
-        if (showLoader) {
-            dispatch(setLoaderAction(false));
-        }
-    }
-    const onError = () => {
-        dispatch(refreshTokenAction());
-        if (showLoader) {
-            dispatch(setLoaderAction(false));
-        }
-    }
-    return { onRequest, onFullfilled, onError };
 }
 
-export default { get, post }
+export default { get, post, putImage }
+
+function buildShowLoaderInterceptor(dispatch) {
+    return {
+        onRequest: () => dispatch(setLoaderAction(true)),
+        onFullfilled: () => dispatch(setLoaderAction(false)),
+        onError: () => dispatch(setLoaderAction(false))
+    };
+}

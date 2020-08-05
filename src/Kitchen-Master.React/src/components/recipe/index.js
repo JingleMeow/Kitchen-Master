@@ -1,1 +1,1 @@
-export { default as RecipeEditPage } from './recipeEditPage';
+export { default as RecipeEditPage } from './edit/recipeEditPage';
