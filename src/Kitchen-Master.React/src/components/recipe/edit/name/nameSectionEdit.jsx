@@ -1,11 +1,11 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { Header, Icon, Input, } from 'semantic-ui-react';
-import { currentRecipeSelector } from '../../../redux/selectors/recipe';
-import { setCurrentRecipeFieldAction } from '../../../redux/actions/recipe';
-import { fieldChangeHandler } from '../../common/mixins/fieldChangeHandler';
+import { currentRecipeSelector } from '_/redux/selectors/recipe';
+import { setCurrentRecipeFieldAction } from '_/redux/actions/recipe';
+import { fieldChangeHandler } from '_/components/common/mixins/fieldChangeHandler';
 
-class NameSection extends Component {
+class NameSectionEdit extends Component {
     constructor(props) {
         super(props);
     }
@@ -26,7 +26,7 @@ class NameSection extends Component {
     }
 }
 
-Object.assign(NameSection.prototype, fieldChangeHandler);
+Object.assign(NameSectionEdit.prototype, fieldChangeHandler);
 
 const mapStateToProps = state => {
     return {
@@ -38,4 +38,4 @@ const mapDispatchToProps = {
     setField: setCurrentRecipeFieldAction
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(NameSection);
+export default connect(mapStateToProps, mapDispatchToProps)(NameSectionEdit);

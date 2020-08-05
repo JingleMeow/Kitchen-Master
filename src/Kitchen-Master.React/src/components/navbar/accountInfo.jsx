@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter, Link } from 'react-router-dom';
-import { currentUserSelector } from '../../redux/selectors/shared';
-import { setCurrentUserAction } from '../../redux/actions/shared';
+import { currentUserSelector } from '_/redux/selectors/shared';
+import { setCurrentUserAction } from '_/redux/actions/shared';
 import styles from './accountInfo.module.scss'
 
 class AccountInfo extends Component {

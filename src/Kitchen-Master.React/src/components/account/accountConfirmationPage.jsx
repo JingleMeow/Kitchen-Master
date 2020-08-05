@@ -4,8 +4,8 @@ import { Form, Segment, Button, Message } from 'semantic-ui-react';
 import BaseForm from '../common/baseForm';
 import CenterFormGrid from '../common/centerFormGrid';
 import TextFormInput from '../common/textFormInput';
-import InputValidator from '../../utils/inputValidator';
-import { confirmAccountAction } from '../../redux/actions/account';
+import InputValidator from '_/utils/inputValidator';
+import { confirmAccountAction } from '_/redux/actions/account';
 import styles from './accountConfirmationPage.module.scss';
 
 class AccountConfirmationPage extends BaseForm {

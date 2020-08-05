@@ -4,8 +4,8 @@ import { Redirect } from 'react-router-dom';
 import MessagePage, { getPositiveType } from '../common/messagePage';
 import Nlbr from '../common/nlbr';
 import withNavbar from '../navbar/withNavbar';
-import { removeAccessToken } from '../../utils/auth';
-import { setCurrentUserAction } from '../../redux/actions/shared'
+import { removeAccessToken } from '_/utils/auth';
+import { setCurrentUserAction } from '_/redux/actions/shared'
 
 class LoggedOutPage extends Component {
     constructor(props) {

@@ -1,10 +1,10 @@
 import React, { Component, Fragment, createRef } from 'react';
 import { connect } from 'react-redux';
 import { Header, Segment, Icon, Button, Image, Dimmer } from 'semantic-ui-react';
-import { currentRecipeSelector } from '../../../redux/selectors/recipe';
-import { uploadCoverImageAction, setCurrentRecipeFieldAction } from '../../../redux/actions/recipe';
+import { currentRecipeSelector } from '_/redux/selectors/recipe';
+import { uploadCoverImageAction, setCurrentRecipeFieldAction } from '_/redux/actions/recipe';
 
-class CoverImageSection extends Component {
+class CoverImageSectionEdit extends Component {
     fileInputRef = createRef();
     state = {
         file: null,
@@ -73,4 +73,4 @@ const mapDispatchToProps = {
     setField: setCurrentRecipeFieldAction
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(CoverImageSection);
+export default connect(mapStateToProps, mapDispatchToProps)(CoverImageSectionEdit);

@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import withNavbar from '../../navbar/withNavbar';
 import { Container, Divider } from 'semantic-ui-react';
-import NameSection from './nameSection';
-import CoverImageSection from './coverImageSection';
-import DifficultyAndSpicySection from './difficultyAndSpicy/difficultyAndSpicySection';
-import IngredientsSection from './ingredientsSection';
-import DirectionsSection from './directionsSection';
+import NameSectionEdit from './name/nameSectionEdit';
+import CoverImageSectionEdit from './coverImage/coverImageSectionEdit';
+import DifficultyAndSpicySectionEdit from './difficultyAndSpicy/difficultyAndSpicySectionEdit';
+import IngredientsSectionEdit from './ingredients/ingredientsSectionEdit';
+import DirectionsSectionEdit from './directions/directionsSectionEdit';
 import styles from './recipeEditPage.module.scss';
 
 class RecipeEditPage extends Component {
@@ -13,13 +13,13 @@ class RecipeEditPage extends Component {
     render() {
         return (
             <Container className={styles.container} >
-                <NameSection />
-                <CoverImageSection />
-                <DifficultyAndSpicySection />
+                <NameSectionEdit />
+                <CoverImageSectionEdit />
+                <DifficultyAndSpicySectionEdit />
                 <Divider hidden></Divider>
-                <IngredientsSection />
+                <IngredientsSectionEdit />
                 <Divider section></Divider>
-                <DirectionsSection />
+                <DirectionsSectionEdit />
             </Container>
         );
     }

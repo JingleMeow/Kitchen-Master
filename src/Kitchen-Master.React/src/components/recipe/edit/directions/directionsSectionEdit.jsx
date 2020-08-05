@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { Header, TextArea, Button } from 'semantic-ui-react';
 import Step from './step';
 
-class DirectionsSection extends Component {
+class DirectionsSectionEdit extends Component {
     state = {}
     render() {
         return (
@@ -17,4 +17,4 @@ class DirectionsSection extends Component {
     }
 }
 
-export default DirectionsSection;
+export default DirectionsSectionEdit;

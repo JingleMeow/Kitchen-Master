@@ -3,9 +3,9 @@ import { connect } from 'react-redux';
 import { Redirect, Link } from 'react-router-dom';
 import { Form, Segment, Button, Message } from 'semantic-ui-react';
 import { CenterFormGrid, BaseForm, TextFormInput } from '../common';
-import InputValidator from '../../utils/inputValidator';
-import { currentUserSelector } from '../../redux/selectors/shared';
-import { loginAction } from '../../redux/actions/account';
+import InputValidator from '_/utils/inputValidator';
+import { currentUserSelector } from '_/redux/selectors/shared';
+import { loginAction } from '_/redux/actions/account';
 import styles from './loginPage.module.scss';
 
 class LoginPage extends BaseForm {

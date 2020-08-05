@@ -4,7 +4,7 @@ import { Sidebar, Responsive } from 'semantic-ui-react';
 import SidebarMenu from './sidebarMenu';
 import Topbar from './topBar';
 import MobileSearchBar from './mobileSearchBar';
-import { loadDefinitionsAction } from '../../redux/actions/shared';
+import { loadDefinitionsAction } from '_/redux/actions/shared';
 import styles from './withNavbar.module.scss';
 
 function withNavbar(PageComponent, isInfoPage) {

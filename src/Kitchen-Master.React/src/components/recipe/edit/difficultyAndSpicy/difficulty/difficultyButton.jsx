@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Button } from 'semantic-ui-react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
-import { firstLetterToUpper } from '../../../../utils/stringUtils';
+import { firstLetterToUpper } from '_/utils/stringUtils';
 import styles from './difficultyButton.module.scss';
 
 class DifficultyButton extends Component {

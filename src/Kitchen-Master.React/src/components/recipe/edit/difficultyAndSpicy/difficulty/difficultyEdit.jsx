@@ -1,12 +1,12 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import DifficultyButton from './difficultyButton';
-import { difficultiesSelector } from '../../../../redux/selectors/shared';
-import { currentRecipeSelector } from '../../../../redux/selectors/recipe';
-import { setCurrentRecipeFieldAction } from '../../../../redux/actions/recipe';
-import { fieldChangeHandler } from '../../../common/mixins/fieldChangeHandler';
+import { difficultiesSelector } from '_/redux/selectors/shared';
+import { currentRecipeSelector } from '_/redux/selectors/recipe';
+import { setCurrentRecipeFieldAction } from '_/redux/actions/recipe';
+import { fieldChangeHandler } from '_/components/common/mixins/fieldChangeHandler';
 
-class Difficulty extends Component {
+class DifficultyEdit extends Component {
     state = {}
     render() {
         const { difficulties, recipe } = this.props;
@@ -28,7 +28,7 @@ class Difficulty extends Component {
     }
 }
 
-Object.assign(Difficulty.prototype, fieldChangeHandler);
+Object.assign(DifficultyEdit.prototype, fieldChangeHandler);
 
 const mapStateToProps = state => {
     return {
@@ -41,4 +41,4 @@ const mapDispatchToProps = {
     setField: setCurrentRecipeFieldAction
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Difficulty);
+export default connect(mapStateToProps, mapDispatchToProps)(DifficultyEdit);

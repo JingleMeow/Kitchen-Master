@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Menu } from 'semantic-ui-react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserCircle, faHome, faHeart, faHistory, faSignInAlt, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
-import { currentUserSelector } from '../../redux/selectors/shared';
+import { currentUserSelector } from '_/redux/selectors/shared';
 import styles from './sidebarMenu.module.scss';
 
 class SidebarMenu extends Component {

@@ -2,9 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Form, Segment, Button, Message } from 'semantic-ui-react';
 import { CenterFormGrid, BaseForm, TextFormInput } from '../common';
-import InputValidator from '../../utils/inputValidator';
-import { passwordRegex, passwordError } from '../../utils/auth';
-import { registerAction } from '../../redux/actions/account';
+import InputValidator from '_/utils/inputValidator';
+import { passwordRegex, passwordError } from '_/utils/auth';
+import { registerAction } from '_/redux/actions/account';
 import styles from './registerPage.module.scss';
 
 class RegisterPage extends BaseForm {

@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { Header, Button } from 'semantic-ui-react';
 import IngredientLabel from './ingredientLabel';
 
-class IngredientsSection extends Component {
+class IngredientsSectionEdit extends Component {
     state = {}
     render() {
         return (
@@ -22,4 +22,4 @@ class IngredientsSection extends Component {
     }
 }
 
-export default IngredientsSection;
+export default IngredientsSectionEdit;
