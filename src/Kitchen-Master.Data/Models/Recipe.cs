@@ -22,6 +22,7 @@ namespace Kitchen_Master.Data.Models
         public Spicy Spicy { get; set; }
         [Required]
         public Difficulty Difficulty { get; set; }
+        public ICollection<RecipeIngredient> RecipeIngredients { get; set; }
         public ICollection<RecipeDirection> Directions { get; set; }
     }
 }

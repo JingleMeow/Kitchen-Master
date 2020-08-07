@@ -364,7 +364,7 @@ namespace Kitchen_Master.DataModel.Migrations
                         .IsRequired();
 
                     b.HasOne("Kitchen_Master.Data.Models.Recipe", "Recipe")
-                        .WithMany()
+                        .WithMany("RecipeIngredients")
                         .HasForeignKey("RecipeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
