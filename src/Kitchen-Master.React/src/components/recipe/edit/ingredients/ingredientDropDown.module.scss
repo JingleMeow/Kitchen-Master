@@ -1,0 +1,9 @@
+div.dropDown input:first-child {
+    text-transform: capitalize;
+}
+div.dropDown div[class='text'] {
+    text-transform: capitalize!important;
+}
+div.dropDown div[role='listbox'] span[class='text'] {
+    text-transform: capitalize!important;
+}

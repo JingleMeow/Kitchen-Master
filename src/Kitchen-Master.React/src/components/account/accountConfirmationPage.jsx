@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Form, Segment, Button, Message } from 'semantic-ui-react';
-import BaseForm from '../common/baseForm';
+import BaseForm from '../common/form/baseForm';
 import CenterFormGrid from '../common/centerFormGrid';
-import TextFormInput from '../common/textFormInput';
+import { TextFormInput } from '../common/form';
 import InputValidator from '_/utils/inputValidator';
 import { confirmAccountAction } from '_/redux/actions/account';
 import styles from './accountConfirmationPage.module.scss';

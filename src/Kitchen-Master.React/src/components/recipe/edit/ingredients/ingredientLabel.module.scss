@@ -2,3 +2,28 @@ div.label {
     margin-right: 1.25rem!important;
     margin-bottom: 1rem!important;
 }
+
+div.colIcon {
+    width: fit-content!important;
+    padding-right: 0.75rem!important;
+}
+
+div.colText {
+    width: fit-content!important;
+    padding-left: 0!important;
+    padding-right: 0!important;
+}
+
+div.colButton {
+    width: fit-content!important;
+}
+
+svg.icon {
+    vertical-align: middle;
+    margin-right: 0!important;
+}
+
+svg.delete {
+    @extend svg.icon;
+    cursor: pointer;
+}

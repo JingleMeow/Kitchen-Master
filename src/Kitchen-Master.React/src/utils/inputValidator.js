@@ -9,6 +9,10 @@ class InputValidator {
     static string() {
         return new InputValidator(Joi.string());
     }
+
+    static number() {
+        return new InputValidator(Joi.number());
+    }
 }
 
 InputValidator.prototype.label = function (label) {
@@ -65,6 +69,16 @@ InputValidator.prototype.match = function (key, message) {
         rule: x => x.valid(Joi.ref(key)),
         key: 'any.only',
         defaultMessage: `{#label} doesn't match.`,
+        message
+    }
+    return this.addValidation(validation);
+}
+
+InputValidator.prototype.min = function (value, message) {
+    const validation = {
+        rule: x => x.min(value),
+        key: 'number.min',
+        defaultMessage: `{#label} should have a minimum value of {#limit}.`,
         message
     }
     return this.addValidation(validation);

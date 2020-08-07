@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Redirect, Link } from 'react-router-dom';
 import { Form, Segment, Button, Message } from 'semantic-ui-react';
-import { CenterFormGrid, BaseForm, TextFormInput } from '../common';
+import { CenterFormGrid } from '../common';
+import { BaseForm, TextFormInput } from '../common/form'
 import InputValidator from '_/utils/inputValidator';
 import { currentUserSelector } from '_/redux/selectors/shared';
 import { loginAction } from '_/redux/actions/account';
