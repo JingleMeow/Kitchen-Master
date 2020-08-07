@@ -1,4 +1,6 @@
-﻿using Kitchen_Master.Data.Models.Enums;
+﻿using Kitchen_Master.API.Services.Common;
+using Kitchen_Master.Data.Models;
+using Kitchen_Master.Data.Models.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,10 +10,19 @@ namespace Kitchen_Master.API.ApiModels.Common
 {
     public class DefinitionsModel
     {
-        public List<EnumModel<Difficulty>> Difficulties { get; } = EnumModel<Difficulty>.GetEnumModels();
-        public List<EnumModel<IngredientType>> IngredientTypes { get; } = EnumModel<IngredientType>.GetEnumModels();
-        public List<EnumModel<Spicy>> Spicies { get; } = EnumModel<Spicy>.GetEnumModels();
-        public List<EnumModel<UnitCategory>> UnitCategories { get; } = EnumModel<UnitCategory>.GetEnumModels();
+        public DefinitionsModel(UnitService unitService)
+        {
+            this.Difficulties = EnumModel<Difficulty>.GetEnumModels();
+            this.IngredientTypes = EnumModel<IngredientType>.GetEnumModels();
+            this.Spicies = EnumModel<Spicy>.GetEnumModels();
+            this.UnitCategories = EnumModel<UnitCategory>.GetEnumModels();
+            this.Units = unitService.GetAllUnits();
+        }
+        public List<EnumModel<Difficulty>> Difficulties { get; }
+        public List<EnumModel<IngredientType>> IngredientTypes { get; }
+        public List<EnumModel<Spicy>> Spicies { get; }
+        public List<EnumModel<UnitCategory>> UnitCategories { get; }
+        public List<Unit> Units { get; }
 
         public class EnumModel<T> where T : Enum
         {
