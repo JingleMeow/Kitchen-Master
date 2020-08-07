@@ -17,12 +17,14 @@ namespace Kitchen_Master.Data.Models
         [Column(TypeName ="char(64)")]
         public string CoverImageId { get; set; }
         [Required]
-        public DateTime CreatedTime { get; set; }
-        [Required]
         public Spicy Spicy { get; set; }
         [Required]
         public Difficulty Difficulty { get; set; }
         public ICollection<RecipeIngredient> RecipeIngredients { get; set; }
         public ICollection<RecipeDirection> Directions { get; set; }
+        [Required]
+        public int AuthorId { get; set; }
+        [Required]
+        public DateTime CreatedTime { get; set; }
     }
 }
