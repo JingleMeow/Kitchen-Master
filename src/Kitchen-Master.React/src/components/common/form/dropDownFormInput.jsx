@@ -7,7 +7,7 @@ const DropDownFormInput = ({ name, data, onChange, errors, ...rest }) => {
         <Form.Dropdown fluid
             name={name}
             value={data[name]}
-            onChange={(event, data) => onChange(data.name, data.value)}
+            onChange={onChange}
             error={errors[name]}
             {...rest} />
     );

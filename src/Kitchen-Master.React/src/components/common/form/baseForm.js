@@ -2,12 +2,16 @@ import { Component } from 'react';
 import Joi from '@hapi/joi';
 
 class BaseForm extends Component {
-
-    handleFieldChange = (name, value) => {
+    getNewState = (name, value) => {
         const data = { ...this.state.data };
         data[name] = value;
         const errors = this.validateProperty(name, data);
         const backendError = '';
+        return { data, errors, backendError };
+    }
+
+    handleFieldChange = (name, value) => {
+        const { data, errors, backendError } = this.getNewState(name, value);
         this.setState({ data, errors, backendError });
     }
 
@@ -26,12 +30,14 @@ class BaseForm extends Component {
         return !result.error;
     }
 
-    getFormInputProps = () => {
-        return {
+    getFormInputProps = (useCustomChangeHandler = false) => {
+        const props = {
             data: this.state.data,
             errors: this.state.errors,
-            onChange: this.handleFieldChange
         };
+        if (!useCustomChangeHandler)
+            props.onChange = (event, data) => this.handleFieldChange(data.name, data.value);
+        return props;
     }
 }
 

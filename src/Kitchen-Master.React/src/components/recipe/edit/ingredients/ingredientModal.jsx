@@ -105,7 +105,8 @@ class IngredientModal extends BaseForm {
             <DropDownFormInput fluid selection
                 name='unitCategory'
                 options={this.getDropDownOptions(unitCategories)}
-                {...this.getFormInputProps()} />
+                {...this.getFormInputProps(true)}
+                onChange={this.handleMeasurementChange} />
         );
     }
 
@@ -131,6 +132,12 @@ class IngredientModal extends BaseForm {
         const { data } = this.state;
         Object.assign(data, ingredient);
         this.setState({ data });
+    }
+
+    handleMeasurementChange = (event, dropDownData) => {
+        const { data, errors, backendError } = this.getNewState(dropDownData.name, dropDownData.value);
+        data.unitId = this.getDefaultUnitId(data.unitCategory);
+        this.setState({ data, errors, backendError });
     }
 
     handleModalMount = () => {
@@ -188,6 +195,11 @@ class IngredientModal extends BaseForm {
                     coefficient: unit.coefficient
                 };
             });
+    }
+
+    getDefaultUnitId(unitCategory) {
+        const { units } = this.props;
+        return units.find(x => x.unitCategory === unitCategory && x.coefficient === 1).id;
     }
 }
 
