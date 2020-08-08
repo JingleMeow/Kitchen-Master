@@ -1,4 +1,4 @@
-export const SET_CURRENT_RECIPE_FIELD = 'SET_CURRENT_RECIPE_FIELD';
+import { SET_CURRENT_RECIPE_FIELD } from '../../reducers/recipe/currentRecipeReducer';
 
 export default function setCurrentRecipeFieldAction(path, value) {
     return {

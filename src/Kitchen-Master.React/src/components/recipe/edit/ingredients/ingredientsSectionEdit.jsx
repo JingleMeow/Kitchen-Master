@@ -1,20 +1,23 @@
 import React, { Component, Fragment } from 'react';
-import { Header, Button, Dropdown } from 'semantic-ui-react';
+import { connect } from 'react-redux';
+import { Header, Button } from 'semantic-ui-react';
 import IngredientLabel from './ingredientLabel';
 import IngredientModal from './ingredientModal';
+import currentRecipeSelector from '_/redux/selectors/recipe/currentRecipeSelector';
+import { addRecipeIngredientAction, removeRecipeIngredientAction } from '_/redux/actions/recipe/';
 
 class IngredientsSectionEdit extends Component {
     state = {
-        ingredients: [],
         showIngredientModal: false
     }
     render() {
-        const { ingredients, showIngredientModal } = this.state;
+        const { currentRecipe } = this.props;
+        const { showIngredientModal } = this.state;
         return (
             <Fragment>
                 <Header size='huge'>Ingredients</Header>
                 {
-                    ingredients.map((idt, index) =>
+                    currentRecipe.recipeIngredients.map((idt, index) =>
                         <IngredientLabel key={index} ingredient={idt} index={index}
                             onDelete={this.handleDelete} />
                     )
@@ -33,15 +36,13 @@ class IngredientsSectionEdit extends Component {
     }
 
     handleDelete = index => {
-        const { ingredients } = this.state;
-        ingredients.splice(index, 1);
-        this.setState({ ingredients });
+        const { removeRecipeIngredient } = this.props;
+        removeRecipeIngredient(index);
     }
 
     handleIngredientSelected = selectedIngredient => {
-        const { ingredients } = this.state;
-        ingredients.push(selectedIngredient);
-        this.setState({ ingredients });
+        const { addRecipeIngredient } = this.props;
+        addRecipeIngredient(selectedIngredient);
     }
 
     handleModalClose = () => {
@@ -53,4 +54,15 @@ class IngredientsSectionEdit extends Component {
     }
 }
 
-export default IngredientsSectionEdit;
+const mapStateToProps = state => {
+    return {
+        currentRecipe: currentRecipeSelector(state)
+    }
+}
+
+const mapDispatchToProps = {
+    addRecipeIngredient: addRecipeIngredientAction,
+    removeRecipeIngredient: removeRecipeIngredientAction
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(IngredientsSectionEdit);
