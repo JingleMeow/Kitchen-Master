@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Kitchen_Master.Data.Models
 {
-    public class RecipeDirection
+    public class Direction
     {
         [Key]
         public int Id { get; set; }
@@ -16,6 +16,6 @@ namespace Kitchen_Master.Data.Models
         [Required]
         public int Order { get; set; }
         [Required]
-        public string Direction { get; set; }
+        public string Text { get; set; }
     }
 }

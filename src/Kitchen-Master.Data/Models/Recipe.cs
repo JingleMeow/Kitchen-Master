@@ -21,7 +21,7 @@ namespace Kitchen_Master.Data.Models
         [Required]
         public Difficulty Difficulty { get; set; }
         public ICollection<RecipeIngredient> RecipeIngredients { get; set; }
-        public ICollection<RecipeDirection> Directions { get; set; }
+        public ICollection<Direction> Directions { get; set; }
         [Required]
         public int AuthorId { get; set; }
         [Required]
