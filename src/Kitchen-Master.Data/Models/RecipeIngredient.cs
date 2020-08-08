@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
+using System.Text.Json.Serialization;
 
 namespace Kitchen_Master.Data.Models
 {
@@ -18,7 +19,9 @@ namespace Kitchen_Master.Data.Models
         public int IngredientId { get; set; }
         [Required]
         public float Amount { get; set; }
+        [JsonIgnore]
         public Recipe Recipe { get; set; }
+        [JsonIgnore]
         public Ingredient Ingredient { get; set; }
     }
 }

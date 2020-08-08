@@ -17,6 +17,5 @@ namespace Kitchen_Master.Data.Models
         public int Order { get; set; }
         [Required]
         public string Direction { get; set; }
-        public Recipe Recipe { get; set; }
     }
 }
