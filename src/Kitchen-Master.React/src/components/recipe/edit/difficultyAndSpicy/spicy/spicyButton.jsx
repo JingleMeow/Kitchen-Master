@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPepperHot, faBan } from '@fortawesome/free-solid-svg-icons'
+import { faPepperHot } from '@fortawesome/free-solid-svg-icons'
+import { faTimesCircle } from '@fortawesome/free-regular-svg-icons'
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import styles from './spicyButton.module.scss';
@@ -12,7 +13,7 @@ class SpicyButton extends Component {
 
         let icon, className;
         if (spicy.value == 0) {
-            icon = faBan;
+            icon = faTimesCircle;
             className = this.getNonspicyButtonClass();
         } else {
             icon = faPepperHot;
