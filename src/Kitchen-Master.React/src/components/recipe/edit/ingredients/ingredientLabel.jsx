@@ -20,7 +20,7 @@ class IngredientLabel extends Component {
                             {ingredient.name}
                         </Grid.Row>
                         <Grid.Row>
-                            {ingredient.amount}{this.getUnitLabel()}
+                            {ingredient.amount} {this.getUnitLabel()}
                         </Grid.Row>
                     </Grid.Column>
                     <Grid.Column className={styles.colButton}>
@@ -34,7 +34,7 @@ class IngredientLabel extends Component {
 
     getUnitLabel() {
         const { ingredient, units } = this.props;
-        return units.find(u => u.unitCategory === ingredient.unitCategory && u.coefficient === ingredient.coefficient).label;
+        return units.find(u => u.id === ingredient.unitId).label;
     }
 
     getIngredientIcon() {

@@ -19,9 +19,13 @@ namespace Kitchen_Master.Data.Models
         public int IngredientId { get; set; }
         [Required]
         public float Amount { get; set; }
+        [Required]
+        [ForeignKey("Unit")]
+        public int UnitId { get; set; }
         [JsonIgnore]
         public Recipe Recipe { get; set; }
         [JsonIgnore]
         public Ingredient Ingredient { get; set; }
+        public Unit Unit { get; set; }
     }
 }

@@ -16,7 +16,7 @@ const initialState = {
         type: '',
         unitCategory: '',
         amount: '',
-        coefficient: 1
+        unitId: ''
     },
     errors: {},
     backendError: '',
@@ -30,7 +30,7 @@ class IngredientModal extends BaseForm {
         type: InputValidator.number().required().label('Type').done(),
         unitCategory: InputValidator.number().required().label('Measure').done(),
         amount: InputValidator.number().min(0.1).required().label('Amount').done(),
-        coefficient: InputValidator.number().required().label('Unit').done()
+        unitId: InputValidator.number().required().label('Unit').done()
     }
 
     render() {
@@ -50,12 +50,11 @@ class IngredientModal extends BaseForm {
                             <Segment>
                                 {this.renderField('Ingredient', this.renderIngredientDropDown())}
                                 {data.id === 0 &&
-                                    <Form.Group widths='equal' className={styles.group}>
-                                        {this.renderField('Type', this.renderTypeDropDown())}
-                                        {this.renderField('Measure', this.renderMeasureDropDown())}
-                                    </Form.Group>}
+                                    this.renderField('Type', this.renderTypeDropDown())
+                                }
                             </Segment>
                             <Segment>
+                                {this.renderField('Measurement', this.renderMeasurementDropDown())}
                                 <Form.Group widths='16' className={styles.group}>
                                     {this.renderField('Amount', this.renderAmountInput(), '11')}
                                     {this.renderField('Unit', this.renderUnitDropdown(), '5')}
@@ -100,7 +99,7 @@ class IngredientModal extends BaseForm {
         );
     }
 
-    renderMeasureDropDown() {
+    renderMeasurementDropDown() {
         const { unitCategories } = this.props;
         return (
             <DropDownFormInput fluid selection
@@ -119,11 +118,11 @@ class IngredientModal extends BaseForm {
     }
 
     renderUnitDropdown() {
-        const { coefficient } = this.state;
+        const unitOptions = this.getUnitOptions();
         return (
             <DropDownFormInput fluid selection
-                name='coefficient'
-                options={this.getUnitOptions()}
+                name='unitId'
+                options={unitOptions}
                 {...this.getFormInputProps()} />
         );
     }
@@ -144,10 +143,10 @@ class IngredientModal extends BaseForm {
 
     handleOk = () => {
         const { onIngredientSelected, onClose } = this.props;
-        const { data: ingredient } = this.state;
+        const ingredient = this.state.data;
         if (ingredient.id == 0) {
             this.setState({ dimmed: true });
-            addIngredient(ingredient)
+            addIngredient({ name: ingredient.name, type: ingredient.type })
                 .then(response => {
                     onIngredientSelected({ ...ingredient, id: response.data.id });
                     this.setState({ dimmed: false });
@@ -177,13 +176,16 @@ class IngredientModal extends BaseForm {
 
     getUnitOptions = () => {
         const { data: ingredient } = this.state;
+        if (ingredient.unitCategory === '')
+            return [];
         const { units } = this.props;
         return units.filter(x => x.unitCategory === ingredient.unitCategory)
             .map(unit => {
                 return {
                     key: unit.id,
-                    value: unit.coefficient,
-                    text: unit.label
+                    value: unit.id,
+                    text: unit.label,
+                    coefficient: unit.coefficient
                 };
             });
     }
