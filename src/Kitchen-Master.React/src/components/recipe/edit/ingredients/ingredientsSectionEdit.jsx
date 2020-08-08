@@ -5,6 +5,7 @@ import IngredientLabel from './ingredientLabel';
 import IngredientModal from './ingredientModal';
 import currentRecipeSelector from '_/redux/selectors/recipe/currentRecipeSelector';
 import { addRecipeIngredientAction, removeRecipeIngredientAction } from '_/redux/actions/recipe/';
+import styles from './ingredientsSectionEdit.module.scss';
 
 class IngredientsSectionEdit extends Component {
     state = {
@@ -16,14 +17,18 @@ class IngredientsSectionEdit extends Component {
         return (
             <Fragment>
                 <Header size='huge'>Ingredients</Header>
-                {
-                    currentRecipe.recipeIngredients.map((idt, index) =>
-                        <IngredientLabel key={index} ingredient={idt} index={index}
-                            onDelete={this.handleDelete} />
-                    )
-                }
-                <Button circular icon='add' content='Add Ingredient' color='teal' size='small'
-                    onClick={this.handleAddButtonClick} />
+                <div>
+                    {
+                        currentRecipe.recipeIngredients.map((idt, index) =>
+                            <IngredientLabel key={index} ingredient={idt} index={index}
+                                onDelete={this.handleDelete} />
+                        )
+                    }
+                    <Button circular icon='add' color='teal' size='small'
+                        content='Add Ingredient'
+                        className={styles.add}
+                        onClick={this.handleAddButtonClick} />
+                </div>
                 <IngredientModal open={showIngredientModal}
                     onIngredientSelected={this.handleIngredientSelected}
                     onClose={this.handleModalClose} />
