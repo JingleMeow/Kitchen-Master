@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import { Header, Button } from 'semantic-ui-react';
 import IngredientLabel from './ingredientLabel';
 import IngredientModal from './ingredientModal';
-import currentRecipeSelector from '_/redux/selectors/recipe/currentRecipeSelector';
-import { addRecipeIngredientAction, removeRecipeIngredientAction } from '_/redux/actions/recipe/';
+import newRecipeSelector from '_/redux/selectors/recipe/newRecipeSelector';
+import { addRecipeIngredientAction, removeRecipeIngredientAction } from '_/redux/actions/recipe/newRecipe';
 import styles from './ingredientsSectionEdit.module.scss';
 
 class IngredientsSectionEdit extends Component {
@@ -12,14 +12,14 @@ class IngredientsSectionEdit extends Component {
         showIngredientModal: false
     }
     render() {
-        const { currentRecipe } = this.props;
+        const { newRecipe } = this.props;
         const { showIngredientModal } = this.state;
         return (
             <Fragment>
                 <Header size='huge'>Ingredients</Header>
                 <div>
                     {
-                        currentRecipe.recipeIngredients.map((idt, index) =>
+                        newRecipe.recipeIngredients.map((idt, index) =>
                             <IngredientLabel key={index} ingredient={idt} index={index}
                                 onDelete={this.handleDelete} />
                         )
@@ -61,7 +61,7 @@ class IngredientsSectionEdit extends Component {
 
 const mapStateToProps = state => {
     return {
-        currentRecipe: currentRecipeSelector(state)
+        newRecipe: newRecipeSelector(state)
     }
 }
 

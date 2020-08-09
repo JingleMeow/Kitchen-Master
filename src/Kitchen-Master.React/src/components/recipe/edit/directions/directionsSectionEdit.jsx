@@ -3,26 +3,25 @@ import { connect } from 'react-redux';
 import { Header, Button } from 'semantic-ui-react';
 import Step from './step';
 import { fieldChangeHandler } from '_/components/common/mixins/fieldChangeHandler';
-import { currentRecipeSelector } from '_/redux/selectors/recipe';
-import { setCurrentRecipeFieldAction } from '_/redux/actions/recipe';
-import { addRecipeDirectionAction, removeRecipeDirectionAction } from '_/redux/actions/recipe';
+import { newRecipeSelector } from '_/redux/selectors/recipe';
+import { setRecipeFieldAction, addRecipeDirectionAction, removeRecipeDirectionAction } from '_/redux/actions/recipe/newRecipe';
 
 class DirectionsSectionEdit extends Component {
     state = {}
     render() {
-        const { currentRecipe } = this.props;
+        const { newRecipe } = this.props;
         return (
             <Fragment>
                 <Header size='huge'>Direction</Header>
                 {
-                    currentRecipe.directions.map((direction, index) =>
+                    newRecipe.directions.map((direction, index) =>
                         <Step key={index} index={index} direction={direction}
                             onChange={(event, data) => this.handleFieldChange(event, data)} />
                     )
                 }
                 <Button circular color='red' size='small'
                     icon='trash alternate' content='Remove Step'
-                    disabled={currentRecipe.directions.length < 2}
+                    disabled={newRecipe.directions.length < 2}
                     onClick={this.handleRemoveStep} />
                 <Button circular color='teal' size='small'
                     icon='add' content='Add Step'
@@ -37,8 +36,8 @@ class DirectionsSectionEdit extends Component {
     }
 
     handleRemoveStep = () => {
-        const { currentRecipe, removeRecipeDirection } = this.props;
-        removeRecipeDirection(currentRecipe.directions.length - 1);
+        const { newRecipe, removeRecipeDirection } = this.props;
+        removeRecipeDirection(newRecipe.directions.length - 1);
     }
 }
 
@@ -46,12 +45,12 @@ Object.assign(DirectionsSectionEdit.prototype, fieldChangeHandler);
 
 const mapStateToProps = state => {
     return {
-        currentRecipe: currentRecipeSelector(state)
+        newRecipe: newRecipeSelector(state)
     };
 }
 
 const mapDispatchToProps = {
-    setField: setCurrentRecipeFieldAction,
+    setField: setRecipeFieldAction,
     addRecipeDirection: addRecipeDirectionAction,
     removeRecipeDirection: removeRecipeDirectionAction
 }

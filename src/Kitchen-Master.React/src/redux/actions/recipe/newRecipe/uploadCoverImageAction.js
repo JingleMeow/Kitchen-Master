@@ -1,4 +1,4 @@
-import apiCallbackAction from '../apiCallbackAction';
+import apiCallbackAction from '../../apiCallbackAction';
 
 export default function uploadCoverImageAction(image) {
     return dispatch => {

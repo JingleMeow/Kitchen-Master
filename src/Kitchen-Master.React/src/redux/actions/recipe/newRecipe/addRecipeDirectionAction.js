@@ -1,4 +1,4 @@
-import { ADD_RECIPE_DIRECTION } from '../../reducers/recipe/currentRecipeReducer';
+import { ADD_RECIPE_DIRECTION } from '../../../reducers/recipe/newRecipeReducer';
 
 export default function addRecipeIngredientAction() {
     return {

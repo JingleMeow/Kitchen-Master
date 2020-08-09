@@ -1,1 +1,1 @@
-export { default as currentRecipeSelector } from './currentRecipeSelector';
+export { default as newRecipeSelector } from './newRecipeSelector';

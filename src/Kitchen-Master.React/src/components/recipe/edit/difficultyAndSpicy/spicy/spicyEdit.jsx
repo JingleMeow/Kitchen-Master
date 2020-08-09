@@ -2,8 +2,8 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import SpicyButton from './spicyButton';
 import { spiciesSelector } from '_/redux/selectors/shared';
-import { currentRecipeSelector } from '_/redux/selectors/recipe';
-import { setCurrentRecipeFieldAction } from '_/redux/actions/recipe';
+import { newRecipeSelector } from '_/redux/selectors/recipe';
+import { setRecipeFieldAction } from '_/redux/actions/recipe/newRecipe';
 import { fieldChangeHandler } from '_/components/common/mixins/fieldChangeHandler';
 
 const defaultHoverLevel = -1;
@@ -48,12 +48,12 @@ Object.assign(SpicyEdit.prototype, fieldChangeHandler);
 const mapStateToProps = state => {
     return {
         spicies: spiciesSelector(state),
-        recipe: currentRecipeSelector(state)
+        recipe: newRecipeSelector(state)
     }
 }
 
 const mapDispatchToProps = {
-    setField: setCurrentRecipeFieldAction
+    setField: setRecipeFieldAction
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(SpicyEdit);

@@ -1,4 +1,4 @@
-import { REMOVE_RECIPE_DIRECTION } from '../../reducers/recipe/currentRecipeReducer';
+import { REMOVE_RECIPE_DIRECTION } from '../../../reducers/recipe/newRecipeReducer';
 
 export default function removeRecipeIngredientAction(index) {
     return {

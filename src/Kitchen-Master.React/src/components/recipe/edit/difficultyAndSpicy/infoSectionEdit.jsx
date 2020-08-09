@@ -3,7 +3,7 @@ import { Header, Grid, Button } from 'semantic-ui-react';
 import DifficultyEdit from './difficulty/difficultyEdit';
 import SpicyEdit from './spicy/spicyEdit';
 
-const DifficultyAndSpicySectionEdit = () => {
+const InfoSectionEdit = () => {
     return (
         <Fragment>
             <Header size='huge'>Ratings</Header>
@@ -21,4 +21,4 @@ const DifficultyAndSpicySectionEdit = () => {
     );
 }
 
-export default DifficultyAndSpicySectionEdit;
+export default InfoSectionEdit;

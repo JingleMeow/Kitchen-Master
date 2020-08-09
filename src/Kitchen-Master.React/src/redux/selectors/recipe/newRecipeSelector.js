@@ -1,6 +1,6 @@
 import { createSelector } from 'reselect';
 
 export default createSelector(
-    state => state.recipe.currentRecipe,
-    currentRecipe => currentRecipe
+    state => state.recipe.newRecipe,
+    newRecipe => newRecipe
 )

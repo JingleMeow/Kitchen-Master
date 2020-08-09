@@ -4,11 +4,11 @@ import { Container, Divider, Button } from 'semantic-ui-react';
 import withNavbar from '../../navbar/withNavbar';
 import NameSectionEdit from './name/nameSectionEdit';
 import CoverImageSectionEdit from './coverImage/coverImageSectionEdit';
-import DifficultyAndSpicySectionEdit from './difficultyAndSpicy/difficultyAndSpicySectionEdit';
+import InfoSectionEdit from './difficultyAndSpicy/infoSectionEdit';
 import IngredientsSectionEdit from './ingredients/ingredientsSectionEdit';
 import DirectionsSectionEdit from './directions/directionsSectionEdit';
-import { currentRecipeSelector } from '_/redux/selectors/recipe';
-import { saveRecipeAction } from '_/redux/actions/recipe'
+import { newRecipeSelector } from '_/redux/selectors/recipe';
+import { saveRecipeAction } from '_/redux/actions/recipe/newRecipe'
 import styles from './recipeEditPage.module.scss';
 
 class RecipeEditPage extends Component {
@@ -18,7 +18,7 @@ class RecipeEditPage extends Component {
             <Container className={styles.container} >
                 <NameSectionEdit />
                 <CoverImageSectionEdit />
-                <DifficultyAndSpicySectionEdit />
+                <InfoSectionEdit />
                 <Divider hidden></Divider>
                 <IngredientsSectionEdit />
                 <Divider section></Divider>
@@ -31,15 +31,15 @@ class RecipeEditPage extends Component {
     }
 
     handleSave = () => {
-        const { currentRecipe, saveRecipe } = this.props;
-        const directions = currentRecipe.directions.map(
+        const { newRecipe, saveRecipe } = this.props;
+        const directions = newRecipe.directions.map(
             (direction, index) => {
                 return {
                     order: index + 1,
                     text: direction
                 };
             });
-        const recipeIngredients = currentRecipe.recipeIngredients.map(
+        const recipeIngredients = newRecipe.recipeIngredients.map(
             (ingredient, index) => {
                 return {
                     ingredientId: ingredient.id,
@@ -48,14 +48,14 @@ class RecipeEditPage extends Component {
                 }
             }
         );
-        const recipe = Object.assign({}, currentRecipe, { directions, recipeIngredients });
+        const recipe = Object.assign({}, newRecipe, { directions, recipeIngredients });
         saveRecipe(recipe);
     }
 }
 
 const mapStateToProps = state => {
     return {
-        currentRecipe: currentRecipeSelector(state)
+        newRecipe: newRecipeSelector(state)
     }
 };
 

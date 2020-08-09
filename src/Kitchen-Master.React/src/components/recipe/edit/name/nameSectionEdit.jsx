@@ -1,8 +1,8 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { Header, Icon, Input, } from 'semantic-ui-react';
-import { currentRecipeSelector } from '_/redux/selectors/recipe';
-import { setCurrentRecipeFieldAction } from '_/redux/actions/recipe';
+import { newRecipeSelector } from '_/redux/selectors/recipe';
+import { setRecipeFieldAction } from '_/redux/actions/recipe/newRecipe';
 import { fieldChangeHandler } from '_/components/common/mixins/fieldChangeHandler';
 
 class NameSectionEdit extends Component {
@@ -12,7 +12,7 @@ class NameSectionEdit extends Component {
 
     state = {}
     render() {
-        const { currentRecipe: recipe } = this.props;
+        const { newRecipe: recipe } = this.props;
         return (
             <Fragment>
                 <Header size='huge'>Recipe</Header>
@@ -30,12 +30,12 @@ Object.assign(NameSectionEdit.prototype, fieldChangeHandler);
 
 const mapStateToProps = state => {
     return {
-        currentRecipe: currentRecipeSelector(state)
+        newRecipe: newRecipeSelector(state)
     }
 };
 
 const mapDispatchToProps = {
-    setField: setCurrentRecipeFieldAction
+    setField: setRecipeFieldAction
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(NameSectionEdit);
