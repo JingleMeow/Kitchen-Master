@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Kitchen_Master.API.ApiModels.Recipe;
 using Kitchen_Master.API.Services.Recipe;
 using Kitchen_Master.Data.Models;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Kitchen_Master.API.Controllers
@@ -23,7 +23,7 @@ namespace Kitchen_Master.API.Controllers
         }
 
         [HttpPost]
-        public ActionResult<Recipe> Post(Recipe recipe)
+        public ActionResult<Recipe> Post(RecipeModel recipe)
         {
             var result = this._recipeService.AddRecipe(recipe);
             return Ok(result);

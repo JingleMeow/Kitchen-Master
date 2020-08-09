@@ -15,7 +15,7 @@ const initialState = {
     difficulty: 2,
     spicy: 0,
     recipeIngredients: [],
-    recipeDirections: ['']
+    directions: ['']
 };
 
 export default stateReducer(initialState, {
@@ -29,11 +29,11 @@ export default stateReducer(initialState, {
         return { ...state };
     },
     [ADD_RECIPE_DIRECTION]: (state) => {
-        state.recipeDirections.push('');
+        state.directions.push('');
         return { ...state };
     },
     [REMOVE_RECIPE_DIRECTION]: (state, payload) => {
-        state.recipeDirections.splice(payload, 1);
+        state.directions.splice(payload, 1);
         return { ...state };
     }
 });

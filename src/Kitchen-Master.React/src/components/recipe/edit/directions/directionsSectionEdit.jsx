@@ -15,14 +15,14 @@ class DirectionsSectionEdit extends Component {
             <Fragment>
                 <Header size='huge'>Direction</Header>
                 {
-                    currentRecipe.recipeDirections.map((direction, index) =>
+                    currentRecipe.directions.map((direction, index) =>
                         <Step key={index} index={index} direction={direction}
                             onChange={(event, data) => this.handleFieldChange(event, data)} />
                     )
                 }
                 <Button circular color='red' size='small'
                     icon='trash alternate' content='Remove Step'
-                    disabled={currentRecipe.recipeDirections.length < 2}
+                    disabled={currentRecipe.directions.length < 2}
                     onClick={this.handleRemoveStep} />
                 <Button circular color='teal' size='small'
                     icon='add' content='Add Step'
@@ -38,7 +38,7 @@ class DirectionsSectionEdit extends Component {
 
     handleRemoveStep = () => {
         const { currentRecipe, removeRecipeDirection } = this.props;
-        removeRecipeDirection(currentRecipe.recipeDirections.length - 1);
+        removeRecipeDirection(currentRecipe.directions.length - 1);
     }
 }
 

@@ -20,6 +20,8 @@ using Kitchen_Master.Data;
 using Kitchen_Master.Data.Models;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.AspNetCore.Http;
+using AutoMapper;
+using System.Reflection;
 
 namespace Kitchen_Master.API
 {
@@ -57,6 +59,8 @@ namespace Kitchen_Master.API
                         .AllowAnyMethod();
                 });
             });
+
+            services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
             services.AddJwt(this.Configuration);
 

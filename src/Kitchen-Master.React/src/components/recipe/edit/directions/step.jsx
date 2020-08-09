@@ -15,7 +15,7 @@ class Step extends Component {
                 </Label>
                 <Form className={styles.direction}>
                     <Form.TextArea rows={5} placeholder='Enter direction here'
-                        name={`recipeDirections.${index}`}
+                        name={`directions.${index}`}
                         value={direction}
                         onChange={onChange} />
                 </Form>
