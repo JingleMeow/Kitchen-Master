@@ -24,7 +24,6 @@ namespace Kitchen_Master.Data.Models
         public int UnitId { get; set; }
         [JsonIgnore]
         public Recipe Recipe { get; set; }
-        [JsonIgnore]
         public Ingredient Ingredient { get; set; }
         public Unit Unit { get; set; }
     }

@@ -23,7 +23,9 @@ namespace Kitchen_Master.Data.Models
         public ICollection<RecipeIngredient> RecipeIngredients { get; set; }
         public ICollection<Direction> Directions { get; set; }
         [Required]
+        [ForeignKey("Author")]
         public int AuthorId { get; set; }
+        public KmUser Author { get; set; }
         [Required]
         public DateTime CreatedTime { get; set; }
     }
