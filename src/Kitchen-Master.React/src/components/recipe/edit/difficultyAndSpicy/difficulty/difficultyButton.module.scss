@@ -1,3 +1,5 @@
+@import '../../../../../styles/variables';
+
 %difficultyButton {
     margin: 0rem!important;
     width: 4.5rem;
@@ -5,10 +7,6 @@
     padding-right: 0rem!important;
     color: white!important;
 }
-
-$easy-color: #5c9e46;
-$medium-color: #e99e2c;
-$hard-color: #eb6b2a;
 
 button.easy {
     @extend %difficultyButton;

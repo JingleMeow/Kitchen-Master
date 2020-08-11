@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Header, Segment, Icon, Button, Image, Dimmer } from 'semantic-ui-react';
 import { newRecipeSelector } from '_/redux/selectors/recipe';
 import { uploadCoverImageAction, setRecipeFieldAction } from '_/redux/actions/recipe/newRecipe';
+import { getImageUrl } from '_/utils/recipeUtils';
 
 class CoverImageSectionEdit extends Component {
     fileInputRef = createRef();
@@ -29,7 +30,7 @@ class CoverImageSectionEdit extends Component {
                     <Dimmer.Dimmable as={Segment} placeholder loading={isUpoading}
                         onMouseEnter={() => this.setState({ showDimmer: true })}
                         onMouseLeave={() => this.setState({ showDimmer: false })}>
-                        <Image src={`${process.env.API_IMAGE_URL}${newRecipe.coverImageId}.jpg`} fluid></Image>
+                        <Image src={getImageUrl(newRecipe.coverImageId)} fluid></Image>
                         <Dimmer active={showDimmer}>
                             <Header icon inverted>
                                 <Icon name='refresh' rotated='clockwise' />

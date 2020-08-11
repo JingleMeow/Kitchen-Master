@@ -7,7 +7,7 @@ export default function loadDefinitionsAction() {
             {
                 const state = getState();
                 if (state.shared.definitions)
-                    return;
+                    resolve();
 
                 dispatch(apiCallbackAction.get('common/definitions', false))
                     .then(response => {

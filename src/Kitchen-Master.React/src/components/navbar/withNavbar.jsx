@@ -16,7 +16,9 @@ function withNavbar(PageComponent, isInfoPage) {
 
         componentDidMount() {
             this.props.loadDefinitions()
-                .then(() => this.setState({ readyToLoadContent: true }));
+                .then(() => {
+                    this.setState({ readyToLoadContent: true });
+                })
         }
 
         render() {

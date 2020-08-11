@@ -1,0 +1,60 @@
+@import '../../../styles/variables';
+@import '../../../styles/styles';
+
+div.container {
+    @extend %whitePageContainer;
+}
+
+div.column {
+    padding-left: 0!important;
+    padding-right: 0!important;
+}
+
+div.difficultyColumn {
+    @extend div.column;
+
+    @include mobile {
+        padding-top: 0.5rem!important;
+    }
+}
+
+div.ingredientRow {
+    padding-left: 0!important;
+    padding-right: 0!important;
+    width: 100%;
+}
+
+div.author {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 3rem;
+    color: gray;
+    font-family: cursive;
+    font-style: italic;
+    @include mobile {
+        display: block;
+    }
+}
+
+div.difficulty {
+    display: inline-block;
+    vertical-align: middle;
+    flex-wrap: nowrap;
+    margin-right: 3rem;
+    @include mobile {
+        display: block;
+        padding-top: 0.75rem;
+        padding-bottom: 0.25rem;
+        flex-wrap: nowrap;
+    }
+}
+
+div.spicy {
+    display: inline-block;
+    vertical-align: middle;
+    flex-wrap: nowrap;
+    @include mobile {
+        display: block;
+        flex-wrap: nowrap;
+    }
+}

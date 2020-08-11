@@ -3,6 +3,13 @@ $km-topbarMenu-height-mobile: 3.5rem;
 $km-searchbar-height: 3.5rem;
 $km-bottombar-height: 3rem;
 
+$easy-color: #5c9e46;
+$medium-color: #e99e2c;
+$hard-color: #eb6b2a;
+
+$color-nonspicy: #a0a0a0;
+$color-spicy: #cd3738;
+
 @mixin mobile {
     @media screen and (max-width: 767px ) {
         @content

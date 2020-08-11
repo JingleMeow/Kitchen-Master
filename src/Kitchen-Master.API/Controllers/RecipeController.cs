@@ -22,11 +22,17 @@ namespace Kitchen_Master.API.Controllers
             this._recipeService = recipeService;
         }
 
+        [HttpGet("{id}")]
+        public ActionResult<Recipe> Get(int id)
+        {
+            return this._recipeService.GeFulltRecipeById(id);
+        }
+
         [HttpPost]
-        public ActionResult<Recipe> Post(RecipeModel recipe)
+        public IActionResult Post(RecipeModel recipe)
         {
             var result = this._recipeService.AddRecipe(recipe);
-            return Ok(result);
+            return Ok();
         }
     }
 }

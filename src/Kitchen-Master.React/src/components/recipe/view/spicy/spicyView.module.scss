@@ -1,0 +1,17 @@
+@import '../../../../styles/variables';
+
+%spicyIcon {
+    font-size: 2rem;
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
+}
+
+svg.nonspicy {
+    @extend %spicyIcon;
+    color: $color-nonspicy;
+}
+
+svg.spicy {
+    @extend %spicyIcon;
+    color: $color-spicy;
+}

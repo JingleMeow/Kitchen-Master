@@ -1,0 +1,53 @@
+div.ingredientItem {
+    display: table;
+    width: 100%;
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+    padding-left: 1rem;
+}
+
+div.altBackground {
+    background-color: #f9fafc;
+}
+
+div.altBackground1 {
+    background-color: #f9fafc;
+}
+
+div.altBackground2 {
+    background-color: #fafafa;
+}
+
+
+div.iconCell {
+    display: table-cell;
+    vertical-align: middle;
+    height: 100%;
+    width: 2rem;
+}
+
+svg.icon {
+    vertical-align: top;
+}
+
+div.textCell {
+    display: table-cell;
+    vertical-align: middle;
+    overflow-wrap: break-word;
+}
+
+div.amountCell {
+    display: table-cell;
+    text-align: right;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+}
+
+div.amountValue {
+    font-size: large;
+    text-align: center;
+}
+
+div.amountUnit {
+    text-align: center;
+}
