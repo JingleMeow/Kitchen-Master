@@ -4,7 +4,7 @@ import styles from './stepView.module.scss';
 
 const stepView = ({ direction }) => {
     return (
-        <Segment>
+        <Segment className={styles.step}>
             <Label color='olive' ribbon size='large'>
                 <Icon name='spoon' />
                 Step {direction.order}

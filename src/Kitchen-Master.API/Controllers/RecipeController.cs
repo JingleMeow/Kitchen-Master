@@ -23,6 +23,7 @@ namespace Kitchen_Master.API.Controllers
         }
 
         [HttpGet("{id}")]
+        [AllowAnonymous]
         public ActionResult<Recipe> Get(int id)
         {
             return this._recipeService.GeFulltRecipeById(id);
@@ -33,6 +34,13 @@ namespace Kitchen_Master.API.Controllers
         {
             var result = this._recipeService.AddRecipe(recipe);
             return Ok();
+        }
+
+        [HttpGet("search")]
+        [AllowAnonymous]
+        public ActionResult<List<RecipeAbstractModel>> Search([FromQuery]RecipeSearchOptions options)
+        {
+            return this._recipeService.SearchRecipes(options);
         }
     }
 }

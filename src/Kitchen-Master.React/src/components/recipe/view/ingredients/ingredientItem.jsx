@@ -20,7 +20,6 @@ const IngredientItem = ({ recipeIngredient, index }) => {
             <div className={styles.textCell}>
                 {ingredient.name}
             </div>
-            {/* <span className={styles.text}>{ingredient.name}</span> */}
             <div className={styles.amountCell}>
                 <Label color='orange'>
                     <div className={styles.amountValue}>{recipeIngredient.amount}</div>

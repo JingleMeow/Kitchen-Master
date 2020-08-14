@@ -1,0 +1,32 @@
+@import '../../../../styles/variables';
+
+div.icons {
+    display: inline-block;
+}
+
+%spicyIcon {
+    vertical-align: middle;
+    font-size: 2rem;
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
+}
+
+svg.nonspicy {
+    @extend %spicyIcon;
+    color: $color-nonspicy;
+}
+
+svg.spicy {
+    @extend %spicyIcon;
+    color: $color-spicy;
+}
+
+svg.grey {
+    @extend %spicyIcon;
+    color: lighten($color: $color-nonspicy, $amount: 30%);
+}
+
+svg.spicyGrey {
+    @extend %spicyIcon;
+    color: lighten($color: $color-spicy, $amount: 45%);
+}

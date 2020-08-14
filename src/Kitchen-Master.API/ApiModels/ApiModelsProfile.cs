@@ -13,6 +13,8 @@ namespace Kitchen_Master.API.ApiModels
         public ApiModelsProfile()
         {
             CreateMap<RecipeModel, DbModels.Recipe>();
+            CreateMap<DbModels.Recipe, RecipeAbstractModel>()
+                .ForMember(ram => ram.AuthorName, opt => opt.MapFrom(r => $"{r.Author.FirstName} {r.Author.LastName}"));
         }
     }
 }

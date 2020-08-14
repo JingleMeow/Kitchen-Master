@@ -2,9 +2,9 @@ import axios from 'axios';
 import _ from 'lodash';
 import { getAccessToken } from '../../utils/auth';
 
-function get(resourcePath, options) {
+function get(resourcePath, options, params) {
     const instance = createInstance(options);
-    return instance.get(resourcePath);
+    return instance.get(resourcePath, { params });
 }
 
 function post(resourcePath, data, options) {

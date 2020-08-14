@@ -14,7 +14,7 @@ svg.nonspicy {
 
 svg.nonspicyLight {
     @extend %spicyButton;
-    color: lighten($color: $color-nonspicy, $amount: 30%)!important;
+    color: lighten($color: $color-nonspicy, $amount: 35%)!important;
 }
 
 svg.spicy {

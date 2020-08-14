@@ -56,5 +56,14 @@ namespace Kitchen_Master.API.Services.Recipe
             this.SaveChanges();
             return recipe;
         }
+
+        public List<RecipeAbstractModel> SearchRecipes(RecipeSearchOptions options)
+        {
+            var query = this._recipeRepository.Query();
+            if (options.AuthorId != null)
+                query = query.Where(x => x.AuthorId == options.AuthorId);
+            var recipes = query.Include(x => x.Author);
+            return this._mapper.Map<List<RecipeAbstractModel>>(recipes.ToList());
+        }
     }
 }

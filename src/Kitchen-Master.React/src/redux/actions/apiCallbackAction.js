@@ -1,12 +1,12 @@
 import { kmApi } from '../../services/webapi';
 import { setLoaderAction } from './shared';
 
-function get(resourcePath, showLoader) {
+function get(resourcePath, params, showLoader = false) {
     return dispatch => {
         const options = {
             interceptor: showLoader ? buildShowLoaderInterceptor(dispatch) : {}
         }
-        return kmApi.get(resourcePath, options);
+        return kmApi.get(resourcePath, options, params);
     };
 }
 

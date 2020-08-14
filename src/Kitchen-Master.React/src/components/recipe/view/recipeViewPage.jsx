@@ -6,7 +6,6 @@ import withNavbar from '../../navbar/withNavbar';
 import DifficultyView from './difficulty/difficultyView';
 import SpicyView from './spicy/spicyView';
 import IngredientView from './ingredients/ingredientView';
-import Directions from './directions/directionsView';
 import { currentRecipeSelector } from '../../../redux/selectors/recipe'
 import { loadCurrentRecipeAction } from '_/redux/actions/recipe/currentRecipe'
 import { getImageUrl } from '_/utils/recipeUtils';
