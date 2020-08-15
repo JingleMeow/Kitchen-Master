@@ -4,3 +4,13 @@
 div.container {
     @extend %whitePageContainer;
 }
+
+div.topAction {
+    display: flex;
+    justify-content: space-between;
+
+    div {
+        vertical-align: middle;
+        margin: auto 0!important;
+    }
+}

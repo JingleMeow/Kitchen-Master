@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { Container, Header, Button } from 'semantic-ui-react';
 import withNavbar from '../../navbar/withNavbar';
 import RecipeList from './recipeList'
 import { currentUserSelector } from '_/redux/selectors/shared';
 import { recipeListSelector } from '_/redux/selectors/recipe';
 import { searchRecipesAction } from '_/redux/actions/recipe/list';
 import styles from './myRecipesPage.module.scss';
-import { Container, Header } from 'semantic-ui-react';
 
 class MyRecipesPage extends Component {
     state = {}
@@ -19,7 +20,12 @@ class MyRecipesPage extends Component {
         const { recipeList } = this.props;
         return (
             <Container className={styles.container}>
-                <Header size='small'>Your recipes ({recipeList.length}):</Header>
+                <div className={styles.topAction}>
+                    <Header size='small'>Your recipes ({recipeList.length}):</Header>
+                    <Button as={Link} to='/recipe/new'
+                        icon='add' color='teal' size='medium'
+                        content='New Recipe' />
+                </div>
                 <RecipeList recipes={recipeList} />
             </Container>
         );
