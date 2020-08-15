@@ -6,7 +6,7 @@ import { currentUserSelector } from '_/redux/selectors/shared';
 import { recipeListSelector } from '_/redux/selectors/recipe';
 import { searchRecipesAction } from '_/redux/actions/recipe/list';
 import styles from './myRecipesPage.module.scss';
-import { Container } from 'semantic-ui-react';
+import { Container, Header } from 'semantic-ui-react';
 
 class MyRecipesPage extends Component {
     state = {}
@@ -19,6 +19,7 @@ class MyRecipesPage extends Component {
         const { recipeList } = this.props;
         return (
             <Container className={styles.container}>
+                <Header size='small'>Your recipes ({recipeList.length}):</Header>
                 <RecipeList recipes={recipeList} />
             </Container>
         );

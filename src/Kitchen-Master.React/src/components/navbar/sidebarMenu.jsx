@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { Menu } from 'semantic-ui-react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUserCircle, faHome, faHeart, faHistory, faSignInAlt, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+import { faUserCircle, faHome, faBook, faHeart, faHistory, faSignInAlt, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import { currentUserSelector } from '_/redux/selectors/shared';
 import styles from './sidebarMenu.module.scss';
 
@@ -12,17 +13,29 @@ class SidebarMenu extends Component {
         return (
             <Menu vertical className={styles.sidebarMenu} >
                 {this.renderHeader()}
-                <Menu.Item as='a' className={styles.menuItem}>
+                <Menu.Item as={Link} to='/' className={styles.menuItem}>
                     <span>Home</span>
-                    <FontAwesomeIcon icon={faHome} size='2x' />
+                    <div>
+                        <FontAwesomeIcon icon={faHome} size='2x' />
+                    </div>
+                </Menu.Item>
+                <Menu.Item as={Link} to='/myRecipes' disabled={!currentUser} className={styles.menuItem}>
+                    <span>My Recipes</span>
+                    <div>
+                        <FontAwesomeIcon icon={faBook} size='2x' />
+                    </div>
                 </Menu.Item>
                 <Menu.Item as='a' disabled={!currentUser} className={styles.menuItem}>
                     <span>Favorite</span>
-                    <FontAwesomeIcon icon={faHeart} size='2x' />
+                    <div>
+                        <FontAwesomeIcon icon={faHeart} size='2x' />
+                    </div>
                 </Menu.Item>
                 <Menu.Item as='a' disabled={!currentUser} className={styles.menuItem}>
                     <span>History</span>
-                    <FontAwesomeIcon icon={faHistory} size='2x' />
+                    <div>
+                        <FontAwesomeIcon icon={faHistory} size='2x' />
+                    </div>
                 </Menu.Item>
                 {this.renderFooter()}
                 <Menu.Item />

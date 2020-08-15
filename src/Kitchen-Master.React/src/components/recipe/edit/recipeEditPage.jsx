@@ -31,7 +31,7 @@ class RecipeEditPage extends Component {
     }
 
     handleSave = () => {
-        const { newRecipe, saveRecipe } = this.props;
+        const { newRecipe, saveRecipe, history } = this.props;
         const directions = newRecipe.directions.map(
             (direction, index) => {
                 return {
@@ -49,7 +49,9 @@ class RecipeEditPage extends Component {
             }
         );
         const recipe = Object.assign({}, newRecipe, { directions, recipeIngredients });
-        saveRecipe(recipe);
+        saveRecipe(recipe)
+            .then(() =>
+                history.push('/myRecipes'));
     }
 }
 

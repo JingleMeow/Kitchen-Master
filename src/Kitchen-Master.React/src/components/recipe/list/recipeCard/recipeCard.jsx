@@ -8,10 +8,11 @@ import styles from './recipeCard.module.scss';
 const RecipeCard = ({ recipeAbstract }) => {
     return (
         <Card className={styles.card}>
-            <Image src={getImageUrl(recipeAbstract.coverImageId)} wrapped ui={false} />
+            <Image src={getImageUrl(recipeAbstract.coverImageId)} wrapped ui={false}
+                className={styles.coverImage} />
             <DifficultyLabel floating tag difficultyLevel={recipeAbstract.difficulty} />
             <Card.Content>
-                <Card.Header>{recipeAbstract.name}</Card.Header>
+                <Card.Header className={styles.title}>{recipeAbstract.name}</Card.Header>
                 <Card.Meta as='a' className={styles.author}>
                     <Icon name='user' />
                     {recipeAbstract.authorName}
