@@ -1,9 +1,9 @@
-import { stateReducer } from 'truefit-react-utils';
+import { createReducer } from '@reduxjs/toolkit';
 
 export const SET_CURRENT_RECIPE = 'SET_CURRENT_RECIPE';
 
 const initialState = null;
 
-export default stateReducer(initialState, {
-    [SET_CURRENT_RECIPE]: (state, payload) => payload,
+export default createReducer(initialState, {
+    [SET_CURRENT_RECIPE]: (state, { payload }) => payload
 })
