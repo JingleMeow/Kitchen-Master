@@ -9,5 +9,6 @@ namespace Kitchen_Master.Data.Models
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        public ICollection<LikedRecipe> LikedRecipes { get; set; }
     }
 }

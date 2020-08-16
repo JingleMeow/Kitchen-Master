@@ -22,10 +22,10 @@ namespace Kitchen_Master.Data.Models
         public Difficulty Difficulty { get; set; }
         public ICollection<RecipeIngredient> RecipeIngredients { get; set; }
         public ICollection<Direction> Directions { get; set; }
-        [Required]
         [ForeignKey("Author")]
-        public int AuthorId { get; set; }
+        public int? AuthorId { get; set; }
         public KmUser Author { get; set; }
+        public ICollection<LikedRecipe> Liked { get; set; }
         [Required]
         public DateTime CreatedTime { get; set; }
     }

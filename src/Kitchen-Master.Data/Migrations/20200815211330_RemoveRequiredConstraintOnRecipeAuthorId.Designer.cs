@@ -4,14 +4,16 @@ using Kitchen_Master.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace Kitchen_Master.DataModel.Migrations
+namespace Kitchen_Master.Data.Migrations
 {
     [DbContext(typeof(KitchenMasterDbContext))]
-    partial class KitchenMasterDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200815211330_RemoveRequiredConstraintOnRecipeAuthorId")]
+    partial class RemoveRequiredConstraintOnRecipeAuthorId
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -163,28 +165,6 @@ namespace Kitchen_Master.DataModel.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers");
-                });
-
-            modelBuilder.Entity("Kitchen_Master.Data.Models.LikedRecipe", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("RecipeId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("RecipeId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("LikedRecipes");
                 });
 
             modelBuilder.Entity("Kitchen_Master.Data.Models.Recipe", b =>
@@ -380,21 +360,6 @@ namespace Kitchen_Master.DataModel.Migrations
                     b.HasOne("Kitchen_Master.Data.Models.Recipe", null)
                         .WithMany("Directions")
                         .HasForeignKey("RecipeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Kitchen_Master.Data.Models.LikedRecipe", b =>
-                {
-                    b.HasOne("Kitchen_Master.Data.Models.Recipe", "Recipe")
-                        .WithMany("Liked")
-                        .HasForeignKey("RecipeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Kitchen_Master.Data.Models.KmUser", "User")
-                        .WithMany("LikedRecipes")
-                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

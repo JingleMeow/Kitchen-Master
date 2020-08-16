@@ -17,6 +17,7 @@ namespace Kitchen_Master.Data
         public DbSet<Recipe> Recipes { get; set; }
         public DbSet<Direction> RecipeDirections { get; set; }
         public DbSet<RecipeIngredient> RecipeIngredients { get; set; }
+        public DbSet<LikedRecipe> LikedRecipes { get; set; }
         public DbSet<Unit> Units { get; set; }
     }
 }
