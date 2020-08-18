@@ -23,7 +23,7 @@ class App extends Component {
     const { store, isLoading } = this.props;
     return (
       <Provider store={store}>
-        <Dimmer active={isLoading}>
+        <Dimmer active={isLoading} page>
           <Loader size="huge">Loading...</Loader>
         </Dimmer>
         <BrowserRouter>

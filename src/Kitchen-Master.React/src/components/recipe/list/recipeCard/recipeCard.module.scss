@@ -41,7 +41,7 @@ a.author {
 }
 
 div.bottomBar {
-    padding: 0.5rem 1rem!important;
+    padding: 0.4rem 1rem 0.3rem 1rem!important;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -50,4 +50,24 @@ div.bottomBar {
 
 div.bottomBar::after {
     display: none!important;
+}
+
+div.like {
+    text-align: center;
+}
+
+div.likeDisclickable {
+    pointer-events: none;
+}
+
+div.likeClickable {
+    cursor: pointer;
+}
+
+i.likeIconOn {
+    color: #e12347;
+}
+
+div.likeAmount {
+    font-size: 1rem;
 }

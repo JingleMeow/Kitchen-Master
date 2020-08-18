@@ -42,5 +42,26 @@ namespace Kitchen_Master.API.Controllers
         {
             return this._recipeService.SearchRecipes(options);
         }
+
+        [HttpGet("likedRecipeIds")]
+        public ActionResult<List<int>> GetLikedRecipeIds()
+        {
+            var likedRecipes = this._recipeService.GetLikedRecipes();
+            return likedRecipes.Select(x => x.Id).ToList();
+        }
+
+        [HttpPost("likeRecipe")]
+        public IActionResult LikeRecipe(LikeRecipeModel likeRecipeModel)
+        {
+            this._recipeService.LikeRecipe(likeRecipeModel.RecipeId);
+            return Ok();
+        }
+
+        [HttpPost("cancelLikeRecipe")]
+        public IActionResult CancelLikeRecipe(LikeRecipeModel likeRecipeModel)
+        {
+            this._recipeService.CancelLikeRecipe(likeRecipeModel.RecipeId);
+            return Ok();
+        }
     }
 }

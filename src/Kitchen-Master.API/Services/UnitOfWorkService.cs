@@ -9,7 +9,7 @@ namespace Kitchen_Master.API.Services
 {
     public abstract class UnitOfWorkService
     {
-        private readonly KitchenMasterDbContext dbContext;
+        protected readonly KitchenMasterDbContext dbContext;
 
         public UnitOfWorkService(KitchenMasterDbContext dbContext)
         {
