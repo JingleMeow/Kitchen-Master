@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { Card, Image, Icon } from 'semantic-ui-react'
 import cn from 'classnames';
 import DifficultyLabel from '../../common/difficultyLabel/difficultyLabel';
@@ -39,8 +40,10 @@ const RecipeCard = ({
                 className={styles.coverImage} />
             <DifficultyLabel floating tag difficultyLevel={recipeAbstract.difficulty} />
             <Card.Content>
-                <Card.Header className={styles.title}>{recipeAbstract.name}</Card.Header>
-                <Card.Meta as='a' className={styles.author}>
+                <Card.Header as={Link} to={`/recipe/${recipeAbstract.id}`} className={styles.title}>
+                    {recipeAbstract.name}
+                </Card.Header>
+                <Card.Meta as={Link} to={`/recipes/s?authorId=${recipeAbstract.authorId}`} className={styles.author}>
                     <Icon name='user' />
                     {recipeAbstract.authorName}
                 </Card.Meta>
