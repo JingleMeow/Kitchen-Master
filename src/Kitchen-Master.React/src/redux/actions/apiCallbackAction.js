@@ -6,7 +6,16 @@ function get(resourcePath, params, showLoader = false) {
         const options = {
             interceptor: showLoader ? buildShowLoaderInterceptor(dispatch) : {}
         }
-        return kmApi.get(resourcePath, options, params);
+        return kmApi.get(resourcePath, options);
+    };
+}
+
+function getWithParam(resourcePath, params, showLoader = false) {
+    return dispatch => {
+        const options = {
+            interceptor: showLoader ? buildShowLoaderInterceptor(dispatch) : {}
+        }
+        return kmApi.getWithParams(resourcePath, options, params);
     };
 }
 
@@ -34,7 +43,7 @@ function putImage(resourcePath, image) {
     }
 }
 
-export default { get, post, putImage }
+export default { get, getWithParam, post, putImage }
 
 function buildShowLoaderInterceptor(dispatch) {
     return {

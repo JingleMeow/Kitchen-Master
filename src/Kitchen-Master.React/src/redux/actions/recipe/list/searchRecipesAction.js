@@ -5,7 +5,7 @@ import loadLikedRecipeIds from '../../userData/loadLikedRecipeIds';
 export default function searchRecipesAction(query) {
     return dispatch => new Promise((resolve, reject) => {
         dispatch(loadLikedRecipeIds());
-        dispatch(apiCallbackAction.get('recipe/search', query, true))
+        dispatch(apiCallbackAction.getWithParam('recipe/search', query, true))
             .then(response => {
                 dispatch(setRecipeListAction(response.data));
                 resolve(response);

@@ -2,7 +2,12 @@ import axios from 'axios';
 import _ from 'lodash';
 import { getAccessToken } from '../../utils/auth';
 
-function get(resourcePath, options, params) {
+function get(resourcePath, options) {
+    const instance = createInstance(options);
+    return instance.get(resourcePath);
+}
+
+function getWithParams(resourcePath, options, params) {
     const instance = createInstance(options);
     return instance.get(resourcePath, { params });
 }
@@ -71,6 +76,7 @@ function getConfig() {
 
 export default {
     get,
+    getWithParams,
     post,
     put
 }

@@ -8,13 +8,17 @@ export default function loadDefinitionsAction() {
                 const state = getState();
                 if (state.shared.definitions)
                     resolve();
-
+                console.log(1);
                 dispatch(apiCallbackAction.get('common/definitions', false))
                     .then(response => {
+                        console.log(response.data);
                         dispatch(setDefinitionsAction(response.data));
                         resolve();
                     })
-                    .catch(error => reject(error));
+                    .catch(error => {
+                        console.log(2);
+                        reject(error);
+                    });
             }
         })
 }
