@@ -37,7 +37,7 @@ class RecipeViewPage extends Component {
                 <Grid stackable>
                     <Grid.Row>
                         <Grid.Column className={styles.column}>
-                            <Header size='huge'>Mac and Shew's</Header>
+                            <Header size='huge'>{currentRecipe.name}</Header>
                         </Grid.Column>
                     </Grid.Row>
                     <div className={styles.row}>
