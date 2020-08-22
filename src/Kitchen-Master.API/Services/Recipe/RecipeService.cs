@@ -2,11 +2,13 @@
 using Kitchen_Master.API.ApiModels.Recipe;
 using Kitchen_Master.API.Services.Account;
 using Kitchen_Master.Data;
+using Kitchen_Master.Data.Models;
 using Kitchen_Master.Data.Repositories;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using DbModels = Kitchen_Master.Data.Models;
 
@@ -62,11 +64,10 @@ namespace Kitchen_Master.API.Services.Recipe
 
         public List<RecipeAbstractModel> SearchRecipes(RecipeSearchOptions options)
         {
-            var query = this._recipeRepository.Query();
-            if (options.AuthorId != null)
-                query = query.Where(x => x.AuthorId == options.AuthorId);
-            var recipes = query.Include(x => x.Author).Include(x => x.Liked);
-            return this._mapper.Map<List<RecipeAbstractModel>>(recipes.ToList());
+            if (options.QueryText == null)
+                return this.SearchRecipesWithoutQueryText(options);
+            else
+                return this.SearchRecipesWithQueryText(options);
         }
 
         public List<DbModels.Recipe> GetLikedRecipes(int? userId = null)
@@ -102,5 +103,28 @@ namespace Kitchen_Master.API.Services.Recipe
                 this.dbContext.SaveChanges();
             }
         }
+
+        #region Private Methods
+        public List<RecipeAbstractModel> SearchRecipesWithoutQueryText(RecipeSearchOptions options)
+        {
+            var query = this._recipeRepository.Query();
+            if (options.Difficulty != null)
+                query = query.Where(x => x.Difficulty == options.Difficulty);
+            if (options.Spicy != null)
+                query = query.Where(x => x.Spicy == options.Spicy);
+            if (options.AuthorId != null)
+                query = query.Where(x => x.AuthorId == options.AuthorId);
+            var recipes = query.Include(x => x.Author).Include(x => x.Liked);
+            return this._mapper.Map<List<RecipeAbstractModel>>(recipes.ToList());
+        }
+
+        public List<RecipeAbstractModel> SearchRecipesWithQueryText(RecipeSearchOptions options)
+        {
+            var recipes = this.dbContext.Set<RecipeAbstract>()
+                .FromSqlInterpolated($"spSearchRecipes @QueryText={options.QueryText}, @Difficulty={options.Difficulty}, @Spicy={options.Spicy}")
+                .ToList();
+            return this._mapper.Map<List<RecipeAbstractModel>>(recipes);
+        }
+        #endregion
     }
 }

@@ -19,5 +19,11 @@ namespace Kitchen_Master.Data
         public DbSet<RecipeIngredient> RecipeIngredients { get; set; }
         public DbSet<LikedRecipe> LikedRecipes { get; set; }
         public DbSet<Unit> Units { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+            builder.Entity<RecipeAbstract>().HasNoKey().ToView(null);
+        }
     }
 }

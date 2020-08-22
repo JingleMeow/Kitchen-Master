@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Kitchen_Master.API.ApiModels.Recipe;
+using Kitchen_Master.Data.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +17,7 @@ namespace Kitchen_Master.API.ApiModels
             CreateMap<DbModels.Recipe, RecipeAbstractModel>()
                 .ForMember(ram => ram.AuthorName, opt => opt.MapFrom(r => $"{r.Author.FirstName} {r.Author.LastName}"))
                 .ForMember(ram => ram.Likes, opt => opt.MapFrom(r => r.Liked.Count));
+            CreateMap<RecipeAbstract, RecipeAbstractModel>();
         }
     }
 }
