@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { Container, Header, Button } from 'semantic-ui-react';
+import { Container, Header, Button, Divider } from 'semantic-ui-react';
 import withNavbar from '../../navbar/withNavbar';
-import RecipeList from './recipeList'
+import RecipeList from '../list/recipeList'
 import { currentUserSelector } from '_/redux/selectors/shared';
 import { recipeListSelector } from '_/redux/selectors/recipe';
 import { searchRecipesAction } from '_/redux/actions/recipe/list';
@@ -26,6 +26,7 @@ class MyRecipesPage extends Component {
                         icon='add' color='teal' size='medium'
                         content='New Recipe' />
                 </div>
+                <Divider />
                 <RecipeList recipes={recipeList} />
             </Container>
         );

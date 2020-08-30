@@ -43,7 +43,7 @@ const RecipeCard = ({
                 <Card.Header as={Link} to={`/recipe/${recipeAbstract.id}`} className={styles.title}>
                     {recipeAbstract.name}
                 </Card.Header>
-                <Card.Meta as={Link} to={`/recipes/s?authorId=${recipeAbstract.authorId}`} className={styles.author}>
+                <Card.Meta as={Link} to={`/searchRecipes?a=${recipeAbstract.authorId}`} className={styles.author}>
                     <Icon name='user' />
                     {recipeAbstract.authorName}
                 </Card.Meta>

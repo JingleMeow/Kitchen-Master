@@ -1,20 +1,13 @@
-import React, { Component, Fragment } from 'react';
-import { Menu, Input, Button } from 'semantic-ui-react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
-import PropTypes from 'prop-types';
+import React from 'react';
+import { Menu } from 'semantic-ui-react';
 import styles from './mobileSearchBar.module.scss';
+import SearchInput from './searchInput';
 
 const MobileSearchBar = () => {
     return (
         <Menu inverted borderless attached size='large' className={styles.searchBarMenu}>
             <Menu.Item className={styles.searchItem}>
-                <Input
-                    action={
-                        <Button color='teal' className={styles.searchButton}>
-                            <FontAwesomeIcon icon={faSearch}></FontAwesomeIcon>
-                        </Button>
-                    } />
+                <SearchInput iconSize='1x' />
             </Menu.Item>
         </Menu>
     );

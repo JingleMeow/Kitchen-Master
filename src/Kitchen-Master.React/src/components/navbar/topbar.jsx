@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Menu, Image, Input, Button, Responsive, Divider } from 'semantic-ui-react';
+import { Menu, Image, Responsive } from 'semantic-ui-react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars, faUtensils, faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faUtensils } from '@fortawesome/free-solid-svg-icons';
 import PropTypes from 'prop-types';
+import SearchInput from './searchInput';
 import TopbarMenu from './topbarMenu';
 import AccountInfo from './accountInfo';
 import styles from './topbar.module.scss';
@@ -24,12 +25,7 @@ class Topbar extends Component {
                 {!isInfoPage &&
                     <Responsive as={Menu.Item} className={styles.searchItem}
                         minWidth={Responsive.onlyTablet.minWidth}>
-                        <Input
-                            action={
-                                <Button color='teal' className={styles.searchButton}>
-                                    <FontAwesomeIcon icon={faSearch} size='lg'></FontAwesomeIcon>
-                                </Button>
-                            } />
+                        <SearchInput iconSize='lg' />
                     </Responsive>
                 }
                 <Responsive as={Menu.Item} position='right' className={styles.accoutInfo}

@@ -22,3 +22,27 @@ export function getIngredientIcon(ingredientType) {
             return faFlask;
     }
 }
+
+export function parseDifficulty(input) {
+    const difficulty = Number.parseInt(input);
+    if (Number.isInteger(difficulty) && difficulty >= 1 && difficulty <= 3)
+        return difficulty;
+    else
+        return -1;
+}
+
+export function parseSpicy(input) {
+    const spicy = Number.parseInt(input);
+    if (Number.isInteger(spicy) && spicy >= 0 && spicy <= 4)
+        return spicy;
+    else
+        return -1;
+}
+
+export function parseAuthorId(input) {
+    const authorId = Number.parseInt(input);
+    if (Number.isInteger(authorId) && authorId > 0)
+        return authorId;
+    else
+        return -1;
+}
