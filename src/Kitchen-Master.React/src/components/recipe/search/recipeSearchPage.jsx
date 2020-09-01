@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import queryString from 'query-string';
-import { Header, Divider } from 'semantic-ui-react';
+import { Header, Divider, Responsive, Form, Dropdown } from 'semantic-ui-react';
 import withNavbar from '../../navbar/withNavbar';
 import DifficultyRadioGroup from './difficultyRadioGroup';
+import DifficultyDropdown from './difficultyDropdown';
 import SpicyRadioGroup from './spicyRadioGroup';
 import RecipeList from '../list/recipeList';
 import { recipeListSelector } from '../../../redux/selectors/recipe';
 import { parseDifficulty, parseSpicy } from '../../../utils/recipeUtils';
 import { searchRecipesAction } from '../../../redux/actions/recipe/list';
 import styles from './recipeSearchPage.module.scss';
+import SpicyDropdown from './spicyDropdown';
 
 class RecipeSearchPage extends Component {
 
@@ -32,13 +34,25 @@ class RecipeSearchPage extends Component {
         const { recipeList } = this.props;
         return (
             <div className={styles.container}>
-                <div className={styles.leftRail}>
+                <Responsive as='div' minWidth={Responsive.onlyTablet.minWidth} className={styles.leftRail}>
                     <div style={{ marginLeft: 'auto', marginRight: '3.5rem', width: 'fit-content' }}>
                         <DifficultyRadioGroup value={queryParams.difficulty} onChange={this.handleDifficultyChange} />
                         <Divider section hidden />
                         <SpicyRadioGroup value={queryParams.spicy} onChange={this.handleSpicyChange} />
                     </div>
-                </div>
+                </Responsive>
+                <Responsive as='div' maxWidth={Responsive.onlyMobile.maxWidth} className={styles.mobileFilter}>
+                    <Form>
+                        <Form.Group widths='16' className={styles.filterGroup}>
+                            <Form.Field width='8'>
+                                <DifficultyDropdown value={queryParams.difficulty} onChange={this.handleDifficultyChange} />
+                            </Form.Field>
+                            <Form.Field width='8'>
+                                <SpicyDropdown value={queryParams.spicy} onChange={this.handleSpicyChange} />
+                            </Form.Field>
+                        </Form.Group>
+                    </Form>
+                </Responsive>
                 <div className={styles.list}>
                     <Header size='small'>Search Result({recipeList.length}):</Header>
                     <RecipeList recipes={recipeList} />
