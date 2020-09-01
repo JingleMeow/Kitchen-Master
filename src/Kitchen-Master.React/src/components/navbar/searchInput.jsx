@@ -22,6 +22,7 @@ class SearchInput extends Component {
         const { iconSize } = this.props;
         return (
             <Input
+                placeholder='Enter recipe name or ingredients'
                 value={this.state.queryText}
                 onKeyPress={this.handleKeyPress}
                 onChange={this.handleChange}
