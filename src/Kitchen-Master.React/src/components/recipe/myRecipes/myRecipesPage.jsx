@@ -21,7 +21,7 @@ class MyRecipesPage extends Component {
         return (
             <Container className={styles.container}>
                 <div className={styles.topAction}>
-                    <Header size='small'>Your recipes ({recipeList.length}):</Header>
+                    <Header size='small'>My recipes ({recipeList.length}):</Header>
                     <Button as={Link} to='/recipe/new'
                         icon='add' color='teal' size='medium'
                         content='New Recipe' />
