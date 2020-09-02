@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import { Dimmer, Loader } from 'semantic-ui-react';
 import { getCurrentUser } from './utils/auth';
 import { LoginPage, LoggedOutPage, RegisterPage, ConfirmationEmailSentPage, AccountConfirmationPage, AccountConfirmedPage } from './components/account';
-import { RecipeEditPage, RecipeViewPage, MyRecipesPage, RecipeSearchPage } from './components/recipe'
+import { RecipeEditPage, RecipeViewPage, MyRecipesPage, MyFavoritePage, RecipeSearchPage } from './components/recipe'
 import { HomePage, FofPage } from './components';
 import { loaderSelector, currentUserSelector } from './redux/selectors/shared';
 import { setCurrentUserAction } from './redux/actions/shared/setCurrentUserAction';
@@ -38,6 +38,7 @@ class App extends Component {
             <Route path="/recipe/new" exact component={RecipeEditPage} />
             <Route path="/recipe/:id" component={RecipeViewPage} />
             <Route path='/myRecipes' component={MyRecipesPage} />
+            <Route path='/myFavorite' component={MyFavoritePage} />
             <Route path='/searchRecipes' component={RecipeSearchPage} />
             <Route path='/' component={FofPage} />
           </Switch>

@@ -25,7 +25,7 @@ class SidebarMenu extends Component {
                         <FontAwesomeIcon icon={faBook} size='2x' />
                     </div>
                 </Menu.Item>
-                <Menu.Item as='a' disabled={!currentUser} className={styles.menuItem}>
+                <Menu.Item as={Link} to='/myFavorite' disabled={!currentUser} className={styles.menuItem}>
                     <span>Favorite</span>
                     <div>
                         <FontAwesomeIcon icon={faHeart} size='2x' />

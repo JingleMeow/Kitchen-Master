@@ -32,8 +32,8 @@ const RecipeCard = ({
             likeRecipe(recipeAbstract.id);
         else
             cancelLikeRecipe(recipeAbstract.id);
-        //console.log(isLiked);
     }
+
     return (
         <Card className={styles.card}>
             <Image src={getImageUrl(recipeAbstract.coverImageId)} wrapped ui={false}

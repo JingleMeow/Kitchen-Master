@@ -114,6 +114,8 @@ namespace Kitchen_Master.API.Services.Recipe
                 query = query.Where(x => x.Spicy == options.Spicy);
             if (options.AuthorId != null)
                 query = query.Where(x => x.AuthorId == options.AuthorId);
+            if (options.LikeByUserId != null)
+                query = query.Where(x => x.Liked.Any(lr => lr.UserId == options.LikeByUserId));
             var recipes = query.Include(x => x.Author).Include(x => x.Liked);
             return this._mapper.Map<List<RecipeAbstractModel>>(recipes.ToList());
         }

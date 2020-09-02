@@ -16,6 +16,7 @@ class MyRecipesPage extends Component {
         const { currentUser, searchRecipes } = this.props;
         searchRecipes({ authorId: currentUser.nameid });
     }
+
     render() {
         const { recipeList } = this.props;
         return (

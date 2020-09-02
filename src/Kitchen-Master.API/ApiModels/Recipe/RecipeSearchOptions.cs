@@ -12,5 +12,6 @@ namespace Kitchen_Master.API.ApiModels.Recipe
         public int? AuthorId { get; set; }
         public Difficulty? Difficulty { get; set; }
         public Spicy? Spicy { get; set; }
+        public int? LikeByUserId { get; set; }
     }
 }

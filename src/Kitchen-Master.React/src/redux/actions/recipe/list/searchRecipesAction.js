@@ -26,5 +26,7 @@ function fixQueryParameters(query) {
         newQuery.spicy = query.spicy;
     if (query.authorId > 0)
         newQuery.authorId = query.authorId;
+    if (query.likeByUserId)
+        newQuery.likeByUserId = query.likeByUserId;
     return newQuery;
 }

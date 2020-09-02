@@ -15,7 +15,6 @@ export default createReducer(initialState, {
     },
     [DECREASE_LIKE_OF_RECIPE]: (state, { payload }) => {
         const recipe = state.find(x => x.id === payload);
-        console.log(recipe);
         if (recipe)
             recipe.likes--;
     }
