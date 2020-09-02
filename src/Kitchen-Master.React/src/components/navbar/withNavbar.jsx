@@ -44,7 +44,10 @@ function withNavbar(PageComponent, isInfoPage) {
                             {readyToLoadContent &&
                                 <PageComponent {...this.props} />}
                         </div>
-                        <div className={styles.footer}></div>
+                        <div className={styles.footer}>
+                            <div>2020 Kitchen-Master, Ming's practice project</div>
+                            <a href="mailto: tongmh2006@gmail.com"><u>Contact Me</u></a>
+                        </div>
                     </Sidebar.Pusher>
                 </Sidebar.Pushable >
             );

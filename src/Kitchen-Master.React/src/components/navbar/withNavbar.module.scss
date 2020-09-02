@@ -35,4 +35,15 @@ div.footer {
     right: 0rem;
     height: $km-bottombar-height;
     z-index: 1;
+
+    color: white;
+    text-align: center;
+
+    div {
+        margin-top: 0.75rem;
+    }
+
+    a {
+        color: white;
+    }
 }
