@@ -1,0 +1,19 @@
+div.like {
+    text-align: center;
+}
+
+div.likeDisclickable {
+    pointer-events: none;
+}
+
+div.likeClickable {
+    cursor: pointer;
+}
+
+i.likeIconOn {
+    color: #e12347;
+}
+
+div.likeAmount {
+    font-size: 1rem;
+}
