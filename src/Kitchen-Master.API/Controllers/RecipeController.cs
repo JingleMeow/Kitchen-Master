@@ -4,7 +4,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using Kitchen_Master.API.ApiModels.Recipe;
 using Kitchen_Master.API.Services.Recipe;
-using Kitchen_Master.Data.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -24,9 +23,9 @@ namespace Kitchen_Master.API.Controllers
 
         [HttpGet("{id}")]
         [AllowAnonymous]
-        public ActionResult<Recipe> Get(int id)
+        public ActionResult<ExtendedRecipeModel> Get(int id)
         {
-            return this._recipeService.GeFulltRecipeById(id);
+            return this._recipeService.GeFullRecipeById(id);
         }
 
         [HttpPost]

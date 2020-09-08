@@ -14,6 +14,9 @@ namespace Kitchen_Master.API.ApiModels
         public ApiModelsProfile()
         {
             CreateMap<RecipeModel, DbModels.Recipe>();
+            CreateMap<DbModels.Recipe, ExtendedRecipeModel>()
+                .ForMember(erm => erm.AuthorName, opt => opt.MapFrom(r => $"{r.Author.FirstName} {r.Author.LastName}"))
+                .ForMember(erm => erm.Likes, opt => opt.MapFrom(r => r.Liked.Count));
             CreateMap<DbModels.Recipe, RecipeModel>();
             CreateMap<DbModels.Recipe, RecipeAbstractModel>()
                 .ForMember(ram => ram.AuthorName, opt => opt.MapFrom(r => $"{r.Author.FirstName} {r.Author.LastName}"))

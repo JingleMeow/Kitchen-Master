@@ -1,16 +1,17 @@
 import React, { Component } from 'react';
-import { Container, Grid, Divider, Header, Image, Segment, Label, Icon } from 'semantic-ui-react';
+import { Container, Grid, Divider, Header, Image, Segment, Label, Icon, Button } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import withNavbar from '../../navbar/withNavbar';
 import DifficultyView from './difficulty/difficultyView';
 import SpicyView from './spicy/spicyView';
+import LikeButton from './like/likeButton';
 import IngredientView from './ingredients/ingredientView';
+import DirectionsView from './directions/directionsView';
 import { currentRecipeSelector } from '../../../redux/selectors/recipe'
 import { loadCurrentRecipeAction } from '_/redux/actions/recipe/currentRecipe'
 import { getImageUrl } from '_/utils/recipeUtils';
 import styles from './recipeViewPage.module.scss';
-import DirectionsView from './directions/directionsView';
 
 class RecipeViewPage extends Component {
     state = {
@@ -42,7 +43,7 @@ class RecipeViewPage extends Component {
                     </Grid.Row>
                     <div className={styles.row}>
                         <div className={styles.author}>
-                            by {currentRecipe.author.firstName} {currentRecipe.author.lastName}
+                            by {currentRecipe.authorName}
                         </div>
                         <div className={styles.difficulty}>
                             <DifficultyView difficultyLevel={currentRecipe.difficulty} />
@@ -54,6 +55,11 @@ class RecipeViewPage extends Component {
                     <Grid.Row columns={1}>
                         <Grid.Column className={styles.column}>
                             <Image src={getImageUrl(currentRecipe.coverImageId)} fluid />
+                        </Grid.Column>
+                    </Grid.Row>
+                    <Grid.Row columns={2}>
+                        <Grid.Column>
+                            <LikeButton recipeId={currentRecipe.id} likes={currentRecipe.likes} />
                         </Grid.Column>
                     </Grid.Row>
                     <Grid.Row>

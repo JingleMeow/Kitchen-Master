@@ -34,12 +34,7 @@ namespace Kitchen_Master.API.Services.Recipe
             this._mapper = mapper;
         }
 
-        public DbModels.Recipe GetRecipeById(int recipeId)
-        {
-            return this._recipeRepository.GetById(recipeId);
-        }
-
-        public DbModels.Recipe GeFulltRecipeById(int recipeId)
+        public ExtendedRecipeModel GeFullRecipeById(int recipeId)
         {
             var recipe = this._recipeRepository
                 .Query()
@@ -48,8 +43,9 @@ namespace Kitchen_Master.API.Services.Recipe
                 .Include(r => r.RecipeIngredients).ThenInclude(ri => ri.Unit)
                 .Include(r => r.Directions)
                 .Include(r => r.Author)
+                .Include(r => r.Liked)
                 .FirstOrDefault();
-            return recipe;
+            return this._mapper.Map<ExtendedRecipeModel>(recipe);
         }
 
         public DbModels.Recipe AddRecipe(RecipeModel recipeModel)

@@ -1,8 +1,7 @@
 import { createReducer } from '@reduxjs/toolkit';
+import { INCREASE_LIKE_OF_RECIPE, DECREASE_LIKE_OF_RECIPE } from '../../actions/recipe/likeRecipeAction';
 
 export const SET_RECIPE_LIST = 'SET_RECIPE_LIST';
-export const INCREASE_LIKE_OF_RECIPE = 'INCREASE_LIKE_OF_RECIPE';
-export const DECREASE_LIKE_OF_RECIPE = 'DECREASE_LIKE_OF_RECIPE';
 
 const initialState = [];
 
