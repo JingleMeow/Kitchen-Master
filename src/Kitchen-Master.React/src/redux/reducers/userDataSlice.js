@@ -5,6 +5,7 @@ const userDataSlice = createSlice({
     initialState: {
         likedRecipeIds: null,
         isLoadingLikedRecipeIds: false,
+        userMenu: [],
     },
     reducers: {
         setLikedRecipeIds: (state, { payload }) => {
@@ -21,6 +22,17 @@ const userDataSlice = createSlice({
         },
         setLoadingLikedRecipeIds: (state, { payload }) => {
             state.isLoadingLikedRecipeIds = payload;
+        },
+        setUserMenu: (state, { payload }) => {
+            state.userMenu = payload;
+        },
+        addMenuRecipe: (state, { payload }) => {
+            state.userMenu.push(payload);
+        },
+        removeMenuRecipe: (state, { payload }) => {
+            const index = state.userMenu.findIndex(x => x.id === payload);
+            if (index >= 0)
+                state.userMenu.splice(index, 1);
         }
     }
 });
@@ -29,5 +41,8 @@ export const {
     setLikedRecipeIds,
     addLikeRecipe,
     removeLikedRecipe,
-    setLoadingLikedRecipeIds } = userDataSlice.actions;
+    setLoadingLikedRecipeIds,
+    setUserMenu,
+    addMenuRecipe,
+    removeMenuRecipe } = userDataSlice.actions;
 export default userDataSlice.reducer;

@@ -5,6 +5,7 @@ import SidebarMenu from './sidebarMenu';
 import Topbar from './topBar';
 import MobileSearchBar from './mobileSearchBar';
 import { loadDefinitionsAction } from '_/redux/actions/shared';
+import loadUserMenu from '../../redux/actions/userData/loadUserMenu';
 import styles from './withNavbar.module.scss';
 
 function withNavbar(PageComponent, isInfoPage) {
@@ -76,7 +77,8 @@ function withNavbar(PageComponent, isInfoPage) {
     };
 
     const mapDispatchToProps = {
-        loadDefinitions: loadDefinitionsAction
+        loadDefinitions: loadDefinitionsAction,
+        loadUserMenu: loadUserMenu
     }
     return connect(null, mapDispatchToProps)(WithNavbar);
 }

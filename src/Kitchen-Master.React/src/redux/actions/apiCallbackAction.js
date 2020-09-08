@@ -28,6 +28,15 @@ function post(resourcePath, data, showLoader) {
     };
 }
 
+function del(resourcePath, data, showLoader) {
+    return dispatch => {
+        const options = {
+            interceptor: showLoader ? buildShowLoaderInterceptor(dispatch) : {}
+        }
+        return kmApi.del(resourcePath, data, options);
+    };
+}
+
 function putImage(resourcePath, image) {
     return dispatch => {
         const options = {

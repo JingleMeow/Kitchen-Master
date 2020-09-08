@@ -10,17 +10,26 @@ import { RecipeEditPage, RecipeViewPage, MyRecipesPage, MyFavoritePage, RecipeSe
 import { HomePage, FofPage } from './components';
 import { loaderSelector, currentUserSelector } from './redux/selectors/shared';
 import { setCurrentUserAction } from './redux/actions/shared/setCurrentUserAction';
+import loadUserMenu from './redux/actions/userData/loadUserMenu';
 
 class App extends Component {
+  state = {
+    readyToLoadContent: false
+  }
   componentDidMount() {
     const currentUser = getCurrentUser();
     if (!this.props.currentUser && currentUser) {
       this.props.setCurrentUser(currentUser);
+      this.loadUserData();
+    } else {
+      this.setState({ readyToLoadContent: true });
     }
   }
 
   render() {
     const { store, isLoading } = this.props;
+    if (!this.state.readyToLoadContent)
+      return null;
     return (
       <Provider store={store}>
         <Dimmer active={isLoading} page>
@@ -46,6 +55,12 @@ class App extends Component {
       </Provider >
     );
   }
+
+  loadUserData = () => {
+    const userMenuPromise = this.props.loadUserMenu();
+    Promise.all([userMenuPromise])
+      .then(() => this.setState({ readyToLoadContent: true }));
+  }
 }
 
 App.propTypes = {
@@ -60,7 +75,8 @@ const mapStateToProps = state => {
 }
 
 const mapDispachToProps = {
-  setCurrentUser: setCurrentUserAction
+  setCurrentUser: setCurrentUserAction,
+  loadUserMenu
 }
 
 export default hot(connect(mapStateToProps, mapDispachToProps)(App));

@@ -25,3 +25,7 @@ button.searchButton {
     padding-left: 1rem!important;
     padding-right: 1rem!important;
 }
+
+a.menuLinkDisabled {
+    pointer-events: none;
+}

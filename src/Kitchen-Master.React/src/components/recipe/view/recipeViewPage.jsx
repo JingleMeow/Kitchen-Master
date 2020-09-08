@@ -12,6 +12,7 @@ import { currentRecipeSelector } from '../../../redux/selectors/recipe'
 import { loadCurrentRecipeAction } from '_/redux/actions/recipe/currentRecipe'
 import { getImageUrl } from '_/utils/recipeUtils';
 import styles from './recipeViewPage.module.scss';
+import AddToMenuButton from './addToMenu/addToMenuButton';
 
 class RecipeViewPage extends Component {
     state = {
@@ -60,6 +61,9 @@ class RecipeViewPage extends Component {
                     <Grid.Row columns={2}>
                         <Grid.Column>
                             <LikeButton recipeId={currentRecipe.id} likes={currentRecipe.likes} />
+                        </Grid.Column>
+                        <Grid.Column>
+                            <AddToMenuButton recipeId={currentRecipe.id} />
                         </Grid.Column>
                     </Grid.Row>
                     <Grid.Row>

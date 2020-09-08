@@ -2,17 +2,21 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Menu, Image, Responsive } from 'semantic-ui-react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars, faUtensils } from '@fortawesome/free-solid-svg-icons';
+import { faBars } from '@fortawesome/free-solid-svg-icons';
+import cn from 'classnames';
 import PropTypes from 'prop-types';
 import SearchInput from './searchInput';
 import TopbarMenu from './topbarMenu';
 import AccountInfo from './accountInfo';
+import UserMenuIcon from './userMenuIcon';
+import { currentUserSelector } from '_/redux/selectors/shared';
 import styles from './topbar.module.scss';
+import { connect } from 'react-redux';
 
 class Topbar extends Component {
 
     render() {
-        const { isInfoPage, onHamburgerClick } = this.props;
+        const { isInfoPage, onHamburgerClick, currentUser } = this.props;
         return (
             <TopbarMenu>
                 <Menu.Item className={styles.hamburger} onClick={onHamburgerClick}>
@@ -33,8 +37,10 @@ class Topbar extends Component {
                     <AccountInfo />
                 </Responsive>
                 {!isInfoPage &&
-                    <Menu.Item position='right'>
-                        <FontAwesomeIcon icon={faUtensils} size='2x'></FontAwesomeIcon>
+                    <Menu.Item as={Link} position='right'
+                        to='/menu'
+                        className={cn({ [styles.menuLinkDisabled]: !currentUser })}>
+                        <UserMenuIcon />
                     </Menu.Item>
                 }
             </TopbarMenu>
@@ -47,4 +53,10 @@ Topbar.propTypes = {
     onHamburgerClick: PropTypes.func.isRequired
 }
 
-export default Topbar;
+const mapStateToProps = state => {
+    return {
+        currentUser: currentUserSelector(state)
+    };
+}
+
+export default connect(mapStateToProps, null)(Topbar);

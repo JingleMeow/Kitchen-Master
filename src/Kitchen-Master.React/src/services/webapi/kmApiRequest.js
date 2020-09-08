@@ -17,6 +17,11 @@ function post(resourcePath, data, options) {
     return instance.post(resourcePath, data);
 }
 
+function del(resourcePath, data, options) {
+    const instance = createInstance(options);
+    return instance.delete(resourcePath, data);
+}
+
 function put(resourcePath, data, options) {
     const instance = createInstance(options);
     return instance.put(resourcePath, data);
