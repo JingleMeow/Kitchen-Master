@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Kitchen_Master.API.ApiModels.Recipe
 {
-    public class LikeRecipeModel
+    public class RecipeIdModel
     {
         public int RecipeId { get; set; }
     }

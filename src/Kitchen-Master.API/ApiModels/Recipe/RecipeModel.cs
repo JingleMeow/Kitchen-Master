@@ -9,6 +9,7 @@ namespace Kitchen_Master.API.ApiModels.Recipe
 {
     public class RecipeModel
     {
+        public int Id { get; set; }
         public string Name { get; set; }
         public string CoverImageId { get; set; }
         public Spicy Spicy { get; set; }

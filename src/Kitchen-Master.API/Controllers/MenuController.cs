@@ -29,17 +29,17 @@ namespace Kitchen_Master.API.Controllers
             return Ok(menu);
         }
 
-        [HttpPost("add")]
-        public ActionResult<RecipeModel> AddRecipe([FromBody]int recipeId)
+        [HttpPost]
+        public ActionResult<RecipeModel> AddRecipe(RecipeIdModel model)
         {
-            var recipe = this._userMenuService.AddRecipeToMenu(recipeId);
+            var recipe = this._userMenuService.AddRecipeToMenu(model.RecipeId);
             return Ok(recipe);
         }
 
-        [HttpDelete("remove")]
-        public IActionResult RemoveRecipe([FromBody]int recipeId)
+        [HttpDelete]
+        public IActionResult RemoveRecipe(RecipeIdModel model)
         {
-            this._userMenuService.RemoveRecipeFromMenu(recipeId);
+            this._userMenuService.RemoveRecipeFromMenu(model.RecipeId);
             return Ok();
         }
     }

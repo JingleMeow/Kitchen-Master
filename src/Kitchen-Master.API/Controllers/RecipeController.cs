@@ -50,14 +50,14 @@ namespace Kitchen_Master.API.Controllers
         }
 
         [HttpPost("likeRecipe")]
-        public IActionResult LikeRecipe(LikeRecipeModel likeRecipeModel)
+        public IActionResult LikeRecipe(RecipeIdModel likeRecipeModel)
         {
             this._recipeService.LikeRecipe(likeRecipeModel.RecipeId);
             return Ok();
         }
 
         [HttpPost("cancelLikeRecipe")]
-        public IActionResult CancelLikeRecipe(LikeRecipeModel likeRecipeModel)
+        public IActionResult CancelLikeRecipe(RecipeIdModel likeRecipeModel)
         {
             this._recipeService.CancelLikeRecipe(likeRecipeModel.RecipeId);
             return Ok();
