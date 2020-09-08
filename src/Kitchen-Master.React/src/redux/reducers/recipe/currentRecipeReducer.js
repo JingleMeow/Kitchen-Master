@@ -1,5 +1,5 @@
 import { createReducer } from '@reduxjs/toolkit';
-import { INCREASE_LIKE_OF_RECIPE, DECREASE_LIKE_OF_RECIPE } from '../../actions/recipe/likeRecipeAction';
+import { INCREASE_LIKE_OF_RECIPE, DECREASE_LIKE_OF_RECIPE } from '../../actions/userData/likeRecipeAction';
 
 export const SET_CURRENT_RECIPE = 'SET_CURRENT_RECIPE';
 

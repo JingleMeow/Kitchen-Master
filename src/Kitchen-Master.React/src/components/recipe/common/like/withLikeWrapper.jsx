@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { currentUserSelector } from '_/redux/selectors/shared/';
 import { likedRecipeIdsSelector, isLoadingLikedRecipeIdsSelector } from '_/redux/selectors/userData';
-import { likeRecipe, cancelLikeRecipe } from '_/redux/actions/recipe/likeRecipeAction';
+import { likeRecipe, cancelLikeRecipe } from '_/redux/actions/userData/likeRecipeAction';
 
 function withLikeWrapper(LikeComponent) {
     class LikeWrapper extends Component {

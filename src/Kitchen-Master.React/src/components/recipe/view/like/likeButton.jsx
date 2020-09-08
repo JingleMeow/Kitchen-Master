@@ -10,9 +10,8 @@ const LikeButton = ({ likes, likeClickable, isLiked, isLoadingLiked, handleLike 
             trigger={
                 <Button as='div' fluid labelPosition='right' disabled={!likeClickable || isLoadingLiked} onClick={handleLike} >
                     <Button fluid color={color}>
-                        <Icon name='heart' />
-                    Like
-                </Button>
+                        <Icon name='heart' /> Like
+                    </Button>
                     <Label as='a' basic color={color} pointing='left'>
                         {likes}
                     </Label>
