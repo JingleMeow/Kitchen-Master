@@ -1,0 +1,16 @@
+@import '../../styles/variables';
+@import '../../styles/styles';
+
+div.container {
+    @extend %whitePageContainer;
+}
+
+div.emptyMenu {
+    padding: 2rem;
+    text-align: center;
+}
+
+div.checkout {
+    width: 100%;
+    text-align: center;
+}

@@ -12,7 +12,7 @@ export function addRecipeToMenu(recipeId) {
 
 export function removeRecipeFromMenu(recipeId) {
     return dispatch => {
-        dispatch(apiCallbackAction.del('menu', { recipeId }, true))
+        dispatch(apiCallbackAction.del(`menu/${recipeId}`, null, true))
             .then(response => {
                 dispatch(removeMenuRecipe(recipeId));
             })

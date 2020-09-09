@@ -28,12 +28,12 @@ function post(resourcePath, data, showLoader) {
     };
 }
 
-function del(resourcePath, data, showLoader) {
+function del(resourcePath, showLoader) {
     return dispatch => {
         const options = {
             interceptor: showLoader ? buildShowLoaderInterceptor(dispatch) : {}
         }
-        return kmApi.del(resourcePath, data, options);
+        return kmApi.del(resourcePath, options);
     };
 }
 
@@ -52,7 +52,7 @@ function putImage(resourcePath, image) {
     }
 }
 
-export default { get, getWithParam, post, putImage }
+export default { get, getWithParam, post, del, putImage }
 
 function buildShowLoaderInterceptor(dispatch) {
     return {

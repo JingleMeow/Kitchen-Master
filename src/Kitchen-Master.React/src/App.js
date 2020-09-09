@@ -11,6 +11,7 @@ import { HomePage, FofPage } from './components';
 import { loaderSelector, currentUserSelector } from './redux/selectors/shared';
 import { setCurrentUserAction } from './redux/actions/shared/setCurrentUserAction';
 import loadUserMenu from './redux/actions/userData/loadUserMenu';
+import { MenuPage } from './components/menu';
 
 class App extends Component {
   state = {
@@ -49,6 +50,7 @@ class App extends Component {
             <Route path='/myRecipes' component={MyRecipesPage} />
             <Route path='/myFavorite' component={MyFavoritePage} />
             <Route path='/searchRecipes' component={RecipeSearchPage} />
+            <Route path='/menu' component={MenuPage} />
             <Route path='/' component={FofPage} />
           </Switch>
         </BrowserRouter>

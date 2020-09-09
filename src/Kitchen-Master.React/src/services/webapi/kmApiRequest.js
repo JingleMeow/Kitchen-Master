@@ -17,9 +17,9 @@ function post(resourcePath, data, options) {
     return instance.post(resourcePath, data);
 }
 
-function del(resourcePath, data, options) {
+function del(resourcePath, options) {
     const instance = createInstance(options);
-    return instance.delete(resourcePath, data);
+    return instance.delete(resourcePath);
 }
 
 function put(resourcePath, data, options) {
@@ -83,5 +83,6 @@ export default {
     get,
     getWithParams,
     post,
+    del,
     put
 }

@@ -36,10 +36,10 @@ namespace Kitchen_Master.API.Controllers
             return Ok(recipe);
         }
 
-        [HttpDelete]
-        public IActionResult RemoveRecipe(RecipeIdModel model)
+        [HttpDelete("{recipeId}")]
+        public IActionResult RemoveRecipe(int recipeId)
         {
-            this._userMenuService.RemoveRecipeFromMenu(model.RecipeId);
+            this._userMenuService.RemoveRecipeFromMenu(recipeId);
             return Ok();
         }
     }
