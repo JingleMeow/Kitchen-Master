@@ -1,3 +1,5 @@
+@import '../../styles/variables';
+
 div.row {
     display: flex;
     flex-direction: row;
@@ -14,22 +16,51 @@ img.recipeImage {
     flex-grow: 0;
 }
 
+div.textAndButton {
+    flex-grow: 1;
+    margin-left: 0.5rem;
+    align-self: stretch;
+    display: flex;
+    flex-direction: row;
+
+    @include mobile {
+        flex-direction: column;
+    }
+}
+
 div.title {
     flex-grow: 1;
     padding: 0.5rem;
-    margin-left: 0.5rem;
-    line-height: 1.25em;
-    font-size: x-large;
-    font-weight: bold;
+    
+    @include mobile {
+        flex-grow: 1;
+        padding: 0 0 0.25rem 0;
+    }
 
-    a {
+    a{
+        line-height: 1.25em;
+        font-size: x-large;
+        font-weight: bold;
         color: #3e3e3e!important;
+    
+        @include mobile {
+            font-size: large;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
     }
     a:hover {
         text-decoration: underline;
+        @include mobile {
+            text-decoration: none;
+        }
     }
+
 }
 
 button.removeButton {
     flex-grow: 0;
+    align-self: center;
 }
