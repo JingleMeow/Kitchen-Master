@@ -50,7 +50,7 @@ class App extends Component {
             <Route path='/myRecipes' component={MyRecipesPage} />
             <Route path='/myFavorite' component={MyFavoritePage} />
             <Route path='/searchRecipes' component={RecipeSearchPage} />
-            <Route path='/menu' component={MenuPage} />
+            <Route path='/menu' exact component={MenuPage} />
             <Route path='/' component={FofPage} />
           </Switch>
         </BrowserRouter>

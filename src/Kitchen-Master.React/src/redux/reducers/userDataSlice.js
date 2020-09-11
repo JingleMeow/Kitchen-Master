@@ -33,6 +33,9 @@ const userDataSlice = createSlice({
             const index = state.userMenu.findIndex(x => x.id === payload);
             if (index >= 0)
                 state.userMenu.splice(index, 1);
+        },
+        clearMenu: state => {
+            state.userMenu = []
         }
     }
 });
@@ -44,5 +47,6 @@ export const {
     setLoadingLikedRecipeIds,
     setUserMenu,
     addMenuRecipe,
-    removeMenuRecipe } = userDataSlice.actions;
+    removeMenuRecipe,
+    clearMenu } = userDataSlice.actions;
 export default userDataSlice.reducer;

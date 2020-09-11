@@ -1,4 +1,4 @@
-import { addMenuRecipe, removeMenuRecipe } from '../../reducers/userDataSlice';
+import { addMenuRecipe, removeMenuRecipe, clearMenu } from '../../reducers/userDataSlice';
 import apiCallbackAction from '../apiCallbackAction';
 
 export function addRecipeToMenu(recipeId) {
@@ -18,4 +18,17 @@ export function removeRecipeFromMenu(recipeId) {
             })
     }
 
+}
+
+export function submitUserMenu(menuName) {
+    return dispatch => new Promise((resolve, reject) => {
+        dispatch(apiCallbackAction.post('menu/submit', { menuName }, true))
+            .then(response => {
+                dispatch(clearMenu());
+                resolve(response.data);
+            })
+            .catch(error => {
+                reject(error);
+            })
+    });
 }
