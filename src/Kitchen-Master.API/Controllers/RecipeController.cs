@@ -29,7 +29,7 @@ namespace Kitchen_Master.API.Controllers
         }
 
         [HttpPost]
-        public IActionResult Post(RecipeModel recipe)
+        public IActionResult Post(DetailRecipeModel recipe)
         {
             var result = this._recipeService.AddRecipe(recipe);
             return Ok();

@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Kitchen_Master.API.ApiModels.Menu;
 using Kitchen_Master.API.ApiModels.Recipe;
 using Kitchen_Master.API.Services.Account;
 using Kitchen_Master.Data;
@@ -17,17 +18,20 @@ namespace Kitchen_Master.API.Services.Menu
         private readonly KitchenMasterDbContext _dbContext;
         private readonly CurrentUserService _currentUser;
         private readonly RecipeRepository _recipeRepository;
+        private readonly MenuHistoryRepository _menuHistoryRepository;
         private readonly IMapper _mapper;
 
         public UserMenuService(KitchenMasterDbContext dbContext,
             CurrentUserService currentUser,
             RecipeRepository recipeRepository,
+            MenuHistoryRepository menuHistoryRepository,
             IMapper mapper)
             : base(dbContext)
         {
             this._dbContext = dbContext;
             this._currentUser = currentUser;
             this._recipeRepository = recipeRepository;
+            this._menuHistoryRepository = menuHistoryRepository;
             this._mapper = mapper;
         }
 
@@ -70,6 +74,45 @@ namespace Kitchen_Master.API.Services.Menu
 
             this._dbContext.UserMenus.Remove(menuItem);
             this._dbContext.SaveChanges();
+        }
+
+        public int SubmitMenu(string menuName)
+        {
+            var currentUserId = this._currentUser.UserId;
+            var userMenu = this._dbContext.UserMenus
+                .Where(x => x.UserId == this._currentUser.UserId)
+                .ToList();
+            var menuHistory = new MenuHistory
+            {
+                MenuName = menuName,
+                UserId = currentUserId,
+                RecipeCount = userMenu.Count,
+                Items = userMenu.Select(x => new MenuRecipe
+                {
+                    RecipeId = x.RecipeId
+                }).ToList(),
+                CreatedTime = DateTime.Now
+            };
+            this._menuHistoryRepository.Add(menuHistory);
+            this._dbContext.UserMenus.RemoveRange(userMenu);
+            this.SaveChanges();
+            return menuHistory.Id;
+        }
+
+        public ExtendedMenuModel GetHistoryMenuById(int menuId)
+        {
+            var currentUserId = this._currentUser.UserId;
+            var menu = this._menuHistoryRepository.Query()
+                .Include(x => x.Items)
+                .ThenInclude(x => x.Recipe)
+                .ThenInclude(x => x.RecipeIngredients)
+                .ThenInclude(x => x.Ingredient)
+                .Include(x => x.Items)
+                .ThenInclude(x => x.Recipe)
+                .ThenInclude(x => x.RecipeIngredients)
+                .ThenInclude(x => x.Unit)
+                .FirstOrDefault(x => x.Id == menuId && x.UserId == currentUserId);
+            return this._mapper.Map<ExtendedMenuModel>(menu);
         }
     }
 }

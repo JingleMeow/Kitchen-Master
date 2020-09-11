@@ -48,7 +48,7 @@ namespace Kitchen_Master.API.Services.Recipe
             return this._mapper.Map<ExtendedRecipeModel>(recipe);
         }
 
-        public DbModels.Recipe AddRecipe(RecipeModel recipeModel)
+        public DbModels.Recipe AddRecipe(DetailRecipeModel recipeModel)
         {
             var recipe = _mapper.Map<DbModels.Recipe>(recipeModel);
             recipe.AuthorId = this._currentUser.UserId;

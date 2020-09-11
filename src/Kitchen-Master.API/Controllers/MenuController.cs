@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Kitchen_Master.API.ApiModels.Menu;
 using Kitchen_Master.API.ApiModels.Recipe;
 using Kitchen_Master.API.Services.Menu;
 using Microsoft.AspNetCore.Authorization;
@@ -41,6 +42,22 @@ namespace Kitchen_Master.API.Controllers
         {
             this._userMenuService.RemoveRecipeFromMenu(recipeId);
             return Ok();
+        }
+
+        [HttpPost("submit")]
+        public ActionResult<int> Submit(SubmitMenuModel model)
+        {
+            var menuId = this._userMenuService.SubmitMenu(model.MenuName);
+            return Ok(menuId);
+        }
+
+        [HttpGet("{menuId}")]
+        public ActionResult<ExtendedMenuModel> GetHistoryMenu(int menuId)
+        {
+            var menu = this._userMenuService.GetHistoryMenuById(menuId);
+            if (menu == null)
+                return Unauthorized();
+            return Ok(menu);
         }
     }
 }
