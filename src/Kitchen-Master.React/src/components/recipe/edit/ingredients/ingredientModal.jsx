@@ -101,9 +101,11 @@ class IngredientModal extends BaseForm {
 
     renderMeasurementDropDown() {
         const { unitCategories } = this.props;
+        const { data } = this.state;
         return (
             <DropDownFormInput fluid selection
                 name='unitCategory'
+                disabled={data.id !== 0}
                 options={this.getDropDownOptions(unitCategories)}
                 {...this.getFormInputProps(true)}
                 onChange={this.handleMeasurementChange} />

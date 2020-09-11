@@ -4,14 +4,16 @@ using Kitchen_Master.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace Kitchen_Master.DataModel.Migrations
+namespace Kitchen_Master.Data.Migrations
 {
     [DbContext(typeof(KitchenMasterDbContext))]
-    partial class KitchenMasterDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200911022002_AddUnitCategoryToIngredient")]
+    partial class AddUnitCategoryToIngredient
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -188,47 +190,6 @@ namespace Kitchen_Master.DataModel.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("LikedRecipes");
-                });
-
-            modelBuilder.Entity("Kitchen_Master.Data.Models.MenuHistory", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("CreatedTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("MenuName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("RecipeCount")
-                        .HasColumnType("int");
-
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("MenuHistory");
-                });
-
-            modelBuilder.Entity("Kitchen_Master.Data.Models.MenuRecipe", b =>
-                {
-                    b.Property<int>("MenuId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("RecipeId")
-                        .HasColumnType("int");
-
-                    b.HasKey("MenuId", "RecipeId");
-
-                    b.HasIndex("RecipeId");
-
-                    b.ToTable("MenuRecipes");
                 });
 
             modelBuilder.Entity("Kitchen_Master.Data.Models.Recipe", b =>
@@ -454,30 +415,6 @@ namespace Kitchen_Master.DataModel.Migrations
                     b.HasOne("Kitchen_Master.Data.Models.KmUser", "User")
                         .WithMany("LikedRecipes")
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Kitchen_Master.Data.Models.MenuHistory", b =>
-                {
-                    b.HasOne("Kitchen_Master.Data.Models.KmUser", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Kitchen_Master.Data.Models.MenuRecipe", b =>
-                {
-                    b.HasOne("Kitchen_Master.Data.Models.MenuHistory", "Menu")
-                        .WithMany("Items")
-                        .HasForeignKey("MenuId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Kitchen_Master.Data.Models.Recipe", "Recipe")
-                        .WithMany()
-                        .HasForeignKey("RecipeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

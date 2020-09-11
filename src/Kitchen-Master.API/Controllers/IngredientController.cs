@@ -23,7 +23,7 @@ namespace Kitchen_Master.API.Controllers
         }
 
         [HttpPost]
-        public ActionResult<Ingredient> Post([FromBody]Ingredient ingredient)
+        public ActionResult<Ingredient> Post(Ingredient ingredient)
         {
             var result = _ingredientService.AddIngredient(ingredient);
             return Ok(result);

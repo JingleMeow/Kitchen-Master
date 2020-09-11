@@ -15,5 +15,7 @@ namespace Kitchen_Master.Data.Models
         public string Name { get; set; }
         [Required]
         public IngredientType Type { get; set; }
+        [Required]
+        public UnitCategory UnitCategory { get; set; }
     }
 }
