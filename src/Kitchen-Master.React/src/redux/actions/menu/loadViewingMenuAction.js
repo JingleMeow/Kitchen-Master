@@ -8,5 +8,6 @@ export default function loadViewingMenu(menuId) {
                 dispatch(setViewingMenu(response.data));
                 resolve(response.data);
             })
+            .catch(error => reject(error));
     })
 }

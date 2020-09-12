@@ -18,11 +18,13 @@ class HistoryMenuViewPage extends Component {
     }
 
     componentDidMount() {
-        const { match, loadViewingMenu } = this.props;
+        const { match, loadViewingMenu, history } = this.props;
         loadViewingMenu(match.params.id)
             .then(() => {
                 this.setState({ menuLoaded: true });
-            });
+            })
+            .catch(() =>
+                history.replace('/pageNotFound'));
     }
 
     render() {
