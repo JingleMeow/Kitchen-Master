@@ -38,19 +38,18 @@ namespace Kitchen_Master.API.ApiModels
                     .SelectMany(i => i.Recipe.RecipeIngredients)
                     .Select(x => new MenuIngredientModel
                     {
-                        IngredientId = x.IngredientId,
-                        IngredientName = x.Ingredient.Name,
-                        IngredientType = x.Ingredient.Type,
+                        Id = x.IngredientId,
+                        Name = x.Ingredient.Name,
+                        Type = x.Ingredient.Type,
                         UnitCategory = x.Unit.UnitCategory,
                         Amount = x.Amount * x.Unit.Coefficient
                     })
-                    .GroupBy(x => x.IngredientId)
+                    .GroupBy(x => x.Id)
                     .Select(x => x.Aggregate((a, b) =>
                     {
                         a.Amount += b.Amount;
                         return a;
-                    }));
-                
+                    }));                
             }
         }
     }

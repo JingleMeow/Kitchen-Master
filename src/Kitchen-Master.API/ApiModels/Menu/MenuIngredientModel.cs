@@ -8,9 +8,9 @@ namespace Kitchen_Master.API.ApiModels.Menu
 {
     public class MenuIngredientModel
     {
-        public int IngredientId { get; set; }
-        public string IngredientName { get; set; }
-        public IngredientType IngredientType { get; set; }
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public IngredientType Type { get; set; }
         public UnitCategory UnitCategory { get; set; }
         public float Amount { get; set; }
     }
