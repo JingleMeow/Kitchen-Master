@@ -2,9 +2,9 @@ import React from 'react';
 import { Button, Dimmer, Form, Message, Modal } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import moment from 'moment';
-import { BaseForm, TextFormInput } from '../common/form';
+import { BaseForm, TextFormInput } from '../../common/form';
 import InputValidator from '_/utils/inputValidator';
-import { submitUserMenu } from '../../redux/actions/userData/userMenuActions';
+import { submitUserMenu } from '_/redux/actions/userData/userMenuActions';
 import PropTypes from 'prop-types';
 class MenuSubmissionModal extends BaseForm {
     state = this.getInitState();

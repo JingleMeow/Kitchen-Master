@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { Container, Header, Image, Divider, Button } from 'semantic-ui-react';
 import { connect } from 'react-redux';
-import withNavbar from '../navbar/withNavbar'
+import withNavbar from '../../navbar/withNavbar'
 import UserMenuItem from './userMenuItem';
 import MenuSubmissionModal from './menuSubmissionModal';
-import userMenuSelector from '../../redux/selectors/userData/userMenuSelector';
-import { removeRecipeFromMenu } from '../../redux/actions/userData/userMenuActions';
+import userMenuSelector from '../../../redux/selectors/userData/userMenuSelector';
+import { removeRecipeFromMenu } from '../../../redux/actions/userData/userMenuActions';
 import styles from './menuPage.module.scss';
 
 class MenuPage extends Component {

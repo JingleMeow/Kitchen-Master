@@ -1,0 +1,6 @@
+@import '../../../styles/variables';
+@import '../../../styles/styles';
+
+div.container {
+    @extend %whitePageContainer;
+}

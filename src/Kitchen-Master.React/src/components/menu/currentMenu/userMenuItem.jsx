@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Image, Button, Responsive } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
-import { getImageUrl } from '../../utils/recipeUtils';
+import { getImageUrl } from '_/utils/recipeUtils';
 import styles from './userMenuItem.module.scss';
 
 const UserMenuItem = ({ recipe, onRemove }) => {
