@@ -38,7 +38,7 @@ class HistoryMenuViewPage extends Component {
                 <div ref={el => (this.printableRef = el)}>
                     <Header size='large'>{viewingMenu.menuName}</Header>
                     <Divider />
-                    <Table celled striped>
+                    <Table celled striped unstackable>
                         <Table.Header>
                             <Table.Row>
                                 <Table.HeaderCell colSpan='2'>
@@ -57,7 +57,7 @@ class HistoryMenuViewPage extends Component {
                             ))}
                         </Table.Body>
                     </Table>
-                    <Table celled striped>
+                    <Table celled striped unstackable>
                         <Table.Header>
                             <Table.Row>
                                 <Table.HeaderCell colSpan='3'>
