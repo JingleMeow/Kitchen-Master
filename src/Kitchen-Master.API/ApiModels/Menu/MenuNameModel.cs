@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Kitchen_Master.API.ApiModels.Menu
 {
-    public class SubmitMenuModel
+    public class MenuNameModel
     {
         public string MenuName { get; set; }
     }

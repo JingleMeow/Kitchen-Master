@@ -45,7 +45,7 @@ namespace Kitchen_Master.API.Controllers
         }
 
         [HttpPost("submit")]
-        public ActionResult<int> Submit(SubmitMenuModel model)
+        public ActionResult<int> Submit(MenuNameModel model)
         {
             var menuId = this._userMenuService.SubmitMenu(model.MenuName);
             return Ok(menuId);
@@ -58,6 +58,13 @@ namespace Kitchen_Master.API.Controllers
             if (menu == null)
                 return Unauthorized();
             return Ok(menu);
+        }
+
+        [HttpGet("history")]
+        public ActionResult<List<MenuModel>> GetHistoryMenuList()
+        {
+            var historyMenus = this._userMenuService.GetHistoryMenuList();
+            return Ok(historyMenus);
         }
     }
 }

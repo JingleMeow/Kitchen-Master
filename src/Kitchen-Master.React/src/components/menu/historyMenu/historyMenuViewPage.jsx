@@ -43,7 +43,7 @@ class HistoryMenuViewPage extends Component {
                             <Table.Row>
                                 <Table.HeaderCell colSpan='2'>
                                     Recipes
-                            </Table.HeaderCell>
+                                </Table.HeaderCell>
                             </Table.Row>
                         </Table.Header>
                         <Table.Body>

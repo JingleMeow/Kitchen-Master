@@ -7,6 +7,9 @@ const menuSlice = createSlice({
         viewingMenu: null
     },
     reducers: {
+        setHistoryMenus: (state, { payload }) => {
+            state.historyMenus = payload
+        },
         setViewingMenu: (state, { payload }) => {
             state.viewingMenu = payload
         }
@@ -14,6 +17,7 @@ const menuSlice = createSlice({
 });
 
 export const {
+    setHistoryMenus,
     setViewingMenu
 } = menuSlice.actions;
 

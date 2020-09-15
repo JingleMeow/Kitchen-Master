@@ -99,6 +99,15 @@ namespace Kitchen_Master.API.Services.Menu
             return menuHistory.Id;
         }
 
+        public List<MenuModel> GetHistoryMenuList()
+        {
+            var currentUserId = this._currentUser.UserId;
+            var menus = this._menuHistoryRepository.Query()
+                .Where(x => x.UserId == currentUserId)
+                .ToList();
+            return this._mapper.Map<List<MenuModel>>(menus);
+        }
+
         public ExtendedMenuModel GetHistoryMenuById(int menuId)
         {
             var currentUserId = this._currentUser.UserId;

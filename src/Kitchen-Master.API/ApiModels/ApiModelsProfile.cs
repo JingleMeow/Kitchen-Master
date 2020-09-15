@@ -25,6 +25,7 @@ namespace Kitchen_Master.API.ApiModels
                 .ForMember(ram => ram.Likes, opt => opt.MapFrom(r => r.Liked.Count));
             CreateMap<RecipeAbstract, RecipeAbstractModel>();
 
+            CreateMap<DbModels.MenuHistory, MenuModel>();
             CreateMap<MenuHistory, ExtendedMenuModel>()
                 .ForMember(emm => emm.Recipes, opt => opt.MapFrom(x => x.Items.Select(i => i.Recipe)))
                 .ForMember(emm => emm.Ingredients, opt => opt.MapFrom<MenuHistoryIngredientResolver>());
