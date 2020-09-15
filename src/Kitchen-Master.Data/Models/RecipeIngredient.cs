@@ -9,8 +9,6 @@ namespace Kitchen_Master.Data.Models
 {
     public class RecipeIngredient
     {
-        [Key]
-        public int Id { get; set; }
         [Required]
         [ForeignKey("Recipe")]
         public int RecipeId { get; set; }

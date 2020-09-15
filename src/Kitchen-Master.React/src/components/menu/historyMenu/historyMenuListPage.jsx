@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Container, Header, Responsive, Table } from 'semantic-ui-react';
+import { Container, Divider, Header, Image, Responsive, Table } from 'semantic-ui-react';
 import moment from 'moment';
 import withNavbar from '../../navbar/withNavbar';
 import historyMenusSelector from '_/redux/selectors/menu/historyMenusSelector';
@@ -20,6 +20,13 @@ class HistoryMenuListPage extends Component {
         return (
             <Container className={styles.container}>
                 <Header size='large'>History Menus</Header>
+                <Divider />
+                {historyMenus.length === 0 &&
+                    <div style={{ padding: '2rem', textAlign: 'center' }}>
+                        <Image src='/empty-menu.svg' fluid />
+                        <Header color='grey'>You don't have any menus yet.</Header>
+                    </div>
+                }
                 {historyMenus.length > 0 &&
                     <Table celled striped unstackable>
                         <Table.Header>

@@ -26,6 +26,7 @@ namespace Kitchen_Master.Data
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
+            builder.Entity<RecipeIngredient>().HasKey(x => new { x.RecipeId, x.IngredientId });
             builder.Entity<RecipeAbstract>().HasNoKey().ToView(null);
             builder.Entity<UserMenu>().HasKey(x => new { x.UserId, x.RecipeId });
             builder.Entity<MenuRecipe>().HasKey(x => new { x.MenuId, x.RecipeId });
