@@ -7,7 +7,7 @@ import { Dimmer, Loader } from 'semantic-ui-react';
 import { getCurrentUser } from './utils/auth';
 import { AuthenticatedRoute } from './components/common'
 import { LoginPage, LoggedOutPage, RegisterPage, ConfirmationEmailSentPage, AccountConfirmationPage, AccountConfirmedPage } from './components/account';
-import { RecipeEditPage, RecipeViewPage, MyRecipesPage, MyFavoritePage, RecipeSearchPage } from './components/recipe'
+import { RecipeEditPage, RecipeViewPage, MyRecipesPage, MyFavoritePage, RecipeSearchPage, HotRecipesPage } from './components/recipe'
 import { HomePage, FofPage } from './components';
 import { loaderSelector, currentUserSelector } from './redux/selectors/shared';
 import { setCurrentUserAction } from './redux/actions/shared/setCurrentUserAction';
@@ -51,6 +51,7 @@ class App extends Component {
             <AuthenticatedRoute path='/myRecipes' component={MyRecipesPage} />
             <AuthenticatedRoute path='/myFavorite' component={MyFavoritePage} />
             <Route path='/searchRecipes' component={RecipeSearchPage} />
+            <Route path='/hotRecipes' component={HotRecipesPage} />
             <AuthenticatedRoute path='/menu' exact component={MenuPage} />
             <AuthenticatedRoute path='/menu/:id' exact component={HistoryMenuViewPage} />
             <AuthenticatedRoute path='/menuHistory' exact component={HistoryMenuListPage} />

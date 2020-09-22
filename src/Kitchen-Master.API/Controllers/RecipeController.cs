@@ -35,6 +35,13 @@ namespace Kitchen_Master.API.Controllers
             return Ok();
         }
 
+        [HttpGet("hot")]
+        [AllowAnonymous]
+        public ActionResult<List<RecipeAbstractModel>> GetHotRecipes()
+        {
+            return this._recipeService.GetHotRecipes();
+        }
+
         [HttpGet("search")]
         [AllowAnonymous]
         public ActionResult<List<RecipeAbstractModel>> Search([FromQuery]RecipeSearchOptions options)

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Menu } from 'semantic-ui-react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUserCircle, faHome, faBook, faHeart, faHistory, faSignInAlt, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+import { faUserCircle, faFireAlt, faBook, faHeart, faHistory, faSignInAlt, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import { currentUserSelector } from '_/redux/selectors/shared';
 import styles from './sidebarMenu.module.scss';
 
@@ -13,10 +13,10 @@ class SidebarMenu extends Component {
         return (
             <Menu vertical className={styles.sidebarMenu} >
                 {this.renderHeader()}
-                <Menu.Item as={Link} to='/' className={styles.menuItem}>
-                    <span>Home</span>
+                <Menu.Item as={Link} to='/hotRecipes' className={styles.menuItem}>
+                    <span>What's hot</span>
                     <div>
-                        <FontAwesomeIcon icon={faHome} size='2x' />
+                        <FontAwesomeIcon icon={faFireAlt} size='2x' />
                     </div>
                 </Menu.Item>
                 <Menu.Item as={Link} to='/myRecipes' disabled={!currentUser} className={styles.menuItem}>

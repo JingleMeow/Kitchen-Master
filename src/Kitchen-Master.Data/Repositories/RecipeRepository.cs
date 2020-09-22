@@ -1,4 +1,5 @@
 ﻿using Kitchen_Master.Data.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,14 @@ namespace Kitchen_Master.Data.Repositories
             : base(dbContext)
         {
 
+        }
+
+        public List<Recipe> GetHotRecipes()
+        {
+            var recipes = from r in this.dbcontext.Recipes.Include(x => x.Liked).Include(x => x.Author)
+                          orderby r.Liked.Count() descending
+                          select r;
+            return recipes.Take(10).ToList();
         }
 
         public List<Recipe> GetRecipesLikedByUser(int userId)
