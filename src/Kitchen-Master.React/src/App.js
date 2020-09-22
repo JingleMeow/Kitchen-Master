@@ -5,6 +5,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Dimmer, Loader } from 'semantic-ui-react';
 import { getCurrentUser } from './utils/auth';
+import { AuthenticatedRoute } from './components/common'
 import { LoginPage, LoggedOutPage, RegisterPage, ConfirmationEmailSentPage, AccountConfirmationPage, AccountConfirmedPage } from './components/account';
 import { RecipeEditPage, RecipeViewPage, MyRecipesPage, MyFavoritePage, RecipeSearchPage } from './components/recipe'
 import { HomePage, FofPage } from './components';
@@ -45,14 +46,14 @@ class App extends Component {
             <Route path="/registerSucceeded" exact component={ConfirmationEmailSentPage} />
             <Route path="/confirmAccount/:token" exact component={AccountConfirmationPage} />
             <Route path="/accountConfirmed" exact component={AccountConfirmedPage} />
-            <Route path="/recipe/new" exact component={RecipeEditPage} />
+            <AuthenticatedRoute path="/recipe/new" exact component={RecipeEditPage} />
             <Route path="/recipe/:id" component={RecipeViewPage} />
-            <Route path='/myRecipes' component={MyRecipesPage} />
-            <Route path='/myFavorite' component={MyFavoritePage} />
+            <AuthenticatedRoute path='/myRecipes' component={MyRecipesPage} />
+            <AuthenticatedRoute path='/myFavorite' component={MyFavoritePage} />
             <Route path='/searchRecipes' component={RecipeSearchPage} />
-            <Route path='/menu' exact component={MenuPage} />
-            <Route path='/menu/:id' exact component={HistoryMenuViewPage} />
-            <Route path='/menuHistory' exact component={HistoryMenuListPage} />
+            <AuthenticatedRoute path='/menu' exact component={MenuPage} />
+            <AuthenticatedRoute path='/menu/:id' exact component={HistoryMenuViewPage} />
+            <AuthenticatedRoute path='/menuHistory' exact component={HistoryMenuListPage} />
             <Route path='/' component={FofPage} />
           </Switch>
         </BrowserRouter>
