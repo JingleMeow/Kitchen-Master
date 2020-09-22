@@ -50,7 +50,7 @@ class SidebarMenu extends Component {
         if (currentUser) {
             text = `Hello, ${currentUser.firstname}`;
         } else {
-            text = 'Dood day!';
+            text = 'Good day!';
         }
         return (
             <Menu.Item className={styles.headerItem}>
