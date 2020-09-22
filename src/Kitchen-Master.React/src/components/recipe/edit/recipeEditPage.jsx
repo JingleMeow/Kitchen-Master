@@ -51,7 +51,7 @@ class RecipeEditPage extends Component {
         const recipe = Object.assign({}, newRecipe, { directions, recipeIngredients });
         saveRecipe(recipe)
             .then(() =>
-                history.push('/myRecipes'));
+                history.replace('/myRecipes'));
     }
 }
 
