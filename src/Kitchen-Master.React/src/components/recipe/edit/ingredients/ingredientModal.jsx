@@ -9,22 +9,8 @@ import { ingredientTypesSelector, unitCategoriesSelector, unitsSelector } from '
 import { addIngredient } from '../../../../services/webapi/recipe/ingredientsService'
 import styles from './ingredientModal.module.scss';
 
-const initialState = {
-    data: {
-        id: '',
-        name: '',
-        type: '',
-        unitCategory: '',
-        amount: '',
-        unitId: ''
-    },
-    errors: {},
-    backendError: '',
-    dimmed: false
-};
-
 class IngredientModal extends BaseForm {
-    state = initialState;
+    state = this.getInitialState();
     schema = {
         id: InputValidator.number().required().label('Ingredient').done(),
         type: InputValidator.number().required().label('Type').done(),
@@ -132,7 +118,7 @@ class IngredientModal extends BaseForm {
 
     handleIngredientChange = ingredient => {
         const { data } = this.state;
-        Object.assign(data, ingredient);
+        Object.assign(data, ingredient, { unitId: this.getDefaultUnitId(ingredient.unitCategory) });
         this.setState({ data });
     }
 
@@ -143,7 +129,7 @@ class IngredientModal extends BaseForm {
     }
 
     handleModalMount = () => {
-        this.setState(initialState);
+        this.setState(this.getInitialState());
     }
 
     handleCancel = () => {
@@ -155,7 +141,7 @@ class IngredientModal extends BaseForm {
         const ingredient = this.state.data;
         if (ingredient.id == 0) {
             this.setState({ dimmed: true });
-            addIngredient({ name: ingredient.name, type: ingredient.type })
+            addIngredient({ name: ingredient.name, type: ingredient.type, unitCategory: ingredient.unitCategory })
                 .then(response => {
                     onIngredientSelected({ ...ingredient, id: response.data.id });
                     this.setState({ dimmed: false });
@@ -171,6 +157,22 @@ class IngredientModal extends BaseForm {
             onIngredientSelected(ingredient);
             onClose();
         }
+    }
+
+    getInitialState() {
+        return {
+            data: {
+                id: '',
+                name: '',
+                type: '',
+                unitCategory: '',
+                amount: '',
+                unitId: ''
+            },
+            errors: {},
+            backendError: '',
+            dimmed: false
+        };
     }
 
     getDropDownOptions(dropDownData) {
@@ -201,7 +203,7 @@ class IngredientModal extends BaseForm {
 
     getDefaultUnitId(unitCategory) {
         const { units } = this.props;
-        return units.find(x => x.unitCategory === unitCategory && x.coefficient === 1).id;
+        return units.find(x => x.unitCategory === unitCategory && x.coefficient === 1)?.id;
     }
 }
 
