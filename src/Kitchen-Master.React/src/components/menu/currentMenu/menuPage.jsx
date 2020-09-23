@@ -44,10 +44,13 @@ class MenuPage extends Component {
     }
 
     handleModalClose = menuId => {
-        if (menuId) {
-            this.props.history.push(`menu/${menuId}`);
-        }
-        this.setState({ showModal: false });
+        this.setState(
+            { showModal: false },
+            () => {
+                if (menuId) {
+                    this.props.history.push(`menu/${menuId}`);
+                }
+            });
     }
 }
 
