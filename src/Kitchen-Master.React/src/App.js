@@ -12,6 +12,7 @@ import { HomePage, FofPage } from './components';
 import { loaderSelector, currentUserSelector } from './redux/selectors/shared';
 import { setCurrentUserAction } from './redux/actions/shared/setCurrentUserAction';
 import loadUserMenu from './redux/actions/userData/loadUserMenu';
+import loadLikedRecipeIds from './redux/actions/userData/loadLikedRecipeIds';
 import { MenuPage, HistoryMenuListPage, HistoryMenuViewPage } from './components/menu';
 
 class App extends Component {
@@ -63,8 +64,10 @@ class App extends Component {
   }
 
   loadUserData = () => {
-    const userMenuPromise = this.props.loadUserMenu();
-    Promise.all([userMenuPromise])
+    const { loadUserMenu, loadLikedRecipeIds } = this.props;
+    const userMenuPromise = loadUserMenu();
+    const userLikedRecipesPromise = loadLikedRecipeIds();
+    Promise.all([userMenuPromise, userLikedRecipesPromise])
       .then(() => this.setState({ readyToLoadContent: true }));
   }
 }
@@ -82,7 +85,8 @@ const mapStateToProps = state => {
 
 const mapDispachToProps = {
   setCurrentUser: setCurrentUserAction,
-  loadUserMenu
+  loadUserMenu,
+  loadLikedRecipeIds
 }
 
 export default hot(connect(mapStateToProps, mapDispachToProps)(App));

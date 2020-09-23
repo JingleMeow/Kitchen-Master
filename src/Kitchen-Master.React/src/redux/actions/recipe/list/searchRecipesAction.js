@@ -1,10 +1,8 @@
 import apiCallbackAction from '../../apiCallbackAction';
 import setRecipeListAction from './setRecipeListAction';
-import loadLikedRecipeIds from '../../userData/loadLikedRecipeIds';
 
 export default function searchRecipesAction(query) {
     return dispatch => new Promise((resolve, reject) => {
-        dispatch(loadLikedRecipeIds());
         dispatch(apiCallbackAction.getWithParam('recipe/search', fixQueryParameters(query), true))
             .then(response => {
                 dispatch(setRecipeListAction(response.data));
