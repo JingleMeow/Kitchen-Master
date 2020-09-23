@@ -1,18 +1,19 @@
 import React, { Component } from 'react';
-import { Container, Grid, Divider, Header, Image, Segment, Label, Icon, Button } from 'semantic-ui-react';
+import { Container, Grid, Divider, Header, Image } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import withNavbar from '../../navbar/withNavbar';
 import DifficultyView from './difficulty/difficultyView';
 import SpicyView from './spicy/spicyView';
 import LikeButton from './like/likeButton';
+import AddToMenuButton from './addToMenu/addToMenuButton';
 import IngredientView from './ingredients/ingredientView';
 import DirectionsView from './directions/directionsView';
-import { currentRecipeSelector } from '../../../redux/selectors/recipe'
-import { loadCurrentRecipeAction } from '_/redux/actions/recipe/currentRecipe'
+import { currentUserSelector } from '../../../redux/selectors/shared';
+import { currentRecipeSelector } from '../../../redux/selectors/recipe';
+import { loadCurrentRecipeAction } from '_/redux/actions/recipe/currentRecipe';
 import { getImageUrl } from '_/utils/recipeUtils';
 import styles from './recipeViewPage.module.scss';
-import AddToMenuButton from './addToMenu/addToMenuButton';
 
 class RecipeViewPage extends Component {
     state = {
@@ -29,7 +30,7 @@ class RecipeViewPage extends Component {
         if (!this.state.recipeLoaded)
             return null;
 
-        const { currentRecipe } = this.props;
+        const { currentUser, currentRecipe } = this.props;
         if (!currentRecipe) {
             return <Redirect to='/pageNotFound' />;
         }
@@ -58,13 +59,14 @@ class RecipeViewPage extends Component {
                             <Image src={getImageUrl(currentRecipe.coverImageId)} fluid />
                         </Grid.Column>
                     </Grid.Row>
-                    <Grid.Row columns={2}>
+                    <Grid.Row columns={2} centered>
                         <Grid.Column>
                             <LikeButton recipeId={currentRecipe.id} likes={currentRecipe.likes} />
                         </Grid.Column>
-                        <Grid.Column>
-                            <AddToMenuButton recipeId={currentRecipe.id} />
-                        </Grid.Column>
+                        {currentUser &&
+                            <Grid.Column>
+                                <AddToMenuButton recipeId={currentRecipe.id} />
+                            </Grid.Column>}
                     </Grid.Row>
                     <Grid.Row>
                         <Grid.Column className={styles.column}>
@@ -77,10 +79,6 @@ class RecipeViewPage extends Component {
                     <Grid.Row>
                         <Grid.Column className={styles.column}>
                             <Header size='large'>Directions</Header>
-                        </Grid.Column>
-                    </Grid.Row>
-                    <Grid.Row>
-                        <Grid.Column className={styles.column}>
                             <DirectionsView directions={currentRecipe.directions} />
                         </Grid.Column>
                     </Grid.Row>
@@ -93,6 +91,7 @@ class RecipeViewPage extends Component {
 
 const mapStateToProps = state => {
     return {
+        currentUser: currentUserSelector(state),
         currentRecipe: currentRecipeSelector(state)
     }
 }
