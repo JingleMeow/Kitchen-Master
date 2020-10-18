@@ -76,7 +76,7 @@ namespace Kitchen_Master.API
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
             app.UseCors();
 
             app.UseStaticFiles(new StaticFileOptions()
