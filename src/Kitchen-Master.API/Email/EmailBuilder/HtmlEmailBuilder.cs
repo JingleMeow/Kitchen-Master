@@ -14,7 +14,7 @@ namespace Kitchen_Master.API.Email.EmailBuilder
 
         protected Func<object, string> GetCompiledTemplate()
         {
-            var templatePath = Path.Combine(Directory.GetCurrentDirectory(), @$"Resources\EmailTemplates\{TemplateName}.hbs");
+            var templatePath = Path.Combine(Directory.GetCurrentDirectory(), "Resources", "EmailTemplates", $"{TemplateName}.hbs");
             var stream = new FileStream(templatePath, FileMode.Open);
             using (var reader = new StreamReader(stream))
             {

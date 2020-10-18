@@ -28,7 +28,7 @@ namespace Kitchen_Master.API.Email.EmailBuilder
             var bodyBuilder = new BodyBuilder();
 
             // Add logo
-            var logoPath = Path.Combine(Directory.GetCurrentDirectory(), @"Resources\logo.png");
+            var logoPath = Path.Combine(Directory.GetCurrentDirectory(), "Resources", "logo.png");
             var logo = bodyBuilder.LinkedResources.Add(logoPath);
             logo.ContentId = MimeUtils.GenerateMessageId();
 

@@ -44,12 +44,12 @@ namespace Kitchen_Master.Data.Extensions
                 {
                     try
                     {
-                        var path = Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location), @"Seeding\Units.sql");
+                        var path = Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location), "Seeding", "Units.sql");
                         var sql = File.ReadAllText(path);
                         dbContext.Database.ExecuteSqlRaw(sql);
                         transaction.Commit();
                     }
-                    catch
+                    catch (Exception ex)
                     {
                         transaction.Rollback();
                     }
