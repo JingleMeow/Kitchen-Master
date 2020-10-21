@@ -7,7 +7,7 @@ const CenterFromGrid = ({ children }) => {
         <Grid textAlign='center' verticalAlign='middle' className={styles.formGrid}>
             <Grid.Column className={styles.gridColumn}>
                 <Header as='h2' color='teal' textAlign='center'>
-                    <Image src='/logo.png' className={styles.logo} />
+                    <Image src='/public/logo.png' className={styles.logo} />
                     <span className={styles.headerText}>Kitchen Master</span>
                 </Header>
                 {children}

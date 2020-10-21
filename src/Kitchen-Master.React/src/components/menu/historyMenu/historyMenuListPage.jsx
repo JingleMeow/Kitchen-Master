@@ -23,7 +23,7 @@ class HistoryMenuListPage extends Component {
                 <Divider />
                 {historyMenus.length === 0 &&
                     <div style={{ padding: '2rem', textAlign: 'center' }}>
-                        <Image src='/empty-menu.svg' fluid />
+                        <Image src='/public/empty-menu.svg' fluid />
                         <Header color='grey'>You don't have any menus yet.</Header>
                     </div>
                 }

@@ -23,7 +23,7 @@ class Topbar extends Component {
                     <FontAwesomeIcon icon={faBars} size='2x' />
                 </Menu.Item>
                 <Menu.Item as={Link} to='/' fitted className={styles.logoAndTitleItem}>
-                    <Image src='/logo.png' className={styles.logo} />
+                    <Image src='/public/logo.png' className={styles.logo} />
                     <h2 className={styles.title}>Kitchen-Master</h2>
                 </Menu.Item>
                 {!isInfoPage &&

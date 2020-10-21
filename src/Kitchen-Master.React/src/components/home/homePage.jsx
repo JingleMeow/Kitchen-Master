@@ -11,7 +11,7 @@ class HomePage extends Component {
     return (
       <Fragment>
         <div className={styles.homePageCover}>
-          <Image src='/food-cover.jpg' fluid className={styles.foodPic} />
+          <Image src='/public/food-cover.jpg' fluid className={styles.foodPic} />
           <span className={styles.slogan}>Cook, Shop, Efficiently</span>
         </div>
         <Grid centered stackable>

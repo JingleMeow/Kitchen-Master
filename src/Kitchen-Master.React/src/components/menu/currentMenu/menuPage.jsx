@@ -23,7 +23,7 @@ class MenuPage extends Component {
                 {
                     userMenu.length === 0 &&
                     <div className={styles.emptyMenu}>
-                        <Image src='/empty-menu.svg' fluid />
+                        <Image src='/public/empty-menu.svg' fluid />
                         <Header color='grey'>Your menu is empty.</Header>
                     </div>
                 }
